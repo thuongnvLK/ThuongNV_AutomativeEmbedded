@@ -2,12 +2,15 @@
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
+https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/
+
 **1. µVision Software Packs Download and Install**
 
 *   Open the Pack Installer by clicking on its icon: refer to the below image.
 ![Alt text](images/setup4.png)
 *   A Pack Installer Welcome screen will open. Read and close it.: refer to the below image.
 ![Alt text](images/setup5.png)
+
 **2. Create a New Project**
 
 *   Open Keil µVision.
