@@ -7,8 +7,10 @@ This guide outlines the basic steps for creating a new project in Keil µVision,
 *   Open Keil µVision.
 *   Go to **Project** -> **New µVision Project**.
 ![Alt text](images/setup1.png)
-*   Select a location to save your project and give it a descriptive name (e.g., "MyFirstProject").
+*   Create a new folder and provide the desired project name and click the save button in the window as shown below image. I called it the first_project. You can name anything.
+![Alt text](images/setup2.png)
 *   Select the target microcontroller (e.g., STM32F103C8T6) from the device database.
+![Alt text](images/setup3.png)
 *   Click **OK**.
 
 **2. Add Source Files**
