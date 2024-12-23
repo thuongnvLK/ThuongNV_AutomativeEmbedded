@@ -1,8 +1,13 @@
 ## Lesson 01 Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
+**1. µVision Software Packs Download and Install**
 
-**1. Create a New Project**
+*   Open the Pack Installer by clicking on its icon: refer to the below image.
+![Alt text](images/setup4.png)
+*   A Pack Installer Welcome screen will open. Read and close it.: refer to the below image.
+![Alt text](images/setup5.png)
+**2. Create a New Project**
 
 *   Open Keil µVision.
 *   Go to **Project** -> **New µVision Project**.
