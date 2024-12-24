@@ -148,7 +148,7 @@ int main(void)
 
 #### **3.3 GPIO Input Modes**
 
-##### **3.3.1  High-impedance or Floating**
+##### **3.3.1 High-impedance or Floating**
 
 *   Bất cứ khi nào vi điều khiển được bật nguồn, các chân GPIO mặc định ở trạng thái đầu vào trở kháng cao.
 
