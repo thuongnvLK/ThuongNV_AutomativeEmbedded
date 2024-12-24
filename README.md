@@ -130,7 +130,7 @@ int main(void)
 </details>
 
 <details>
-<summary>## Lesson 02: General-purpose I/Os (GPIO)</summary>
+<summary>Lesson 02: General-purpose I/Os (GPIO)</summary>
 
 ### **1. What is GPIO ?**
 
