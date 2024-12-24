@@ -34,8 +34,7 @@
    - [Alternate Function Mode](#36-alternate-function-mode)  
 
 
-<details>
-<summary>## Lesson 01: Setting Up Your First Keil µVision Project</summary>
+## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
