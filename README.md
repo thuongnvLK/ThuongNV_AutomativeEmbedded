@@ -1,10 +1,33 @@
 #   **AUTOMATIVE EMBEDDED**
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+# Table of Contents  
+
+## **Lesson 01: Setting Up Your First Keil µVision Project**  
+1. [Install Keil C ARM Package for STM32](#1-install-keil-c-arm-package-for-stm32)  
+2. [µVision Software Packs Download and Install](#2-µvision-software-packs-download-and-install)  
+3. [Create a New Project](#3-create-a-new-project)  
+4. [Add Source Files](#4-add-source-files)  
+5. [Configure Project Options](#5-configure-project-options)  
+6. [Build the Project](#6-build-the-project)  
+7. [Debug (Optional)](#7-debug-optional)  
+8. [Download (Optional)](#8-download-optional)  
+
+## **Lesson 02: General-purpose I/Os (GPIO)**  
+1. [What is GPIO?](#1-what-is-gpio)  
+2. [What is the GPIO Port?](#2-what-is-the-gpio-port)  
+3. [GPIO Modes](#3-gpio-modes)  
+   - [GPIO Output](#31-gpio-output)  
+   - [GPIO Input](#32-gpio-input)  
+   - [GPIO Input Modes](#33-gpio-input-modes)  
+     - [High-impedance or Floating](#331-high-impedance-or-floating)  
+     - [Pull-up](#332-pull-up)  
+     - [Pull-down](#333-pull-down)  
+   - [GPIO Output Modes](#34-gpio-output-modes)  
+     - [Push-pull](#341-push-pull)  
+     - [Open-drain](#342-open-drain)  
+   - [Analog Mode](#35-analog-mode)  
+   - [Alternate Function Mode](#36-alternate-function-mode)  
+
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
