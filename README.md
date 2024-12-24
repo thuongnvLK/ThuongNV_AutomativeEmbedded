@@ -1,4 +1,4 @@
-## Lesson 01 Setting Up Your First Keil µVision Project
+## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
@@ -37,8 +37,10 @@ ST-Link driver.
 **2. Add Source Files**
 
 *   In the **Project** window, right-click on "Source Group 1" and select **Add Files to Group 'Source Group 1'**.
-*   Browse to the location where you have saved your source code files (e.g., `.c` files).
-*   Select the files and click **Add**.
+![Alt text](images/setup8.png)
+*   Highlight the upper-left icon: C file (.c). And enter your source file’s name. I called it as **main.c**. Please refer to the below image.
+![Alt text](images/setup9.png)
+*   Click on Add to close this window.
 
 **3. Configure Project Options**
 
@@ -87,5 +89,5 @@ int main(void)
     return 0;
 }
 ```
-## Lesson 02 General-purpose I/Os (GPIO)
+## Lesson 02: General-purpose I/Os (GPIO)
 
