@@ -2,11 +2,17 @@
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
-Cài đặt Keil C ARM Package STM32:
+**1. Install Keil C ARM Package for STM32**
+
+Visit the following link to download the package:
 
 https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/
 
-**1. µVision Software Packs Download and Install**
+Tài liệu tham khảo: Datasheet, Reference Manual của MCU.
+
+ST-Link driver.
+
+**2. µVision Software Packs Download and Install**
 
 *   Open the Pack Installer by clicking on its icon: refer to the below image.
 ![Alt text](images/setup4.png)
@@ -17,7 +23,7 @@ https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/
 
 ![Alt text](images/setup5.png)
 
-**2. Create a New Project**
+**3. Create a New Project**
 
 *   Open Keil µVision.
 *   Go to **Project** -> **New µVision Project**.
@@ -80,5 +86,6 @@ int main(void)
 
     return 0;
 }
+```
+## Lesson 02 General-purpose I/Os (GPIO)
 
-## Lesson 02 Setting Up Your First Keil µVision Project
