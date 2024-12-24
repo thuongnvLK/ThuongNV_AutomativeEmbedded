@@ -4,8 +4,7 @@
 ![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)     
 ![STM32](https://img.shields.io/badge/STM32-Microcontroller-blue?logo=stmicroelectronics&style=flat-square)     
 ![Language: C](https://img.shields.io/badge/Language-C-yellow?logo=c&style=flat-square)     
-![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)    
-![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)  
+![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)     
 
 ##  **Table of Contents**
 ### **Lesson 01: Setting Up Your First Keil µVision Project**  
