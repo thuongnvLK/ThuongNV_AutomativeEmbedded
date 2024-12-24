@@ -1,8 +1,11 @@
+#   **AUTOMATIVE EMBEDDED**
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
-**1. Install Keil C ARM Package for STM32**
+### **1. What is GPIO ?**
+
+### **1. Install Keil C ARM Package for STM32**
 
 Visit the following link to download the package:
 
@@ -12,7 +15,7 @@ Tài liệu tham khảo: Datasheet, Reference Manual của MCU.
 
 ST-Link driver.
 
-**2. µVision Software Packs Download and Install**
+### **2. µVision Software Packs Download and Install**
 
 *   Open the Pack Installer by clicking on its icon: refer to the below image.
 ![Alt text](images/setup4.png)
@@ -23,7 +26,7 @@ ST-Link driver.
 *   Choose and click **0K**.
 ![Alt text](images/setup7.png)
 
-**3. Create a New Project**
+### **3. Create a New Project**
 
 *   Open Keil µVision.
 *   Go to **Project** -> **New µVision Project**.
@@ -34,7 +37,7 @@ ST-Link driver.
 ![Alt text](images/setup3.png)
 *   Click **OK**.
 
-**2. Add Source Files**
+### **4. Add Source Files**
 
 *   In the **Project** window, right-click on "Source Group 1" and select **Add Files to Group 'Source Group 1'**.
 ![Alt text](images/setup8.png)
@@ -42,7 +45,7 @@ ST-Link driver.
 ![Alt text](images/setup9.png)
 *   Click on Add to close this window.
 
-**3. Configure Project Options**
+### **5. Configure Project Options**
 
 *   In the **Project** window, double-click on **Target 1**.
 *   Go to **Options for Target 'Target 1'**.
@@ -53,19 +56,19 @@ ST-Link driver.
     *   **Debug:** Configure debug settings (debugger type, communication interface, etc.).
 *   **Output:** Configure output options (output file directory, create HEX file, etc.).
 
-**4. Build the Project**
+### **6. Build the Project**
 
 *   Click on the **Build** button (or press **F7**) to compile and link your project.
 *   Check the **Build Output** window for any errors or warnings.
 
-**5. Debug (Optional)**
+### **7. Debug (Optional)**
 
 *   If you have a hardware debugger connected, you can debug your project.
 *   Set breakpoints in your code.
 *   Step through the code line by line.
 *   Inspect variables and memory.
 
-**6. Download (Optional)**
+### **8. Download (Optional)**
 
 *   If you have a hardware target, you can download the compiled code to the target device.
 
