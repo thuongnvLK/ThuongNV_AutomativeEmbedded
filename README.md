@@ -20,7 +20,7 @@
 1. [What is GPIO ?](#1-what-is-gpio)   
 2. [What is the GPIO Port ?](#2-what-is-the-gpio-port)  
 3. [GPIO Modes](#3-gpio-modes)  
-   - [GPIO Output](#3-1-gpio-output)  
+   - [GPIO Output](#31-gpio-output)  
    - [GPIO Input](#32-gpio-input)  
    - [GPIO Input Modes](#33-gpio-input-modes)  
      - [High-impedance or Floating](#331-high-impedance-or-floating)  
@@ -138,7 +138,7 @@ int main(void)
 
 ### **3. GPIO Modes**
 
-#### **3-1  GPIO Output:** 
+#### **31  GPIO Output:** 
 
 ![Alt text](images/setup10.png)
 
