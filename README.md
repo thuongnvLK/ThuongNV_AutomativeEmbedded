@@ -17,11 +17,11 @@ ST-Link driver.
 *   Open the Pack Installer by clicking on its icon: refer to the below image.
 ![Alt text](images/setup4.png)
 *   A Pack Installer Welcome screen will open. Read and close it.: refer to the below image.
-![Alt text](images/setup6.png)
-*   Import the required software packs for your target microcontroller.
-![Alt text](images/setup7.png)
-*   Click **0K**.
 ![Alt text](images/setup5.png)
+*   Import the required software packs for your target microcontroller.
+![Alt text](images/setup6.png)
+*   Click **0K**.
+![Alt text](images/setup7.png)
 
 **3. Create a New Project**
 
