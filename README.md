@@ -3,8 +3,6 @@
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
-### **1. What is GPIO ?**
-
 ### **1. Install Keil C ARM Package for STM32**
 
 Visit the following link to download the package:
