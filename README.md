@@ -34,7 +34,7 @@
    - [Alternate Function Mode](#36-alternate-function-mode)  
 
 
-## Lesson 01: Setting Up Your First Keil µVision Project
+<details><summary>## Lesson 01: Setting Up Your First Keil µVision Project</summary>
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
 
@@ -285,6 +285,13 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 *   **Đa nhiệm (Multiplexing)**: Một chân GPIO có thể được sử dụng cho nhiều mục đích khác nhau. Ví dụ, một chân GPIO có thể được cấu hình làm đầu vào thông thường, hoặc làm chân truyền dữ liệu nhận (Rx) của giao tiếp UART, hoặc làm chân truyền dữ liệu gửi (Tx) của giao tiếp UART, tùy thuộc vào cách cấu hình.
 
 *   **Thanh ghi cấu hình**: Vi điều khiển cung cấp các thanh ghi đặc biệt để chọn chức năng thay thế cho từng chân GPIO. Bằng cách viết giá trị thích hợp vào các thanh ghi này, người dùng có thể cấu hình chân GPIO để thực hiện các chức năng như UART, I2C, SPI, SPI, PWM, ADC, DAC, v.v.
+
+### **4. Blink LED PC13**
+
+
+
+
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
