@@ -1,5 +1,12 @@
 #   **AUTOMATIVE EMBEDDED**
 
+# Setting Up Keil µVision for STM32 Development  
+![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)  
+![STM32](https://img.shields.io/badge/STM32-Microcontroller-blue?logo=stmicroelectronics&style=flat-square)  
+![Language: C](https://img.shields.io/badge/Language-C-yellow?logo=c&style=flat-square)  
+![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)  
+![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)  
+
 ## **Lesson 01: Setting Up Your First Keil µVision Project**  
 1. [Install Keil C ARM Package for STM32](#1-install-keil-c-arm-package-for-stm32)  
 2. [µVision Software Packs Download and Install](#2-µvision-software-packs-download-and-install)  
