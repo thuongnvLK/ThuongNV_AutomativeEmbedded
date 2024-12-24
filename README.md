@@ -17,11 +17,11 @@
 7. [Debug (Optional)](#7-debug-optional)  
 8. [Download (Optional)](#8-download-optional)  
 ### **Lesson 02: General-purpose I/Os (GPIO)**  
-1. [What is GPIO ?](#what-is-gpio)   
-2. [What is the GPIO Port ?](#what-is-the-gpio-port)  
+1. [What is GPIO ?](#1-what-is-gpio)   
+2. [What is the GPIO Port ?](#2-what-is-the-gpio-port)  
 3. [GPIO Modes](#3-gpio-modes)  
-   - [GPIO Output](#3.1-gpio-output)  
-   - [GPIO Input](#3.2-gpio-input)  
+   - [GPIO Output](#3-1-gpio-output)  
+   - [GPIO Input](#32-gpio-input)  
    - [GPIO Input Modes](#33-gpio-input-modes)  
      - [High-impedance or Floating](#331-high-impedance-or-floating)  
      - [Pull-up](#332-pull-up)  
@@ -138,7 +138,7 @@ int main(void)
 
 ### **3. GPIO Modes**
 
-#### **3.1  GPIO Output:** 
+#### **3-1  GPIO Output:** 
 
 ![Alt text](images/setup10.png)
 
