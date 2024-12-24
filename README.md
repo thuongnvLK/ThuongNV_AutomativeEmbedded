@@ -127,10 +127,7 @@ int main(void)
 }
 ```
 
-</details>
-
-<details>
-<summary>Lesson 02: General-purpose I/Os (GPIO)</summary>
+## Lesson 02: General-purpose I/Os (GPIO)
 
 ### **1. What is GPIO ?**
 
