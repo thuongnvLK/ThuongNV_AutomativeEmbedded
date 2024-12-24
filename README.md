@@ -20,7 +20,7 @@ ST-Link driver.
 ![Alt text](images/setup5.png)
 *   Import the required software packs for your target microcontroller.
 ![Alt text](images/setup6.png)
-*   Click **0K**.
+*   Choose and click **0K**.
 ![Alt text](images/setup7.png)
 
 **3. Create a New Project**
