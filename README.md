@@ -1,6 +1,7 @@
 #   **AUTOMATIVE EMBEDDED**
 
 # Setting Up Keil µVision for STM32 Development  
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)  
 ![STM32](https://img.shields.io/badge/STM32-Microcontroller-blue?logo=stmicroelectronics&style=flat-square)  
 ![Language: C](https://img.shields.io/badge/Language-C-yellow?logo=c&style=flat-square)  
@@ -285,3 +286,7 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 *   **Đa nhiệm (Multiplexing)**: Một chân GPIO có thể được sử dụng cho nhiều mục đích khác nhau. Ví dụ, một chân GPIO có thể được cấu hình làm đầu vào thông thường, hoặc làm chân truyền dữ liệu nhận (Rx) của giao tiếp UART, hoặc làm chân truyền dữ liệu gửi (Tx) của giao tiếp UART, tùy thuộc vào cách cấu hình.
 
 *   **Thanh ghi cấu hình**: Vi điều khiển cung cấp các thanh ghi đặc biệt để chọn chức năng thay thế cho từng chân GPIO. Bằng cách viết giá trị thích hợp vào các thanh ghi này, người dùng có thể cấu hình chân GPIO để thực hiện các chức năng như UART, I2C, SPI, SPI, PWM, ADC, DAC, v.v.
+
+## Contact
+Email: individual.thuongnguyen@gmail.com
+GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
