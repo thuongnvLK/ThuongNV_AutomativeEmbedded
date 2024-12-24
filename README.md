@@ -102,17 +102,17 @@ int main(void)
 
 ### **3. GPIO Modes**
 
-#### **GPIO Output:** 
+#### **3.1  GPIO Output:** 
 
 ![Alt text](images/setup10.png)
 
-#### **GPIO Input:** 
+#### **3.2  GPIO Input:** 
 
 ![Alt text](images/setup11.png)
 
-#### **GPIO Input Modes**
+#### **3.3  GPIO Input Modes**
 
-##### **High-impedance or Floating**.
+##### **3.3.1   High-impedance or Floating**.
 
 *   Bất cứ khi nào vi điều khiển được bật nguồn, các chân GPIO mặc định ở trạng thái đầu vào trở kháng cao.
 
@@ -126,7 +126,7 @@ int main(void)
 
 ![Alt text](images/setup12.png)
 
-##### **Pull-up**.
+##### **3.3.2   Pull-up**.
 
 *   Điện trở kéo lên nội bộ được kết nối với chân. Do đó, trạng thái của chân sẽ là CAO (HIGH) trừ khi sử dụng điện trở kéo xuống bên ngoài.
 
@@ -144,7 +144,7 @@ Giải thích:
 
 ![Alt text](images/setup13.png)
 
-##### **Pull-down**.
+##### **3.3.3   Pull-down**.
 
 *   Trong loại này, điện trở kéo xuống nội bộ được kết nối với chân. Do đó, trạng thái của chân sẽ là Thấp (LOW) trừ khi sử dụng điện trở kéo lên bên ngoài.
 
