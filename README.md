@@ -102,8 +102,27 @@ int main(void)
 
 **3. GPIO Modes**
 
-*   **GPIO Output:** 
+**GPIO Output:** 
 ![Alt text](images/setup10.png)
 
-*   **GPIO Input:** 
+**GPIO Input:** 
 ![Alt text](images/setup11.png)
+
+**GPIO Input Modes**
+
+**High-impedance or Floating**.
+
+*   Bất cứ khi nào vi điều khiển được bật nguồn, các chân GPIO mặc định ở trạng thái đầu vào trở kháng cao.
+
+*   Trạng thái trở kháng cao (High-impedance hoặc HI-Z) của một chân GPIO là trạng thái khi chân đó không được kết nối với mức điện áp cao (VCC) hoặc thấp (GND).
+
+*   Trạng thái của chân trong trường hợp này là không xác định (không thể xác định được mức logic là 0 hay 1) trừ khi nó được kéo lên cao hoặc kéo xuống thấp từ bên ngoài.
+
+*   Trạng thái nổi (floating) có thể dẫn đến dòng điện rò rỉ, dẫn đến tiêu thụ điện năng cao vì một chân nổi rất dễ bị nhiễu và có thể dẫn đến dòng điện rò rỉ.
+
+🡪 Do đó, khuyến nghị nên giữ các chân không sử dụng ở trạng thái kéo lên (pull-up) hoặc kéo xuống (pull-down) để tránh dòng điện rò rỉ.
+
+![Alt text](images/setup12.png)
+
+*   Pull-up.
+*   Pull-down.
