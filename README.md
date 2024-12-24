@@ -18,20 +18,20 @@
 8. [Download (Optional)](#8-download-optional)  
 
 ### **Lesson 02: General-purpose I/Os (GPIO)**  
-1. [What is GPIO ?](#1-what-is-gpio)   
+1. [What is GPIO ?](#1-what-is-gpio)
 2. [What is the GPIO Port ?](#2-what-is-the-gpio-port)  
-3. [GPIO Modes](#3-gpio-modes)  
-  - 3.1. [GPIO Output](#31-gpio-output)  
-  - 3.2. [GPIO Input](#32-gpio-input)  
-  - 3.3. [GPIO Input Modes](#33-gpio-input-modes)  
-    - 3.3.1. [High-impedance or Floating](#331-high-impedance-or-floating)  
-    - 3.3.2. [Pull-up](#332-pull-up)  
-    - 3.3.3. [Pull-down](#333-pull-down)  
-  - 3.4. [GPIO Output Modes](#34-gpio-output-modes)  
-    - 3.4.1. [Push-pull](#341-push-pull)  
-    - 3.4.2. [Open-drain](#342-open-drain)  
-  - 3.5. [Analog Mode](#35-analog-mode)  
-  - 3.6. [Alternate Function Mode](#36-alternate-function-mode)  
+3. [GPIO Modes](#3-gpio-modes)
+  3.1. [GPIO Output](#31-gpio-output)  
+  3.2. [GPIO Input](#32-gpio-input)  
+  3.3. [GPIO Input Modes](#33-gpio-input-modes)  
+    3.3.1. [High-impedance or Floating](#331-high-impedance-or-floating)  
+    3.3.2. [Pull-up](#332-pull-up)  
+    3.3.3. [Pull-down](#333-pull-down)  
+  3.4. [GPIO Output Modes](#34-gpio-output-modes)  
+    3.4.1. [Push-pull](#341-push-pull)  
+    3.4.2. [Open-drain](#342-open-drain)  
+  3.5. [Analog Mode](#35-analog-mode)  
+  3.6. [Alternate Function Mode](#36-alternate-function-mode)  
 
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
