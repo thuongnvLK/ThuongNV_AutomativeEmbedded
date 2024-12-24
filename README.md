@@ -136,19 +136,19 @@ int main(void)
 
 * Cổng GPIO (General Purpose Input/Output) trên vi điều khiển STM32F103C8 là một nhóm các chân (pin) đa năng, có thể được cấu hình để thực hiện các chức năng đầu vào hoặc đầu ra kỹ thuật số. Tưởng tượng chúng như những "cánh tay" của vi điều khiển, giúp thiết bị này tương tác với thế giới bên ngoài. Mỗi chân trong một cổng GPIO có thể được cá nhân hóa để đọc dữ liệu từ các cảm biến, điều khiển các thiết bị ngoại vi, hoặc tham gia vào các giao tiếp khác nhau. Việc nhóm các chân thành các cổng không chỉ giúp đơn giản hóa việc quản lý mà còn tăng hiệu quả trong việc cấu hình và sử dụng. Các cổng GPIO thường được đặt tên như GPIOA, GPIOB, GPIOC,... và mỗi cổng thường bao gồm 16 chân. Nhờ sự linh hoạt này, các vi điều khiển như STM32F103C8 có thể được ứng dụng trong vô số các dự án điện tử, từ những dự án đơn giản như điều khiển đèn LED đến những hệ thống tự động phức tạp.
 
-### **3. GPIO Modes**
+### **3.GPIO Modes**
 
-#### **3.1  GPIO Output** 
+#### **3.1 GPIO Output** 
 
 ![Alt text](images/setup10.png)
 
-#### **3.2  GPIO Input** 
+#### **3.2 GPIO Input** 
 
 ![Alt text](images/setup11.png)
 
-#### **3.3  GPIO Input Modes**
+#### **3.3 GPIO Input Modes**
 
-##### **3.3.1   High-impedance or Floating**
+##### **3.3.1  High-impedance or Floating**
 
 *   Bất cứ khi nào vi điều khiển được bật nguồn, các chân GPIO mặc định ở trạng thái đầu vào trở kháng cao.
 
@@ -162,7 +162,7 @@ int main(void)
 
 ![Alt text](images/setup12.png)
 
-##### **3.3.2   Pull-up**
+##### **3.3.2 Pull-up**
 
 *   Điện trở kéo lên nội bộ được kết nối với chân. Do đó, trạng thái của chân sẽ là CAO (HIGH) trừ khi sử dụng điện trở kéo xuống bên ngoài.
 
@@ -180,7 +180,7 @@ int main(void)
 
 ![Alt text](images/setup13.png)
 
-##### **3.3.3   Pull-down**
+##### **3.3.3 Pull-down**
 
 *   Trong loại này, điện trở kéo xuống nội bộ được kết nối với chân. Do đó, trạng thái của chân sẽ là Thấp (LOW) trừ khi sử dụng điện trở kéo lên bên ngoài.
 
@@ -198,11 +198,11 @@ int main(void)
 
 *   **Thanh ghi cấu hình**: Vi điều khiển cung cấp các thanh ghi để người dùng cấu hình các tính năng của GPIO, bao gồm cả việc kích hoạt/vô hiệu hóa điện trở kéo xuống.
 
-#### **3.4  GPIO Output Modes**
+#### **3.4 GPIO Output Modes**
 
 The GPIO is used to drive the electrical signal (high or low) to the pin when it is configured as a output. There are primarily two configuration options for GPIO outputs:
 
-##### **3.4.1   Push-pull**
+##### **3.4.1 Push-pull**
 
 *   Trạng thái này là trạng thái mặc định của chế độ đầu ra GPIO. Chân có thể "đẩy" tín hiệu lên cao hoặc "kéo" nó xuống thấp bằng cách sử dụng transistor PMOS hoặc NMOS.
 
@@ -226,7 +226,7 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 *   **"Pull" (kéo)**: Khi vi điều khiển muốn đặt mức điện áp thấp (LOW) trên chân GPIO, nó sẽ điều khiển transistor NMOS để cho phép dòng điện chảy từ chân GPIO về đất (GND).
 
-##### **3.4.2   Open-drain**
+##### **3.4.2 Open-drain**
 
 *   Trong chế độ đầu ra GPIO, bộ đệm đầu ra được hình thành bằng cách sử dụng các transistor PMOS và NMOS. Nếu bạn loại bỏ transistor PMOS, thì đó sẽ là chế độ đầu ra mở (open drain).
 
@@ -248,7 +248,7 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 *   **Cơ chế hoạt động**: Khi một thiết bị cần truyền dữ liệu, nó sẽ kích hoạt transistor NMOS của mình, kéo đường dây xuống mức thấp. Các thiết bị khác trên đường dây có thể nhận biết sự thay đổi trạng thái này. Khi không có thiết bị nào đang truyền dữ liệu, điện trở kéo lên sẽ kéo đường dây trở lại mức cao.
 
-#### **3.5  Analog Mode**
+#### **3.5 Analog Mode**
 
 *   Chế độ này kết nối chân với bộ chuyển đổi analog sang số (ADC) nội bộ và cho phép bạn đọc một giá trị đại diện cho điện áp nhất định tại chân đó.
 
@@ -270,7 +270,7 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 *   Ngắt kết nối điện trở kéo lên/kéo xuống: Trong chế độ analog, các điện trở kéo lên/kéo xuống thường được ngắt kết nối để không ảnh hưởng đến phép đo điện áp chính xác.
 
-#### **3.6  Alternate Function Mode**
+#### **3.6 Alternate Function Mode**
 
 *   Các chân GPIO có khả năng cung cấp một chức năng thay thế ngoài ba chế độ thông thường.
 
