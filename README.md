@@ -16,7 +16,6 @@
 6. [Build the Project](#6-build-the-project)  
 7. [Debug (Optional)](#7-debug-optional)  
 8. [Download (Optional)](#8-download-optional)  
-
 ### **Lesson 02: General-purpose I/Os (GPIO)**  
 1. [What is GPIO ?](#1-what-is-gpio-?)   
 2. [What is the GPIO Port ?](#2-what-is-the-gpio-port-?)  
