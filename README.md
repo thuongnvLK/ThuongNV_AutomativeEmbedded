@@ -1,7 +1,5 @@
 #   **AUTOMATIVE EMBEDDED**
 
-# Setting Up Keil µVision for STM32 Development 
-
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)     
 ![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)     
 ![STM32](https://img.shields.io/badge/STM32-Microcontroller-blue?logo=stmicroelectronics&style=flat-square)     
@@ -9,7 +7,8 @@
 ![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)    
 ![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat-square)  
 
-## **Lesson 01: Setting Up Your First Keil µVision Project**  
+##  **Table of Contents**
+### **Lesson 01: Setting Up Your First Keil µVision Project**  
 1. [Install Keil C ARM Package for STM32](#1-install-keil-c-arm-package-for-stm32)  
 2. [µVision Software Packs Download and Install](#2-µvision-software-packs-download-and-install)  
 3. [Create a New Project](#3-create-a-new-project)  
@@ -19,7 +18,7 @@
 7. [Debug (Optional)](#7-debug-optional)  
 8. [Download (Optional)](#8-download-optional)  
 
-## **Lesson 02: General-purpose I/Os (GPIO)**  
+### **Lesson 02: General-purpose I/Os (GPIO)**  
 1. [What is GPIO?](#1-what-is-gpio)  
 2. [What is the GPIO Port?](#2-what-is-the-gpio-port)  
 3. [GPIO Modes](#3-gpio-modes)  
