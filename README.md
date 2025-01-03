@@ -293,9 +293,13 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 *   **Step 2:** Configure the peripheral's functionality
 *   **Step 3:** Activate and use the peripheral
 
-#### **4.1 Địa chỉ các thanh ghi
+#### **4.1 Địa chỉ các thanh ghi**
 
 ![Alt text](images/setup18.png)
+
+#### **4.2 Enable the peripheral's cloc**
+
+![Alt text](images/setup17.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
