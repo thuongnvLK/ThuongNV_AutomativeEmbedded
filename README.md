@@ -289,7 +289,7 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 ### **4. Blink LED PC13**
 
-*   **Step 1:** Enable the peripheral's cloc
+*   **Step 1:** Enable the peripheral's clock
 *   **Step 2:** Configure the peripheral's functionality
 *   **Step 3:** Activate and use the peripheral
 
@@ -297,10 +297,26 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 ![Alt text](images/setup18.png)
 
-#### **4.2 Enable the peripheral's cloc**
+#### **4.2 Enable the peripheral's clock**
+
+*   Tất cả các chân của STM32F103 được nhóm thành nhiều cổng như PORT A, PORT B, PORT C Như có thể thấy từ biểu đồ cấu hình chân trong PA1 là viết tắt của Port A Pin 1. Có 37 chân GPIO trong stm32f103 được chia thành PORT A có 16 chân, PORT B ​​có 16 chân, PORT C có 3 chân và PORT D có 2 chân.
+
+*   Mỗi cổng GPIO có hai thanh ghi cấu hình 32 bit (GPIOx_CRL, GPIOx_CRH), hai thanh ghi dữ liệu 32 bit (GPIOx_IDR, GPIOx_ODR), một thanh ghi thiết lập/đặt lại 32 bit (GPIOx_BSRR), một thanh ghi đặt lại 16 bit (GPIOx_BRR) và một thanh ghi khóa 32 bit (GPIOx_LCKR).
+
+*   Trong tên thanh ghi, x biểu thị cổng mà chân đó thuộc về. Nếu chúng ta đang cấu hình chân PA1 , chân này có Cổng A thì các thanh ghi sẽ được truy cập bởi GPIOA _CRL, v.v.
 
 ![Alt text](images/setup17.png)
 
+
+![Alt text](images/setup19.png)
+
+```c
+
+#define RCC_APB2ENR   *((unsigned int *)0x40021018)
+
+```
+
+*   
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
