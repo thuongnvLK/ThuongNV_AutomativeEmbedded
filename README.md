@@ -289,9 +289,9 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 ### **4. Blink LED PC13**
 
-
-
-
+*   **Step 1:** Enable the peripheral's clock and power
+*   **Step 2:** Configure the peripheral's functionality
+*   **Step 3:** Activate and use the peripheral
 
 
 ## Contact
