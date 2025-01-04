@@ -507,6 +507,54 @@ void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal);
 void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal);
 \\Ghi giá trị "PortVal" vào nguyên GPIO
 ```
+**RCC_APB2PeriphClockCmd**
+```C
+/**
+  * @brief  Enables or disables the High Speed APB (APB2) peripheral clock.
+  * @param  RCC_APB2Periph: specifies the APB2 peripheral to gates its clock.
+  *   This parameter can be any combination of the following values:
+  *     @arg RCC_APB2Periph_AFIO, RCC_APB2Periph_GPIOA, RCC_APB2Periph_GPIOB,
+  *          RCC_APB2Periph_GPIOC, RCC_APB2Periph_GPIOD, RCC_APB2Periph_GPIOE,
+  *          RCC_APB2Periph_GPIOF, RCC_APB2Periph_GPIOG, RCC_APB2Periph_ADC1,
+  *          RCC_APB2Periph_ADC2, RCC_APB2Periph_TIM1, RCC_APB2Periph_SPI1,
+  *          RCC_APB2Periph_TIM8, RCC_APB2Periph_USART1, RCC_APB2Periph_ADC3,
+  *          RCC_APB2Periph_TIM15, RCC_APB2Periph_TIM16, RCC_APB2Periph_TIM17,
+  *          RCC_APB2Periph_TIM9, RCC_APB2Periph_TIM10, RCC_APB2Periph_TIM11     
+  * @param  NewState: new state of the specified peripheral clock.
+  *   This parameter can be: ENABLE or DISABLE.
+  * @retval None
+  */
+void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_APB2_PERIPH(RCC_APB2Periph));
+  assert_param(IS_FUNCTIONAL_STATE(NewState));
+  if (NewState != DISABLE)
+  {
+    RCC->APB2ENR |= RCC_APB2Periph;
+  }
+  else
+  {
+    RCC->APB2ENR &= ~RCC_APB2Periph;
+  }
+}
+```
+
+**main.c**
+```c
+#include "stm32f10x_gpio.h"             // Device:StdPeriph Drivers:GPIO
+#include "stm32f10x_rcc.h"              // Device:StdPeriph Drivers:RCC
+#include "stm32f10x.h"                  // Device header
+
+void RCC_Config() {
+	RCC_APB2PeriphClockCmd(RCC);
+}
+
+int main() {
+	
+
+}
+```
 
 
 ## Contact
