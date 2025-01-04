@@ -374,9 +374,9 @@ typedef struct
 ```
 
 ```c
-#define 	RCC_BASEADDR		0x40021000
-#define 	GPIOC_BASEADDR	0x40011000
-#define 	GPIOA_BASEADDR	0x40010800
+#define 	RCC_BASEADDR      0x40021000
+#define 	GPIOC_BASEADDR    0x40011000
+#define 	GPIOA_BASEADDR    0x40010800
 
 typedef struct
 {
@@ -388,8 +388,8 @@ typedef struct
   unsigned int BRR;
   unsigned int LCKR;
 } GPIO_RegDef_t;
-#define	GPIOC			((GPIO_RegDef_t *)GPIOC_BASEADDR)
-#define	GPIOA			((GPIO_RegDef_t *)GPIOA_BASEADDR)
+#define	GPIOC		((GPIO_RegDef_t *)GPIOC_BASEADDR)
+#define	GPIOA		((GPIO_RegDef_t *)GPIOA_BASEADDR)
 
 typedef struct
 {
