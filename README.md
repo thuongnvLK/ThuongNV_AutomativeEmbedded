@@ -631,7 +631,7 @@ int main() {
 #include "stm32f10x.h"                  // Device header
 
 void RCC_Config() {
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOA, ENABLE);
 }
 
 void GPIO_Config(){
@@ -660,8 +660,8 @@ int main() {
 	GPIO_Config();
 
 	while (1) {
-		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0){
-			while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == 0);
+		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET){
+			while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET);
 			if(GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_13)){
 				GPIO_ResetBits(GPIOC, GPIO_Pin_13);
 			} else {
@@ -670,8 +670,9 @@ int main() {
 		}
 	}
 }
-
 ```
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
