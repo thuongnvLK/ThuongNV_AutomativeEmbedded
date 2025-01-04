@@ -715,10 +715,10 @@ int main() {
 
 **Advantages - Disadvantages**
 
-| Feature | Advantages | Disadvantages |
-|---|---|---|
-| Interrupt Handling | <ul><li>Increased CPU efficiency</li><li>Decreased CPU waiting time</li><li>Reduced instruction cycle wastage</li><li>Enabled multitasking</li><li>Simplified I/O operations</li></ul> | <ul><li>CPU overhead</li><li>Nested interrupts</li><li>Priority inversion</li></ul> |
-| RTOS Keywords | <ul><li>Scheduling</li><li>Synchronization</li><li>Communication</li><li>Memory Management</li><li>Real-time Constraints</li></ul> |  |
+| **Advantages** | **Disadvantages** |
+|---|---|
+| It increases the efficiency of CPU. <br> It decreases the waiting time of CPU. <br> Stops the wastage of instruction cycle. <br> Enables multitasking by allowing the CPU to quickly switch between different processes. <br> Simplifies input/output (I/O) operations by allowing devices to communicate directly with the CPU. | CPU has to handle interrupts, resume its previous execution of programs. <br> Overhead required to handle the interrupt request can reduce the efficiency of the system. <br> Nested interrupts can occur when there is high levels of interrupt activity. <br> Priority inversion can occur when a low-priority task holds a resource needed by a higher-priority task. |
+| The keyword to build RTOS | <ul><li>Scheduling</li><li>Synchronization</li><li>Communication</li><li>Memory Management</li><li>Real-time Constraints</li></ul> |
 
 #### **1.3 Types of interrupts**
 
