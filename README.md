@@ -474,6 +474,37 @@ typedef struct
 }GPIO_InitTypeDef;
 ```
 
+```c
+void GPIO_Config(){
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_13;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	
+	GPIO_Init(GPIOC, &GPIO_InitStruct); // Lưu các cài đặt vào thanh ghi
+}
+```
+*   **Các hàm thông dụng**:
+```c
+uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+\\Đọc giá trị 1 chân trong GPIO được cấu hình là INPUT
+uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx);
+\\Đọc giá trị nguyên GPIO được cấu hình là INPUT
+uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+\\Đọc giá trị 1 chân trong GPIO được cấu hình là OUTPUT
+uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx);
+\\Đọc giá trị nguyên GPIO được cấu hình là OUTPUT
+void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+\\Cho giá trị điện áp của 1 chân trong GPIO = 1
+void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+\\Cho giá trị điện áp của 1 chân trong GPIO = 0
+void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal);
+\\Ghi giá trị "BitVal" vào 1 chân trong GPIO
+void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal);
+\\Ghi giá trị "PortVal" vào nguyên GPIO
+```
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
