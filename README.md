@@ -681,6 +681,15 @@ int main() {
 }
 ```
 
+## Lesson 03: Interrupt and Timer
+
+### **1. Interrupt**
+
+*   Ngắt phát tín hiệu từ phần cứng hoặc phần mềm khi một tiến trình hoặc sự kiện cần được chú ý ngay lập tức. Nó cảnh báo bộ xử lý về một tiến trình có mức độ ưu tiên cao cần ngắt quá trình làm việc hiện tại. Trong I/O thiết bị, một trong các bus điều khiển đường dẫn được dành riêng cho mục tiêu này và được gọi là Interrupt Service Routine (ISR).
+
+![Alt text](images/setup27.png)
+
+### **1. Timer**
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
