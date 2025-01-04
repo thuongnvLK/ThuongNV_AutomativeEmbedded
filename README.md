@@ -310,6 +310,8 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 ![Alt text](images/setup19.png)
 
+![Alt text](images/setup20.png)
+
 ```c
 #define RCC_APB2ENR   *(( unsigned int *  )0x40021018)
 #define GPIO_CRH      *(( unsigned int *  )0x40011004)
@@ -335,7 +337,7 @@ int main () {
 }
 
 ```
-
+545464
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
