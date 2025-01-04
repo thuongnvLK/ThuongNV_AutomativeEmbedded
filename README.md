@@ -685,11 +685,23 @@ int main() {
 
 ### **1. Interrupt**
 
+#### **1.1 What is an interrupt**
 *   Ngắt phát tín hiệu từ phần cứng hoặc phần mềm khi một tiến trình hoặc sự kiện cần được chú ý ngay lập tức. Nó cảnh báo bộ xử lý về một tiến trình có mức độ ưu tiên cao cần ngắt quá trình làm việc hiện tại. Trong I/O thiết bị, một trong các bus điều khiển đường dẫn được dành riêng cho mục tiêu này và được gọi là Interrupt Service Routine (ISR).
 
 ![Alt text](images/setup27.png)
 
-### **1. Timer**
+#### **1.2 Types of interrupts**
+
+*   Mỗi Interrupt có 1 ISR.
+*   **Interrupt Service Routine - ISR** là một đoạn chương trình được **thực thi** khi interrupt xảy ra.
+*   Địa chỉ trong bộ nhớ của ISR được gọi **Interrupt Vector**.
+
+![Alt text](images/setup28.png)
+
+![Alt text](images/setup29.png)
+
+
+### **2. Timer**
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
