@@ -686,11 +686,23 @@ int main() {
 ### **1. Interrupt**
 
 #### **1.1 What is an interrupt**
+
+![Alt text](images/setup32.png)
+
 *   Ngắt phát tín hiệu từ phần cứng hoặc phần mềm khi một tiến trình hoặc sự kiện cần được chú ý ngay lập tức. Nó cảnh báo bộ xử lý về một tiến trình có mức độ ưu tiên cao cần ngắt quá trình làm việc hiện tại. Trong I/O thiết bị, một trong các bus điều khiển đường dẫn được dành riêng cho mục tiêu này và được gọi là Interrupt Service Routine (ISR).
 
 ![Alt text](images/setup27.png)
 
-#### **1.2 Types of interrupts**
+#### **1.2 How Interrupt Works**
+
+*   Whenever any device needs service of microcontroller, the device notifies the microcontroller by sending interrupt signal.
+
+*   The microcontroller stops or interrupt main program flow and saves the address of the next instruction (PC) on the stack pointer (SP).
+
+*   MCU/MPU jumps to a fixed location in memory, called interrupt vector table that hold the address of the ISR (Interrupt Service Routine). Each interrupt has its own ISR. The microcontroller gets the address of the ISR from the interrupt vector table and jump to it.
+
+*   It starts to execute the Interrupt Service Routine until it
+#### **1.3 Types of interrupts**
 
 *   Mỗi Interrupt có 1 ISR.
 *   **Interrupt Service Routine - ISR** là một đoạn chương trình được **thực thi** khi interrupt xảy ra.
@@ -714,6 +726,11 @@ int main() {
 
 ![Alt text](images/setup31.png)
 
+##### **1.2.2 Ngắt timer**
+
+##### **1.2.2 Ngắt truyền thông**
+
+*   Xảy ra khi có sự kiện truyền/ nhận dữ liệu giữa MCU và các thiết bị khác, thường sử dụng cho các giao thức như UART, SPI, I2C để đảm bảo việc truyền/ nhận được chính xác.
 
 ### **2. Timer**
 
