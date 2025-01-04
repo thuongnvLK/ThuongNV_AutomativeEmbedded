@@ -404,7 +404,7 @@ typedef struct
   unsigned int BDCR;
   unsigned int CSR;
 } RCC_RegDef_t;
-#define	RCC			((RCC_RegDef_t *)RCC_BASEADDR)
+#define	RCC		((RCC_RegDef_t *)RCC_BASEADDR)
 
 void delay( unsigned int  timedelay	)  {
   for (unsigned int i = 0; i < timedelay; i++) {
