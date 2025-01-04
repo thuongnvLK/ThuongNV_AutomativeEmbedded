@@ -426,6 +426,7 @@ int main(){
 	}
 }
 ```
+
 ### **5. STM32F10x Standard Peripherals Firmware Library**
 
 *   Là 1 thư viện hoàn chỉnh được phát triển cho dòng STM32. Bao gồm đầy đủ driver cho tất cả các ngoại vi tiêu chuẩn.
@@ -434,7 +435,27 @@ int main(){
 
 ![Alt text](images/setup25.png)
 
-####
+####  **5.1 Cấu hình và sử dụng ngoại vi (GPIO)**
+
+*   Chọn chế độ: Đọc giá trị hiện tại của thanh ghi cấu hình, xóa các bit cần thiết và đặt các bit mới để thiết lập chế độ làm việc cho chân.
+*   Thiết lập tốc độ: Nếu cần, cấu hình tốc độ hoạt động của chân.
+*   Thiết lập kiểu đầu ra: Chọn kiểu đầu ra là push-pull hay open-drain.
+*   Kích hoạt đồng hồ: Bật đồng hồ cho cổng GPIO.
+
+####  **5.1.1 Cấp clock cho ngoại vi**
+
+*   Module RCC cung cấp các hàm để cấu hình xung clock.
+
+```c
+RCC_APB1PeriphClockCmd
+RCC_APB2PeriphClockCmd
+RCC_AHBPeriphClockCmd
+```
+**Hàm này nhận 2 tham số**:
+* Ngoại vi muốn cấp clock
+* Cho phép (ENABLE) hoặc không cho phép (DISABLE) cấp clcok cho ngoại vi
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
