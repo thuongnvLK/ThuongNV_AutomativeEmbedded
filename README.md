@@ -700,6 +700,10 @@ int main() {
 
 ![Alt text](images/setup29.png)
 
+PC (Program counter) là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
+
+![Alt text](images/setup30.png)
+
 
 ### **2. Timer**
 
