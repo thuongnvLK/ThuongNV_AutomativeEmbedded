@@ -32,7 +32,16 @@
     3.4.2. [Open-drain](#342-open-drain)  
   3.5. [Analog Mode](#35-analog-mode)  
   3.6. [Alternate Function Mode](#36-alternate-function-mode)  
-
+4. [Blink LED PC13](#4-blink-led-pc13)  
+   - [Step 1: Enable the peripheral's clock](#step-1-enable-the-peripherals-clock)  
+   - [Step 2: Configure the peripheral's functionality](#step-2-configure-the-peripherals-functionality)  
+   - [Step 3: Activate and use the peripheral](#step-3-activate-and-use-the-peripheral)  
+   4.1. [Địa chỉ các thanh ghi](#41-địa-chỉ-các-thanh-ghi)  
+   4.2. [Enable the peripheral's clock](#42-enable-the-peripherals-clock)  
+5. [STM32F10x Standard Peripherals Firmware Library](#5-stm32f10x-standard-peripherals-firmware-library)    
+   - [5.1. Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
+      - 5.1.1. [Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
+      - 5.1.2. [Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
