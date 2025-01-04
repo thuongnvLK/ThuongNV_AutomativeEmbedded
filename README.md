@@ -707,7 +707,9 @@ int main() {
 
 *   Then it starts to excute from that address and continue executing main program.
 
-Reading a Book vs Interrupts in MCU
+![Alt text](images/setup30.png)
+
+**Reading a Book vs Interrupts in MCU**
 
 ![Alt text](images/setup33.png)
 
@@ -722,8 +724,6 @@ Reading a Book vs Interrupts in MCU
 ![Alt text](images/setup29.png)
 
 *   **PC (Program counter)** là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
-
-![Alt text](images/setup30.png)
 
 ##### **1.2.1 External Interrupt**
 
