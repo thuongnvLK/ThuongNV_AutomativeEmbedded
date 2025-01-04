@@ -700,9 +700,19 @@ int main() {
 
 ![Alt text](images/setup29.png)
 
-PC (Program counter) là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
+*   **PC (Program counter)** là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
 
 ![Alt text](images/setup30.png)
+
+##### **1.2.1 External Interrupt**
+
+*   Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
+- Low : Kích hoạt ngắt liên tục khi chân ở mức thấp.
+- High : Kích hoạt ngắt liên tục khi chân ở mức cao.
+- Rising : Kích hoạt khi trạng thái trên chân chuyển từ thấp lên cao (cạnh lên).
+- Falling : Kích hoạt khi trạng thái trên chân chuyển từ cao xuống thấp (cạnh xuống).
+
+![Alt text](images/setup31.png)
 
 
 ### **2. Timer**
