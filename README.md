@@ -701,7 +701,16 @@ int main() {
 
 *   MCU/MPU jumps to a fixed location in memory, called interrupt vector table that hold the address of the ISR (Interrupt Service Routine). Each interrupt has its own ISR. The microcontroller gets the address of the ISR from the interrupt vector table and jump to it.
 
-*   It starts to execute the Interrupt Service Routine until it
+*   It starts to execute the Interrupt Service Routine until it reaches the last instruction of the subroutine which is RETI (Return from Interrupt). RETI not used in C Coding.
+
+*   MCU/MPU gets the program counter (PC) address from the stack pointer by popping the top two bytes of the stack into the PC.
+
+*   Then it starts to excute from that address and continue executing main program.
+
+Reading a Book vs Interrupts in MCU
+
+![Alt text](images/setup33.png)
+
 #### **1.3 Types of interrupts**
 
 *   Mỗi Interrupt có 1 ISR.
