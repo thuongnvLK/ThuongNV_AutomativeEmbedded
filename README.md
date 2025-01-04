@@ -426,6 +426,15 @@ int main(){
 	}
 }
 ```
+### **5. STM32F10x Standard Peripherals Firmware Library**
+
+*   Là 1 thư viện hoàn chỉnh được phát triển cho dòng STM32. Bao gồm đầy đủ driver cho tất cả các ngoại vi tiêu chuẩn.
+
+*   Thư viện này bao gồm các hàm, cấu trúc dữ liệu và macro của các tính năng thiết bị ngoại vi STM32. 
+
+![Alt text](images/setup25.png)
+
+####
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
