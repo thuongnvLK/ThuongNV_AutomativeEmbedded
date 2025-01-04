@@ -312,6 +312,8 @@ The GPIO is used to drive the electrical signal (high or low) to the pin when it
 
 ![Alt text](images/setup20.png)
 
+![Alt text](images/setup22.png)
+
 ```c
 #define RCC_APB2ENR   *(( unsigned int *  )0x40021018)
 #define GPIO_CRH      *(( unsigned int *  )0x40011004)
@@ -366,7 +368,7 @@ typedef struct
   unsigned int CSR;
 } RCC_TypeDef;
 ```
-thuong
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
