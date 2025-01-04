@@ -436,6 +436,8 @@ int main(){
 
 ![Alt text](images/setup25.png)
 
+![Alt text](images/setup26.png)
+
 ####  **5.1 Cấu hình và sử dụng ngoại vi (GPIO)**
 
 *   Chọn chế độ: Đọc giá trị hiện tại của thanh ghi cấu hình, xóa các bit cần thiết và đặt các bit mới để thiết lập chế độ làm việc cho chân.
