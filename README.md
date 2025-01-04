@@ -713,6 +713,13 @@ int main() {
 
 ![Alt text](images/setup33.png)
 
+**Advantages - Disadvantages**
+
+| Feature | Advantages | Disadvantages |
+|---|---|---|
+| Interrupt Handling | <ul><li>Increased CPU efficiency</li><li>Decreased CPU waiting time</li><li>Reduced instruction cycle wastage</li><li>Enabled multitasking</li><li>Simplified I/O operations</li></ul> | <ul><li>CPU overhead</li><li>Nested interrupts</li><li>Priority inversion</li></ul> |
+| RTOS Keywords | <ul><li>Scheduling</li><li>Synchronization</li><li>Communication</li><li>Memory Management</li><li>Real-time Constraints</li></ul> |  |
+
 #### **1.3 Types of interrupts**
 
 *   Mỗi Interrupt có 1 ISR.
