@@ -455,6 +455,8 @@ RCC_AHBPeriphClockCmd
 * Ngoại vi muốn cấp clock
 * Cho phép (ENABLE) hoặc không cho phép (DISABLE) cấp clcok cho ngoại vi
 
+![Alt text](images/setup17.png)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
