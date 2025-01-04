@@ -442,7 +442,7 @@ int main(){
 *   Thiết lập kiểu đầu ra: Chọn kiểu đầu ra là push-pull hay open-drain.
 *   Kích hoạt đồng hồ: Bật đồng hồ cho cổng GPIO.
 
-####  **5.1.1 Cấp clock cho ngoại vi**
+#####  **5.1.1 Cấp clock cho ngoại vi**
 
 *   Module RCC cung cấp các hàm để cấu hình xung clock.
 
@@ -456,6 +456,23 @@ RCC_AHBPeriphClockCmd
 * Cho phép (ENABLE) hoặc không cho phép (DISABLE) cấp clcok cho ngoại vi
 
 ![Alt text](images/setup17.png)
+
+#####  **5.1.2 Cấu hình ngoại vi**
+
+*   Các tham số dùng để cấu hình cho GPIO được tổ chức trong 1 struct:
+```c
+typedef struct
+{
+  uint16_t GPIO_Pin;             /*!< Specifies the GPIO pins to be configured.
+                                      This parameter can be any value of @ref GPIO_pins_define */
+
+  GPIOSpeed_TypeDef GPIO_Speed;  /*!< Specifies the speed for the selected pins.
+                                      This parameter can be a value of @ref GPIOSpeed_TypeDef */
+
+  GPIOMode_TypeDef GPIO_Mode;    /*!< Specifies the operating mode for the selected pins.
+                                      This parameter can be a value of @ref GPIOMode_TypeDef */
+}GPIO_InitTypeDef;
+```
 
 
 ## Contact
