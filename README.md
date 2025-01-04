@@ -337,7 +337,36 @@ int main () {
 }
 
 ```
-465465465
+
+![Alt text](images/setup21.png)
+
+```c
+typedef struct
+{
+  unsigned int CRL;
+  unsigned int CRH;
+  unsigned int IDR;
+  unsigned int ODR;
+  unsigned int BSRR;
+  unsigned int BRR;
+  unsigned int LCKR;
+} GPIO_TypeDef;
+
+typedef struct
+{
+  unsigned int CR;
+  unsigned int CFGR;
+  unsigned int CIR;
+  unsigned int APB2RSTR;
+  unsigned int APB1RSTR;
+  unsigned int AHBENR;
+  unsigned int APB2ENR;
+  unsigned int APB1ENR;
+  unsigned int BDCR;
+  unsigned int CSR;
+} RCC_TypeDef;
+```
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
