@@ -757,6 +757,20 @@ int main() {
 
 *   **Tail-chaining**: When an interrupt is pending on completion of an exception handler. When the first interrupt complete its execution, the controller transfers immediately to the new execution
 
+**Interrupt handler in STM Cortex M**
+
+![Alt text](images/setup36.png)
+
+*   **Nested Vectored Interrupt Controller (NVIC)**: provides implementation schemes for handling interrupts that occur when other interrupts are being executed or when the CPU is in the process of restoring its previous state and resuming its suspended process
+
+**Components of NVIC**
+
+*   **Clock Security System (CSS)** interrupt is connected to **Non-Maskable Interrupt (NMI)** lines
+
+*   Peripheral interrupts are connected to **Interrupt Requests (IRQ)** lines
+
+*   GPIO interrupts are connected to an **External Interrupt/Event Controller (EXTI)** before connecting to the IRQ lines
+
 ##### **1.2.1 External Interrupt**
 
 *   Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
