@@ -737,17 +737,17 @@ int main() {
 
 *   **PC (Program counter)** là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
 
-*   **Hardware interrupts**:
+**Hardware interrupts**:
 - **Maskable**: Can be masked or disabled
 - **Non-maskable**: Cannot be disabled
 - **External** and **Internal** interrupts
 
-*   **Software interrupts**: generally used when the situation requires stop processing and start all over:
+**Software interrupts**: generally used when the situation requires stop processing and start all over:
 - Divide by zero or stack overflow
 - Generally, MPUs do not include software interrupts
 - Exeptions…
 
-Multiple Interrupts (Priority)
+**Multiple Interrupts (Priority)**
 
 ![Alt text](images/setup34.png)
 
