@@ -771,6 +771,8 @@ int main() {
 
 *   GPIO interrupts are connected to an **External Interrupt/Event Controller (EXTI)** before connecting to the IRQ lines
 
+![Alt text](images/setup37.png)
+
 ##### **1.2.1 External Interrupt**
 
 *   Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
