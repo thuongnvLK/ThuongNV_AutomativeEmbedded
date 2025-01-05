@@ -737,6 +737,26 @@ int main() {
 
 *   **PC (Program counter)** là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
 
+*   **Hardware interrupts**:
+- **Maskable**: Can be masked or disabled
+- **Non-maskable**: Cannot be disabled
+- **External** and **Internal** interrupts
+
+*   **Software interrupts**: generally used when the situation requires stop processing and start all over:
+- Divide by zero or stack overflow
+- Generally, MPUs do not include software interrupts
+- Exeptions…
+
+Multiple Interrupts (Priority)
+
+![Alt text](images/setup34.png)
+
+*   **Preemption**: The execution of an interrupt handler can be preempted by an exception having a higher priority
+
+![Alt text](images/setup35.png)
+
+*   **Tail-chaining**: When an interrupt is pending on completion of an exception handler. When the first interrupt complete its execution, the controller transfers immediately to the new execution
+
 ##### **1.2.1 External Interrupt**
 
 *   Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
