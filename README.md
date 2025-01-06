@@ -834,7 +834,7 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 
 *   Xảy ra khi có sự kiện truyền/ nhận dữ liệu giữa MCU và các thiết bị khác, thường sử dụng cho các giao thức như UART, SPI, I2C để đảm bảo việc truyền/ nhận được chính xác.
 
-####  **1.4 Priority
+####  **1.4 Priority**
 
 ![Alt text](images/setup41.png)
 
