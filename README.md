@@ -1064,6 +1064,15 @@ int main() {
 
 ![Alt text](images/setup65.png)
 
+`Nhược điểm Parity khi số bit lỗi là số chẵn thì không phát hiện được`
+
+## Lesson 05: SPI software and hardware
+
+### **1. SPI software**
+
+![Alt text](images/setup66.png)
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
