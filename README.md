@@ -770,7 +770,9 @@ int main() {
 - **Non-maskable**: Cannot be disabled
 - **External** and **Internal** interrupts
 
-##### **1.3.2 Software interrupts**: generally used when the situation requires stop processing and start all over:
+##### **1.3.2 Software interrupts**
+
+Generally used when the situation requires stop processing and start all over:
 - Divide by zero or stack overflow
 - Generally, MPUs do not include software interrupts
 - Exeptions…
