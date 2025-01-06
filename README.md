@@ -768,17 +768,17 @@ int main() {
 
 *   **PC (Program counter)** là resgister luôn chỉ đến instruction tiếp theo trong chương trình.
 
-**Hardware interrupts**:
+##### **1.3.1 Hardware interrupts**:
 - **Maskable**: Can be masked or disabled
 - **Non-maskable**: Cannot be disabled
 - **External** and **Internal** interrupts
 
-**Software interrupts**: generally used when the situation requires stop processing and start all over:
+##### **1.3.2 Software interrupts**: generally used when the situation requires stop processing and start all over:
 - Divide by zero or stack overflow
 - Generally, MPUs do not include software interrupts
 - Exeptions…
 
-**Multiple Interrupts (Priority)**
+##### **1.3.3 Multiple Interrupts (Priority)**
 
 ![Alt text](images/setup34.png)
 
@@ -788,13 +788,13 @@ int main() {
 
 *   **Tail-chaining**: When an interrupt is pending on completion of an exception handler. When the first interrupt complete its execution, the controller transfers immediately to the new execution
 
-**Interrupt handler in STM Cortex M**
+##### **1.3.4 Interrupt handler in STM Cortex M**
 
 ![Alt text](images/setup36.png)
 
 *   **Nested Vectored Interrupt Controller (NVIC)**: provides implementation schemes for handling interrupts that occur when other interrupts are being executed or when the CPU is in the process of restoring its previous state and resuming its suspended process
 
-**Components of NVIC**
+##### **1.3.5 Components of NVIC**
 
 *   **Clock Security System (CSS)** interrupt is connected to **Non-Maskable Interrupt (NMI)** lines.
 
@@ -804,7 +804,7 @@ int main() {
 
 ![Alt text](images/setup37.png)
 
-**Interrupt Request (IRQs) Table**
+##### **1.3.6 Interrupt Request (IRQs) Table**
 
 ![Alt text](images/setup38.png)
 
@@ -812,7 +812,7 @@ int main() {
 
 *   **NMI**: The non-maskable interrupt (NMI) has the second highest priority after Reset. It cannot be masked by software, for this reason, it is called non-maskable interrupt. Whenever it is activated, the CPU will go to address 0x0000.0008 to get the address of its interrupt service routine.
 
-##### **1.2.1 External Interrupt**
+##### **1.3.7 External Interrupt**
 
 Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
 - Low : Kích hoạt ngắt liên tục khi chân ở mức thấp.
@@ -822,7 +822,7 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 
 ![Alt text](images/setup31.png)
 
-##### **1.2.2 Ngắt timer**
+##### **1.3.8 Ngắt timer**
 
 ![Alt text](images/setup39.png)
 
@@ -831,7 +831,7 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 *   The main program and a timer are asynchronous, which means the timer operates independently of program flow
 *   Main program running on the processor. A timer event occurs and triggers an interrupt. 
 
-##### **1.2.2 Ngắt truyền thông**
+##### **1.3.9 Ngắt truyền thông**
 
 *   Xảy ra khi có sự kiện truyền/ nhận dữ liệu giữa MCU và các thiết bị khác, thường sử dụng cho các giao thức như UART, SPI, I2C để đảm bảo việc truyền/ nhận được chính xác.
 
