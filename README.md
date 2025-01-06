@@ -979,6 +979,24 @@ int main() {
 
 `Vấn đề về các bit giống nhau liên kề => Các chuẩn giao tiếp.`
 
+### **2. SPI**
+
+- SPI - Serial Peripheral InterFace:
+  - Chuẩn giao tiếp **nối tiếp**
+  - Synchronous.
+  - Hoạt động ở chế độ song công (có thế truyền nhận cùng 1 thời điểm).
+  - Một **Master** có thể giao tiếp với nhiều **Slave**.
+  - Sử dụng 4 dây giao tiếp.
+- **SCK (Serial Clock)**: Thiết bị **Master** tạo xung nhịp tín hiệu SCK và cung cấp cho Slave.
+
+- **MISO (Master Input Slave Output)**: Tín hiệu tạo bởi thiết bị **Slave** và nhận bởi thiết bị **Master**.
+- **MOSI (Master Output Slave Input)**: Tín hiệu tạo bởi thiết bị **Master** và nhận bởi thiết bị **Slave**.
+- **SS (Đôi khi CS - Slave Select/ Chip Select)**:  Chọn thiết bị **Slave** cụ thể để giao tiếp. Để chọn **Slave** giao tiếp thiết bị **Master** chủ động kéo đường **SS** tương ứng xuống mức 0 (Low).
+
+![Alt text](images/setup49.png)
+
+![Alt text](images/setup50.png)
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
