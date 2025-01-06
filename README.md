@@ -1007,6 +1007,21 @@ int main() {
 
 ![Alt text](images/setup52.png)
 
+![Alt text](images/setup53.png)
+
+**Clock Polarity (CPOL)**
+**Clock Phase (CPHA)**
+
+### **3. I2C**
+
+**I2C - Inter-Integrated Circuit**
+- Chuẩn giao tiếp nối tiếp.
+- Synchronous.
+- Hoạt động ở chế độ bán song công.
+- Một **Master** có thể giao tiếp với nhiều **Slave**.
+- Sử dụng 2 dây giao tiếp.
+
+![Alt text](images/setup54.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
