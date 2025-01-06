@@ -773,6 +773,14 @@ int main() {
 
 ![Alt text](images/setup37.png)
 
+**Interrupt Request (IRQs) Table**
+
+![Alt text](images/setup38.png)
+
+*   **Reset**: It is a special kind of exception. When reset is activated, the CPU goes to a known state with all registers loaded with the predefined values. When the device is coming out of reset, the ARM loads the program counter from memory location at 0x000.0004. **Reset has the highest priority**.
+
+*   **NMI**: The non-maskable interrupt (NMI) has the second highest priority after Reset. It cannot be masked by software, for this reason, it is called non-maskable interrupt. Whenever it is activated, the CPU will go to address 0x0000.0008 to get the address of its interrupt service routine.
+
 ##### **1.2.1 External Interrupt**
 
 *   Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu hình làm **ngõ vào ngắt**. Có 4 dạng:
@@ -784,6 +792,13 @@ int main() {
 ![Alt text](images/setup31.png)
 
 ##### **1.2.2 Ngắt timer**
+
+![Alt text](images/setup39.png)
+
+![Alt text](images/setup40.png)
+
+*   The main program and a timer are asynchronous, which means the timer operates independently of program flow
+*   Main program running on the processor. A timer event occurs and triggers an interrupt. 
 
 ##### **1.2.2 Ngắt truyền thông**
 
