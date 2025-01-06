@@ -804,7 +804,34 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 
 *   Xảy ra khi có sự kiện truyền/ nhận dữ liệu giữa MCU và các thiết bị khác, thường sử dụng cho các giao thức như UART, SPI, I2C để đảm bảo việc truyền/ nhận được chính xác.
 
+####  **1.4 Priority
+
+![Alt text](images/setup41.png)
+
+-   Các ngắt có độ ưu tiên khác nhau, quyết định ngắt nào được thực thi khi nhiều ngắt xảy ra đồng thời.
+-   Trên STM32, ngắt có độ ưu tiên càng thaapsthif có quyền càng cao.
+-   Độ ưu tiên ngắt có thể lập trình được.
+-   Stack Pointer là thanh ghi trỏ tới đỉnh vùng stack chứa các địa chỉ trả về của các hàm.
+
 ### **2. Timer**
+
+**Timer** là một mạch digital lgic có svai trò đếm mỗi chu kỳ clock (đếm lên hoặc xuống).
+
+Time còn có thể hoạt động ở chế độ xung clock từ các tín hiệu ngoài. Ngoài ra còn các chế độ khác như PWM, định thời ...
+
+Điểm chung của Timer:
+
+- Giới hạn của bộ đếm được xác định dựa trên giới hạn của thanh ghi counter như 8/16/24/32 bit.
+
+- Có 5 nhóm thanh ghi chính:
+  - Reload/ Init.
+  - Compare.
+  - Counter.
+  - State.
+  - Control.
+
+![Alt text](images/setup42.png)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
