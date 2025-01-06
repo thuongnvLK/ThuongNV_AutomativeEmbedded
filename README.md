@@ -1048,7 +1048,7 @@ int main() {
 - It is asynchronous in that there are no clock signals present to synchronize the data transfer between the two devices
 - UART data transfer is full-duplex, meaning data can be sent and received at the same time
 
-![Alt text](images/setup58.png)
+![Alt text](images/setup59.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
