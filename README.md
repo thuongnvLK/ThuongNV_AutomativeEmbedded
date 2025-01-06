@@ -1038,6 +1038,17 @@ int main() {
 - Slave which address is matched send ACK bit
 - Data (8bit) is transfered
 
+### **4. UART**
+
+![Alt text](images/setup57.png)
+![Alt text](images/setup58.png)
+
+- UART stands for Universal Asynchronous Receiver Transmitter
+- It is universal because both the data transfer speed and data byte format are configurable.
+- It is asynchronous in that there are no clock signals present to synchronize the data transfer between the two devices
+- UART data transfer is full-duplex, meaning data can be sent and received at the same time
+
+![Alt text](images/setup58.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
