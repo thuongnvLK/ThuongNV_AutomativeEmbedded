@@ -1023,6 +1023,12 @@ int main() {
 
 ![Alt text](images/setup54.png)
 
+- **SCL (Serial Clock)**: Tạo xung tín hiệu để đồng bộ việc truyền nhận dư liệu với các **Slave**.
+- **SDA (Serial Data)**: Chân chứa dữ liệu được truyền đi.
+
+`GPIO sẽ ở chế độ **open drain**`
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
