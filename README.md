@@ -832,6 +832,10 @@ Time còn có thể hoạt động ở chế độ xung clock từ các tín hi�
 
 ![Alt text](images/setup42.png)
 
+![Alt text](images/setup43.png)
+
+![Alt text](images/setup44.png)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
