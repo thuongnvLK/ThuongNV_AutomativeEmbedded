@@ -821,7 +821,7 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 
 ![Alt text](images/setup31.png)
 
-##### **1.3.8 Ngắt timer**
+##### **1.3.8 Timer Interrupt**
 
 ![Alt text](images/setup39.png)
 
@@ -830,7 +830,7 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 *   The main program and a timer are asynchronous, which means the timer operates independently of program flow
 *   Main program running on the processor. A timer event occurs and triggers an interrupt. 
 
-##### **1.3.9 Ngắt truyền thông**
+##### **1.3.9 Communication Interrupt**
 
 *   Xảy ra khi có sự kiện truyền/ nhận dữ liệu giữa MCU và các thiết bị khác, thường sử dụng cho các giao thức như UART, SPI, I2C để đảm bảo việc truyền/ nhận được chính xác.
 
