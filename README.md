@@ -1041,6 +1041,7 @@ int main() {
 ### **4. UART**
 
 ![Alt text](images/setup57.png)
+
 ![Alt text](images/setup58.png)
 
 - UART stands for Universal Asynchronous Receiver Transmitter
@@ -1049,6 +1050,15 @@ int main() {
 - UART data transfer is full-duplex, meaning data can be sent and received at the same time
 
 ![Alt text](images/setup59.png)
+
+
+![Alt text](images/setup60.png)
+
+![Alt text](images/setup61.png)
+
+![Alt text](images/setup62.png)
+
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
