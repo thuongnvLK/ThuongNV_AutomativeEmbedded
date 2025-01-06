@@ -1060,6 +1060,10 @@ int main() {
 
 ![Alt text](images/setup63.png)
 
+![Alt text](images/setup64.png)
+
+![Alt text](images/setup65.png)
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
