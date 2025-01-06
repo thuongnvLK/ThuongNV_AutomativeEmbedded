@@ -1026,7 +1026,17 @@ int main() {
 - **SCL (Serial Clock)**: Tạo xung tín hiệu để đồng bộ việc truyền nhận dư liệu với các **Slave**.
 - **SDA (Serial Data)**: Chân chứa dữ liệu được truyền đi.
 
-`GPIO sẽ ở chế độ **open drain**`
+`GPIO sẽ ở chế độ **open-drain khi không giao tiếp nên cần có 2 điện trỏ kéo lên**`
+
+![Alt text](images/setup55.png)
+
+![Alt text](images/setup56.png)
+
+- Master sends START condition and controls the clock (SCL)
+- Master sends a unique 7-bit slave address
+- Master sends Read/Write bit: 0 write to slave, 1: read from slave
+- Slave which address is matched send ACK bit
+- Data (8bit) is transfered
 
 
 ## Contact
