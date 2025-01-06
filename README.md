@@ -965,6 +965,19 @@ int main() {
 ```
 ![Alt text](images/setup46.png)
 
+## Lesson 04: Communication Protocols
+
+### **1. Truyền nhận dữ liệu**
+
+- Truyền nhận dữ liệu trong vi điều khiển (MCU) là quá trình trao đổi tín hiệu điện áp giữa các chân (Pin) của MCU.
+
+![Alt text](images/setup47.png)
+
+- Khi **MCU A** truyền dữ liệu **MCU B**, dữ liệu này sẽ được chuyển đổi thành các tín hiệu điện áp trên các chân tương ứng.
+
+![Alt text](images/setup48.png)
+
+`Vấn đề về các bit giống nhau liên kề => Các chuẩn giao tiếp.`
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
