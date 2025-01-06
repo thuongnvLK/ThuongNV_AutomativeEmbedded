@@ -42,6 +42,37 @@
    - [5.1. Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
       - 5.1.1. [Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
       - 5.1.2. [Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
+      
+### **Lesson 03: Interrupt and Timer**  
+1. [Interrupt](#1-interrupt)  
+   - [1.1 What is an Interrupt?](#11-what-is-an-interrupt)  
+   - [1.2 How Interrupt Works](#12-how-interrupt-works)  
+     - [1.2.1 External Interrupt](#121-external-interrupt)  
+     - [1.2.2 Timer Interrupt](#122-timer-interrupt)  
+     - [1.2.3 Communication Interrupt](#123-communication-interrupt)  
+   - [1.3 Types of Interrupts](#13-types-of-interrupts)  
+     - [1.3.1 Hardware Interrupts](#131-hardware-interrupts)  
+       - [Maskable](#maskable)  
+       - [Non-maskable](#non-maskable)  
+     - [1.3.2 Software Interrupts](#132-software-interrupts)  
+   - [1.4 Priority](#14-priority)  
+     - [Preemption](#preemption)  
+     - [Tail-chaining](#tail-chaining)  
+   - [1.5 Nested Vectored Interrupt Controller (NVIC)](#15-nested-vectored-interrupt-controller-nvic)  
+
+2. [Timer](#2-timer)  
+   - [2.1 What is a Timer?](#21-what-is-a-timer)  
+   - [2.2 Timer Modes](#22-timer-modes)  
+     - [2.2.1 Up Counter Mode](#221-up-counter-mode)  
+     - [2.2.2 Down Counter Mode](#222-down-counter-mode)  
+     - [2.2.3 PWM Mode](#223-pwm-mode)  
+   - [2.3 Timer Configuration](#23-timer-configuration)  
+     - [Step 1: Clock Configuration](#step-1-clock-configuration)  
+     - [Step 2: Timer Initialization](#step-2-timer-initialization)  
+     - [Step 3: Start Timer](#step-3-start-timer)  
+   - [2.4 Example: Timer with Delay](#24-example-timer-with-delay)  
+     - [2.4.1 Timer Configuration Code](#241-timer-configuration-code)  
+     - [2.4.2 Using Timer for Delay](#242-using-timer-for-delay)  
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
