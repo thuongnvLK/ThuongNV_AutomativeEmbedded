@@ -903,7 +903,7 @@ void GPIO_Config(){
 void TIM_Config() {
     TIM_TimeBaseInitTypeDef TIM_InitStruct; 
 
-    // C?u hình thông so co ban cho Timer
+    // Cau hình thông so co ban cho Timer
     TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;       // Không chia xung nhip, gi 72MHz
     TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;   // Ðem lên
     TIM_InitStruct.TIM_Prescaler = 7200 - 1;               // Chia tan so d? tao xung 10 kHz (72 MHz / 7200)

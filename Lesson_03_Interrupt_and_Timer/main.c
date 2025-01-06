@@ -4,11 +4,12 @@
 #include "stm32f10x_tim.h"              // Device:StdPeriph Drivers:TIM
 
 void TIM_Config(void);
-void GPIO_Config();
-void RCC_Config();
+void GPIO_Config(void);
+void RCC_Config(void);
+void delay_ms(unsigned int timedelay);
 
-void RCC_Config(void) {
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOA, ENABLE);
+void RCC_Config() {
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 }
 
 void GPIO_Config(){
@@ -27,16 +28,13 @@ void GPIO_Config(){
 }
 
 void TIM_Config() {
-    TIM_TimeBaseInitTypeDef TIM_InitStruct;
+    TIM_TimeBaseInitTypeDef TIM_InitStruct; 
 
-    // C?p clock cho Timer (ví du: Timer 2)
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-    // C?u hình thông so co ban cho Timer
+    // Cau hình thông so co ban cho Timer
     TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;       // Không chia xung nhip, gi 72MHz
     TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;   // Ðem lên
     TIM_InitStruct.TIM_Prescaler = 7200 - 1;               // Chia tan so d? tao xung 10 kHz (72 MHz / 7200)
-    TIM_InitStruct.TIM_Period = 10000 - 1;                 // Giá tri dem (10 kHz -> 1 giây)
+    TIM_InitStruct.TIM_Period = 0xFFFF;                 // Giá tri dem (10 kHz -> 1 giây)
     TIM_InitStruct.TIM_RepetitionCounter = 0;              // Không l?p l?i
     TIM_TimeBaseInit(TIM2, &TIM_InitStruct);
 
@@ -45,23 +43,19 @@ void TIM_Config() {
 }
 
 
-void delay(unsigned int time) {
-    for (int i = 0; i < time; i++) {}
+void delay_ms(unsigned int timedelay) {
+	TIM_SetCounter(TIM2, 0);
+	while(TIM_GetCounter(TIM2)	< timedelay*10) {}
 }
-
 
 int main() {
 	RCC_Config();
 	GPIO_Config();
-
+	TIM_Config();
 	while (1) {
-		if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET){
-			while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET);
-			if(GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_13)){
-				GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-			} else {
-				GPIO_SetBits(GPIOC, GPIO_Pin_13);
-			}
-		}
+		GPIO_SetBits(GPIOC, GPIO_Pin_13);
+		delay_ms(1000);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+		delay_ms(1000);
 	}
 }
