@@ -999,6 +999,14 @@ int main() {
 
 ![Alt text](images/setup51.png)
 
+- Bắt đầu quá trình, **Master** kéo chân **CS** của **Slave** muốn giao tiếp xuống 0 để báo hiệu muốn truyền nhận.
+- Clock sẽ được cấp bởi **Master**, tùy vào chế độ được cài, với mỗi xung clock, 1 bit sẽ được truyền từ **Master** đến **Slave** và **Slave** cũng truyền 1 bit cho **Master**.
+- Các thanh ghi cập nhật giá trị và dịch 1 bit.
+- Lặp lại quá trình trên đến khi truyền xong 8 bit trong thanh ghi.
+- Giao tiếp song công.
+
+![Alt text](images/setup52.png)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
