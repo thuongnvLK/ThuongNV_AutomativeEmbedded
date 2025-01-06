@@ -871,57 +871,66 @@ typedef struct
 
 **main.c**
 ```c
-#include "stm32f4xx.h"
+#include "stm32f10x_gpio.h"             // Device:StdPeriph Drivers:GPIO
+#include "stm32f10x_rcc.h"              // Device:StdPeriph Drivers:RCC
+#include "stm32f10x.h"                  // Device header
+#include "stm32f10x_tim.h"              // Device:StdPeriph Drivers:TIM
 
-void RCC_config();
-void GPIO_config();
-void TIM_config();
-void delay_ms(uint32_t timedelay);
+void TIM_Config(void);
+void GPIO_Config(void);
+void RCC_Config(void);
+void delay_ms(unsigned int timedelay);
 
-int main() {
-    RCC_config();
-    GPIO_config();
-    TIM_config();
-    while (1) {
-	GPIO_ToggleBits(GPIOB, GPIO_Pin_2);
-	delay_ms(1000);
-    }
-}
-
-void RCC_config() {
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB | RCC_AHB1Periph_GPIOC, ENABLE);
+void RCC_Config() {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 }
 
-void GPIO_config() {
+void GPIO_Config(){
 	GPIO_InitTypeDef GPIO_InitStruct;
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_2;
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
-	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStruct);
 	
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_13;
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_Init(GPIOC, &GPIO_InitStruct);
+	
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
+	
+	GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
-void TIM_config(){
-	TIM_TimeBaseInitTypeDef TIM_InitStruct;
-	TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;  //72MHz
-	TIM_InitStruct.TIM_Prescaler = 7200 - 1;
-	TIM_InitStruct.TIM_Period = 0xFFFF;
-	TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+void TIM_Config() {
+    TIM_TimeBaseInitTypeDef TIM_InitStruct; 
 
-	TIM_TimeBaseInit(TIM2, &TIM_InitStruct);
-	TIM_Cmd(TIM2, ENABLE);
+    // C?u hình thông so co ban cho Timer
+    TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;       // Không chia xung nhip, gi 72MHz
+    TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;   // Ðem lên
+    TIM_InitStruct.TIM_Prescaler = 7200 - 1;               // Chia tan so d? tao xung 10 kHz (72 MHz / 7200)
+    TIM_InitStruct.TIM_Period = 0xFFFF;                 // Giá tri dem (10 kHz -> 1 giây)
+    TIM_InitStruct.TIM_RepetitionCounter = 0;              // Không l?p l?i
+    TIM_TimeBaseInit(TIM2, &TIM_InitStruct);
+
+    // Kích hoat Timer
+    TIM_Cmd(TIM2, ENABLE);
 }
 
-void delay_ms(uint32_t timedelay)
-{
-	TIM_SetCounter(TIM2,0);
-	while(TIM_GetCounter(TIM2) < timedelay * 10){}
+
+void delay_ms(unsigned int timedelay) {
+	TIM_SetCounter(TIM2, 0);
+	while(TIM_GetCounter(TIM2)	< timedelay*10) {}
+}
+
+int main() {
+	RCC_Config();
+	GPIO_Config();
+	TIM_Config();
+	while (1) {
+		GPIO_SetBits(GPIOC, GPIO_Pin_13);
+		delay_ms(1000);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+		delay_ms(1000);
+	}
 }
 ```
 ![Alt text](images/setup46.png)
