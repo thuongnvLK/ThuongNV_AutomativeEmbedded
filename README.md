@@ -42,10 +42,10 @@
    - [5.1. Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
       - 5.1.1. [Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
       - 5.1.2. [Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
-      
+
 ### **Lesson 03: Interrupt and Timer**  
 1. [Interrupt](#1-interrupt)  
-   - [1.1 What is an Interrupt?](#11-what-is-an-interrupt)  
+   - [1.1 What is an Interrupt](#11-what-is-an-interrupt)  
    - [1.2 How Interrupt Works](#12-how-interrupt-works)  
      - [1.2.1 External Interrupt](#121-external-interrupt)  
      - [1.2.2 Timer Interrupt](#122-timer-interrupt)  
