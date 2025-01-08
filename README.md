@@ -1075,12 +1075,12 @@ int main() {
 ![Alt text](images/setup66.png)
 
 ```c
-#define SPI_SCK_Pin GPIO_Pin_0
-#define SPI_MISO_Pin GPIO_Pin_1
-#define SPI_MOSI_Pin GPIO_Pin_2
-#define SPI_CS_Pin GPIO_Pin_3
-#define SPI_GPIO  GPIOA
-#define SPI_RCC RCC_APB2Periph_GPIOA
+#define SPI_CS_Pin 			GPIO_Pin_4
+#define SPI_SCK_Pin 		GPIO_Pin_5
+#define SPI_MISO_Pin 		GPIO_Pin_6
+#define SPI_MOSI_Pin 		GPIO_Pin_7
+#define SPI_GPIO 				GPIOA
+#define SPI_RCC 				RCC_APB2Periph_GPIOA
 ```
 
 ```C
@@ -1204,6 +1204,7 @@ uint8_t SPI_Slave_Receive() {
 ![Alt text](images/setup71.png)
 
 ![Alt text](images/SPIProtocolGIF.webp)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
