@@ -1070,6 +1070,8 @@ int main() {
 
 ### **1. SPI software**
 
+- SPI Software (Bit-Banging) là một kỹ thuật lập trình trong đó vi điều khiển điều khiển trực tiếp các chân I/O để thực hiện giao tiếp theo chuẩn SPI. Thay vì sử dụng các module SPI chuyên dụng, kỹ thuật này tận dụng phần mềm để tạo ra các tín hiệu cần thiết cho giao tiếp SPI.
+
 ![Alt text](images/setup66.png)
 
 ```c
@@ -1084,7 +1086,7 @@ int main() {
 ```C
 void RCC_Config() {
   RCC_APB2PeriphClockCmd(SPI_RCC, ENABLE);
-  RCC_APB1PeriphClockCmd(RCC_ABP1Periph_TM2, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 }
 ```
 
@@ -1160,6 +1162,27 @@ void SPI_Master_Transmit(uint8_t u8Data){	//0b10010000
 	}
 	GPIO_WriteBit(SPI_GPIO, SPI_CS_Pin, Bit_SET);
 	delay_ms(1);
+}
+```
+
+```c
+uint8_t SPI_Slave_Receive(void){
+	uint8_t dataReceive = 0x00;	//0b0000 0000
+	uint8_t temp = 0x00;
+	while(GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
+	while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
+	for(int i = 0; i < 8; i++){ 
+		if(GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin)){
+			while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin)){
+				temp = GPIO_ReadInputDataBit(SPI_GPIO, SPI_MOSI_Pin);
+			}
+			dataReceive <<= 1;
+			dataReceive |= temp;
+    		}
+		while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
+	}
+	while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
+	return dataReceive;
 }
 ```
 ## Contact
