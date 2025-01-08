@@ -1198,6 +1198,7 @@ uint8_t SPI_Slave_Receive() {
 
 - Table 5. Medium-density STM32F103xx pin definitions
 ![Alt text](images/setup69.png)
+
 ![Alt text](images/setup70.png)
 
 
