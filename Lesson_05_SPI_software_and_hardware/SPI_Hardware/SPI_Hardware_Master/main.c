@@ -68,6 +68,18 @@ void delay_us(uint32_t time){
 	while(TIM_GetCounter(TIM2) < time / 100){}
 }
 
+uint8_t SPI_Transfer1Byte(uint8_t data){
+	GPIO_ResetBits(GPIOA, SPI1_NSS);
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+	SPI_I2S_SendData(SPI1, data);
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET){}
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
+	uint8_t receivedData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
+	GPIO_SetBits(GPIOA, SPI1_NSS);
+	return receivedData;
+}
+
+uint8_t data;
 uint8_t dataSend[] = {1, 2, 3, 4, 5, 6, 7};
 int main(){
 	RCC_Config();
@@ -76,7 +88,7 @@ int main(){
 	SPI_Config();
 	while(1){
 		for(int i = 0; i < 7; i++){
-			SPI_Send1Byte(dataSend[i]);
+			data = SPI_Transfer1Byte(dataSend[i]);
 			delay_us(1000000);
 		}
 	}

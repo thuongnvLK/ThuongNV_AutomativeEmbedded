@@ -43,7 +43,7 @@ void SPI_Config(){
 	SPI_Cmd(SPI1, ENABLE);
 }
 
-uint8_t SPI_Receive1Byte(void){
+uint8_t SPI_Receive1Byte(uint8_t data){
     while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
     uint8_t temp = (uint8_t)SPI_I2S_ReceiveData(SPI1);
     while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
@@ -62,21 +62,35 @@ void TIM_Config(){
 	TIM_Cmd(TIM2, ENABLE);
 }
 
-void delay_us(uint32_t time){
+void delay_ms(uint32_t time){
 	TIM_SetCounter(TIM2, 0);
 	while(TIM_GetCounter(TIM2) < time / 100){}
 }
 
+uint8_t SPI_Transfer1Byte(uint8_t data){
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
+	uint8_t receivedData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+	SPI_I2S_SendData(SPI1, data);
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET){}
+	return receivedData;
+}
+
 uint8_t data;
+uint8_t dataSend[] = {10, 20, 30, 40, 50, 60, 70};
+
 int main(){
 	RCC_Config();
 	GPIO_Config();
 	TIM_Config();
 	SPI_Config();
 	while(1){
-		while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 1){}
-		if(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0) {
-			data = SPI_Receive1Byte();
+		for(int i = 0; i < 7; i++){
+			while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 1){}
+			if(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0) {
+				data = SPI_Transfer1Byte(dataSend[i]);
+			}
 		}
 	}
 }
