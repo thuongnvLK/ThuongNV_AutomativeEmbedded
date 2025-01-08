@@ -1166,23 +1166,26 @@ void SPI_Master_Transmit(uint8_t u8Data){	//0b10010000
 ```
 
 ```c
-uint8_t SPI_Slave_Receive(void){
-	uint8_t dataReceive = 0x00;	//0b0000 0000
-	uint8_t temp = 0x00;
-	while(GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
-	while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
-	for(int i = 0; i < 8; i++){ 
-		if(GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin)){
-			while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin)){
-				temp = GPIO_ReadInputDataBit(SPI_GPIO, SPI_MOSI_Pin);
-			}
-			dataReceive <<= 1;
-			dataReceive |= temp;
-    		}
-		while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
-	}
-	while(!GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
-	return dataReceive;
+uint8_t SPI_Slave_Receive() {
+    uint8_t dataReceive = 0x00;
+    uint8_t temp = 0x00;
+
+    while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
+
+    for (int i = 0; i < 8; i++) {
+
+        while (!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
+
+        temp = GPIO_ReadInputDataBit(SPI_GPIO, SPI_MOSI_Pin);
+
+        dataReceive = (dataReceive << 1) | temp;
+
+        while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
+    }
+
+    while (!GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
+
+    return dataReceive;
 }
 ```
 
