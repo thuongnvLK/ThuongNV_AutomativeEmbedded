@@ -1205,6 +1205,7 @@ uint8_t SPI_Slave_Receive() {
 
 ![Alt text](images/SPIProtocolGIF.webp)
 
+[Watch the video SPI Hardware Master to Slave](https://drive.google.com/file/d/1Cp6ndjatInNhXrsOrnNSq_JIlTGeFhDX/view?usp=drive_link)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    

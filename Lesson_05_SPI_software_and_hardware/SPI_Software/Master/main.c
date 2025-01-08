@@ -40,16 +40,16 @@ void TIM_Config(){
 	TIM_Cmd(TIM2, ENABLE);
 }
 
-void delay_ms(uint32_t time){
+void delay_us(uint32_t time){
 	TIM_SetCounter(TIM2, 0);
 	while(TIM_GetCounter(TIM2) < time / 100){}
 }
 
 void Clock(){
 	GPIO_WriteBit(SPI_GPIO, SPI_SCK_Pin, Bit_SET);
-	delay_ms(1000);
+	delay_us(1000);
 	GPIO_WriteBit(SPI_GPIO, SPI_SCK_Pin, Bit_RESET);
-	delay_ms(1000);
+	delay_us(1000);
 }
 
 void SPI_Init(){
@@ -64,21 +64,21 @@ void SPI_Master_Transmit(uint8_t u8Data){//0b10010000
 	uint8_t u8Mask = 0x80;// 0b10000000
 	// uint8_t tempData = 0x00;
 	GPIO_WriteBit(SPI_GPIO, SPI_CS_Pin, Bit_RESET);
-	delay_ms(1);
+	delay_us(1);
 	for(int i = 0; i < 8; i++){
 		tempData = u8Data & u8Mask;
 		if(tempData){
 			GPIO_WriteBit(SPI_GPIO, SPI_MOSI_Pin, Bit_SET);
-			delay_ms(1);
+			delay_us(1);
 		} else{
 			GPIO_WriteBit(SPI_GPIO, SPI_MOSI_Pin, Bit_RESET);
-			delay_ms(1);
+			delay_us(1);
 		}
 		u8Data = u8Data << 1;
 		Clock();
 	}
 	GPIO_WriteBit(SPI_GPIO, SPI_CS_Pin, Bit_SET);
-	delay_ms(1);
+	delay_us(1);
 }
 
 uint8_t DataTrans[] = {1,2,3,4,5,6,7};//Data
@@ -90,7 +90,7 @@ int main(){
 	while(1){
 		for(int i = 0; i < 7; i++){
 			SPI_Master_Transmit(DataTrans[i]);
-			delay_ms(1000000);
+			delay_us(1000000);
 		}
 	}
 }
