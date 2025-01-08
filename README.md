@@ -1186,7 +1186,11 @@ uint8_t SPI_Slave_Receive(void){
 }
 ```
 
-![Demo](https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link)
+<video width="640" height="360" controls>
+  <source src="https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
