@@ -1185,6 +1185,9 @@ uint8_t SPI_Slave_Receive(void){
 	return dataReceive;
 }
 ```
+
+![Demo](https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link)
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
