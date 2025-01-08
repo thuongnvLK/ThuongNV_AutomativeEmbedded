@@ -1201,7 +1201,7 @@ uint8_t SPI_Slave_Receive() {
 
 ![Alt text](images/setup70.png)
 
-
+![Alt text](images/setup71.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
