@@ -1203,6 +1203,8 @@ uint8_t SPI_Slave_Receive() {
 
 ![Alt text](images/setup71.png)
 
+![Alt text](images/SPIProtocolGIF.webp)
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
