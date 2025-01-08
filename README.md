@@ -1186,7 +1186,7 @@ uint8_t SPI_Slave_Receive(void){
 }
 ```
 
-[Watch the video](https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link)
+[Watch the video SPI Software Master to Slave](https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
