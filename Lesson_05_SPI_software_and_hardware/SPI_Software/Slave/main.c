@@ -44,32 +44,24 @@ void delay_us(uint32_t time) {
 	TIM_SetCounter(TIM2, 0);
 	while(TIM_GetCounter(TIM2) < time*10) {}
 }
-//uint8_t dataReceive = 0x00;
-//uint8_t temp = 0x00;
 
 uint8_t SPI_Slave_Receive() {
-    uint8_t dataReceive = 0x00; // Kh?i t?o d? li?u nh?n
+    uint8_t dataReceive = 0x00;
     uint8_t temp = 0x00;
 
-    // Ð?i tín hi?u CS xu?ng th?p (Slave du?c kích ho?t)
     while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
 
-    // Vòng l?p d? nh?n 8 bit d? li?u
     for (int i = 0; i < 8; i++) {
-        // Ð?i c?nh lên c?a SCK
+
         while (!GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
 
-        // Ð?c giá tr? trên du?ng MOSI
         temp = GPIO_ReadInputDataBit(SPI_GPIO, SPI_MOSI_Pin);
 
-        // D?ch d? li?u sang trái và thêm bit v?a d?c vào
         dataReceive = (dataReceive << 1) | temp;
 
-        // Ð?i c?nh xu?ng c?a SCK
         while (GPIO_ReadInputDataBit(SPI_GPIO, SPI_SCK_Pin));
     }
 
-    // Ð?i tín hi?u CS tr? v? m?c cao (k?t thúc truy?n)
     while (!GPIO_ReadInputDataBit(SPI_GPIO, SPI_CS_Pin));
 
     return dataReceive;

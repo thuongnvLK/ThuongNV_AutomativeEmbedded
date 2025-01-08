@@ -1188,8 +1188,19 @@ uint8_t SPI_Slave_Receive() {
     return dataReceive;
 }
 ```
-
 [Watch the video SPI Software Master to Slave](https://drive.google.com/file/d/11PgRKB7IDp3tj39m8WCZAQLOZ4VxWfke/view?usp=drive_link)
+
+### **2. SPI hardware**
+
+- Kiểm tra trong datasheet của STM21F1 có hỗ trợ 2 SPI.
+
+![Alt text](images/setup68.png)
+
+- Table 5. Medium-density STM32F103xx pin definitions
+![Alt text](images/setup69.png)
+![Alt text](images/setup70.png)
+
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
