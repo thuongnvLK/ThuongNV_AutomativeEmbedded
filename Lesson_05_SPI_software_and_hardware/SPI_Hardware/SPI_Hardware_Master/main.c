@@ -83,37 +83,7 @@ uint8_t SPI_Transfer1Byte(uint8_t data){
 	return receivedData;
 }
 
-uint8_t SPI_MasterTransfer(uint8_t data) {
-    // Kéo chân NSS xu?ng m?c th?p d? b?t d?u truy?n
-    GPIO_ResetBits(GPIOA, SPI1_NSS);
-	
-    // Ch? thanh ghi truy?n (TXE) s?n sàng
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-
-    // G?i d? li?u
-    SPI_I2S_SendData(SPI1, data);
-
-    // Ch? d? li?u t? Slave du?c nh?n xong
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
-
-    // Ð?c d? li?u nh?n du?c
-    uint8_t receivedData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
-
-    // Ch? truy?n hoàn t?t (BSY = 0)
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
-
-		
-    // Kéo chân NSS lên m?c cao d? k?t thúc truy?n
-    GPIO_SetBits(GPIOA, SPI1_NSS);
-		
-    return receivedData;
-}
-
-
-uint8_t data;
-uint8_t dataSend[] = {1, 2, 3, 4, 5, 6, 7};
-
-uint8_t txBuffer[] = {10, 20, 30, 40, 50};
+uint8_t txBuffer[] = {1, 2, 3, 4, 5, 6, 7};
 uint8_t rxBuffer[7];
 
 int main(){
@@ -125,7 +95,7 @@ int main(){
 	while(1){
 		GPIO_ResetBits(GPIOA, SPI1_NSS);
 		for(int i = 0; i < 7; i++){
-			rxBuffer[i] = SPI_Transfer1Byte(dataSend[i]);
+			rxBuffer[i] = SPI_Transfer1Byte(txBuffer[i]);
 			delay_us(1000000);
 		}
 		GPIO_SetBits(GPIOA, SPI1_NSS);
@@ -137,6 +107,7 @@ int main(){
 	}
 }
 
+//uint8_t data;
 //uint8_t dataSend[] = {3, 1, 10, 19, 20, 36, 90};
 //int main(){
 //	RCC_Config();
