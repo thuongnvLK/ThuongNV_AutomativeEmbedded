@@ -1270,7 +1270,8 @@ int main(){
 [Watch the video SPI Hardware Full-Duplex](https://drive.google.com/file/d/1wbqRD2VAQ85-nRc-oW3CI0bXf6gLCYCc/view?usp=drive_link)
 
 ## Lesson 06: I2C Software and Hardware
-## **1. I2C Sortware**
+
+### **1. I2C Software**
 
 ![Alt text](images/setup72.png)
 
@@ -1314,6 +1315,54 @@ void I2C_Config() {
 }
 ```
 ![Alt text](images/setup74.png)
+
+### **2. I2C Hardware**
+
+
+
+## Lesson 07: UART Software and Hardware
+
+![Alt text](images/setup75.png)
+
+### **1. UART Software**
+
+```C
+#define TX_Pin	GPIO_Pin_0
+#define RX_Pin	GPIO_Pin_1
+#define UART_GPIO	GPIOA
+```
+
+```C
+void RCC_Config(){
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+}
+```
+
+```C
+void GPIO_Config(){
+GPIO_InitTypeDef GPIOInitStruct;
+	GPIOInitStruct.GPIO_Pin = RX_Pin;
+	GPIOInitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_Init(UART_GPIO, &GPIOInitStruct);
+	//
+	GPIOInitStruct.GPIO_Pin = TX_Pin;
+	GPIOInitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIOInitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(UART_GPIO, &GPIOInitStruct);
+}
+```
+
+`Baudrate = số bits truyền được/1s. 
+
+Ví dụ: baudrate = 9600
+Tức là:	Gửi 9600 bits trong	1000000us
+		Gửi 1 bits trong 		? us 	=> 104.17us
+
+=> Timer (0 -> 104.17 us) ~ 104us
+`
+### **2. UART Hardware**
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
