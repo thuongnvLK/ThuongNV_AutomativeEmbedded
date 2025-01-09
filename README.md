@@ -1352,12 +1352,16 @@ GPIO_InitTypeDef GPIOInitStruct;
 	GPIO_Init(UART_GPIO, &GPIOInitStruct);
 }
 ```
+```
+Baudrate = số bits truyền được/1s. 
 
-`Baudrate = số bits truyền được/1s.`
-`Ví dụ: baudrate = 9600`
-`Tức là:	Gửi 9600 bits trong	1000000us`
-`         Gửi 1 bits trong 		? us 	=> 104.17us`
-`=> Timer (0 -> 104.17 us) ~ 104us`
+Ví dụ: baudrate = 9600
+Tức là:	Gửi 9600 bits trong	1000000us
+		Gửi 1 bits trong 		? us 	=> 104.17us
+
+=> Timer (0 -> 104.17 us) ~ 104us
+```
+
 
 ### **2. UART Hardware**
 
