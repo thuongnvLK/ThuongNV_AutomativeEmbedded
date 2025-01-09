@@ -1313,6 +1313,7 @@ void I2C_Config() {
   delay_us(1);
 }
 ```
+![Alt text](images/setup74.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
