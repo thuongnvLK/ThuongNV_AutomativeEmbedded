@@ -69,28 +69,55 @@ void delay_ms(uint32_t time){
 
 uint8_t SPI_Transfer1Byte(uint8_t data){
 	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+	
 	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
 	uint8_t receivedData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
+	
+	
 	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
 	SPI_I2S_SendData(SPI1, data);
-	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET){}
 	return receivedData;
 }
 
+uint8_t SPI_SlaveTransfer(uint8_t data) {
+    // Ch? d? li?u t? Master
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
+
+    // Ð?c d? li?u t? Master
+    uint8_t receivedData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
+
+    // Ch? thanh ghi truy?n (TXE) s?n sàng
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+
+    // G?i d? li?u ph?n h?i t?i Master
+    SPI_I2S_SendData(SPI1, data);
+
+    // Ch? truy?n hoàn t?t (BSY = 0)
+    // while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+
+    return receivedData;
+}
+
+
 uint8_t data;
 uint8_t dataSend[] = {10, 20, 30, 40, 50, 60, 70};
-
+uint8_t rxBuffer[7];
 int main(){
 	RCC_Config();
 	GPIO_Config();
 	TIM_Config();
 	SPI_Config();
-	while(1){
+	while(1){ 
 		for(int i = 0; i < 7; i++){
 			while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 1){}
 			if(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0) {
-				data = SPI_Transfer1Byte(dataSend[i]);
+			rxBuffer[i] = SPI_Transfer1Byte(dataSend[i]);
 			}
+			// while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0){}
+		}
+		
+		for(int i = 0; i < 7; i++){
+			rxBuffer[i] = 0;
 		}
 	}
 }
