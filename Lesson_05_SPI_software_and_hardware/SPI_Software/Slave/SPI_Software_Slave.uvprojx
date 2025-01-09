@@ -478,4 +478,13 @@
     </files>
   </RTE>
 
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>SPI_Software_Slave</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
+
 </Project>
