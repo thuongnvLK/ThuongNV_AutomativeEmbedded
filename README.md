@@ -1363,10 +1363,242 @@ Tức là:
 => Timer (0 -> 104.17 us) ~ 104us
 ```
 
+```C
+void UARTSoftware_Init(){
+  GPIO_SetBits(UART_GPIO, TX_Pin);
+  delay_us(1);
+}
+```
 
+```C
+void UARTSoftware_Transmitt(char c) {
+    // Start bit
+    GPIO_ResetBits(GPIOA, TX_Pin);
+    clock();
+
+    // Truyền các bit dữ liệu (LSB trước)
+    for (int i = 0; i < 8; i++) {
+        if (c & (1 << i)) {
+            GPIO_SetBits(GPIOA, TX_Pin);
+        } else {
+            GPIO_ResetBits(GPIOA, TX_Pin);
+        }
+        clock();
+    }
+		
+    // Stop bit
+    GPIO_SetBits(GPIOA, TX_Pin);
+		clock();
+}
+```
+```C
+UART Software
+
+char UARTSoftware_Receive() {
+    char c = 0;
+
+    while (GPIO_ReadInputDataBit(GPIOA, RX_Pin) == 1);
+
+    delay_us(bit_duration + bit_duration / 2);
+
+    for (int i = 0; i < 8; i++) {
+				
+        if (GPIO_ReadInputDataBit(GPIOA, RX_Pin)) {
+            c |= (1 << i);
+        }
+				clock();
+    }
+
+    delay_us(bit_duration / 2);
+
+    return c;
+}
+```
+
+```C
+typedef enum{
+	Parity_Mode_NONE,
+	Parity_Mode_ODD,
+	Parity_Mode_EVEN
+}Parity_Mode;
+```
+
+```C
+uint16_t Parity_Generate(uint8_t data, Parity_Mode Mode){
+	uint8_t count = 0;
+	uint8_t data1 = data;
+	for(int i = 0; i < 8; i++){
+		if(data1 & 0x01){
+			count++;
+		}
+		data1 >>= 1;
+	}
+	switch(Mode){
+		case Parity_Mode_NONE:
+			return data; 
+			break;
+		case Parity_Mode_ODD:
+			if(count % 2){
+				return ((data << 1) | 1);
+			} else {
+				return (data<<1);
+			}
+			break;
+		case Parity_Mode_EVEN:
+			if(!(count % 2)){
+				return ((data << 1) | 1);
+			} else {
+				return (data << 1);
+			}
+			break;
+		default:
+			return data;
+			break;
+	}
+}
+```
+
+```C
+uint8_t Parity_Check(uint8_t data, Parity_Mode Mode){
+	uint8_t count = 0;
+	for(int i = 0; i < 8; i++){
+		if(data & 0x01){
+			count++;
+		}
+		data >>= 1;
+	}
+	switch(Mode){
+		case Parity_Mode_NONE:
+			return 1; 
+			break;
+		case Parity_Mode_ODD:
+			return (count % 2);
+			break;
+		case Parity_Mode_EVEN:
+			return (!(count % 2));
+			break;
+		default:
+			return 0;
+			break;
+	}
+}
+```
 ### **2. UART Hardware**
 
+![Alt text](images/setup76.png)
 
+```C
+#define TX_Pin	GPIO_Pin_9
+#define RX_Pin	GPIO_Pin_10
+#define UART_GPIO	GPIOA
+```
+
+```C
+void GPIO_Config(){
+GPIO_InitTypeDef GPIOInitStruct;
+	GPIOInitStruct.GPIO_Pin = RX_Pin;
+	GPIOInitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_Init(UART_GPIO, &GPIOInitStruct);
+	//
+	GPIOInitStruct.GPIO_Pin = TX_Pin;
+	GPIOInitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIOInitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_Init(UART_GPIO, &GPIOInitStruct);
+}
+```
+Tương tự các ngoại vi khác, các tham số UART được cấu hình trong struct USART_InitTypeDef:
+- USART_Mode: Cấu hình chế độ hoạt động cho UART:
+  - USART_Mode_Tx: Cấu hình truyền.
+  - USART_Mode_Rx: Cấu hình nhận.
+  - Có thể cấu hình cả 2 cùng lúc (song công).
+- USART_BaudRate: Cấu hình tốc độ baudrate cho uart.
+- USART_HardwareFlowControl: Cấu hình chế độ bắt tay cho uart.
+- USART_WordLength: Cấu hình số bit mỗi lần truyền.
+- USART_StopBits: Cấu hình số lượng stopbits.
+- USART_Parity: cấu hình bit kiểm tra chẳn, lẻ.
+
+```C
+void UART_Config(){
+	USART_InitTypeDef USART_InitStruct;
+	//USART
+	USART_InitStruct.USART_BaudRate = 9600;
+	USART_InitStruct.USART_WordLength = USART_WordLength_8b;
+	USART_InitStruct.USART_StopBits = USART_StopBits_1;
+	USART_InitStruct.USART_Parity = USART_Parity_No;
+	USART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStruct.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+	USART_Init(USART1, &USARTInitStruct);
+	USART_Cmd(USART1,ENABLE);
+}
+```
+**Hàm truyền nhận**
+
+- Hàm USART_SendData(USART_TypeDef* USARTx, uint16_t Data), truyền data từ UARTx. Data này đã được thêm bit chẵn/lẻ tùy cấu hình.
+- Hàm USART_ReceiveData(USART_TypeDef* USARTx), nhận data từ UARTx.
+
+**Hàm kiểm tra cờ**
+
+- Hàm USART_GetFlagStatus(USART_TypeDef* USARTx, uint16_t USART_FLAG) trả về trạng thái cờ USART_FLAG tương ứng:
+- USART_FLAG_TXE:	Cờ báo thanh ghi chứa dữ liệu truyền đi (DR) đang trống.
+- USART_FLAG_RXNE: Cờ báo thanh ghi chứa dữ liệu nhận (DR) đã có dữ liệu.
+- USART_FLAG_IDLE: 	Cờ báo đường truyền đang ở chế độ rảnh.
+- USART_FLAG_PE: 	Cờ báo lỗi Parity.
+- USART_FLAG_TC: 	Cờ báo đã hoàn thành quá trình truyền dữ liệu
+
+```C
+uint8_t USART1_ReceiveByte(void){
+	uint8_t temp = 0x00;
+    // Wait until data is received (RXNE flag is set)
+    while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+
+    // Read the received data
+	temp = USART_ReceiveData(USART1);
+	return temp;
+}
+```
+
+```C
+void USART1_TransmitByte(uint8_t byte) {
+    // Wait until the transmit data register is empty (TXE flag is set)
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
+
+    // Transmit the byte
+    USART_SendData(USART1, byte);
+
+    // Wait until transmission is complete (TC flag is set)
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+}
+```
+## Lesson 08: Interrupt
+
+### **1. External Interrupt**
+
+![Alt text](images/setup77.png)
+
+- Để sử dụng được External Interrupt, ngoài enable clock GPIO tương ứng cần bật thêm clock cho AFIO.
+
+```c
+void RCC_Config(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+}
+```
+- Cấu hình chân External Interrupt là Input. Có thể cấu hình thêm trở kéo lên/xuống tùy theo cạnh ngắt được sử dụng.
+
+![Alt text](images/setup78.png)
+
+```C
+
+void GPIO_Config(){
+GPIO_InitTypeDef GPIOInitStruct;
+	
+	GPIOInitStruct.GPIO_Mode = GPIO_Mode_IPU;
+	GPIOInitStruct.GPIO_Pin = GPIO_Pin_0;
+	GPIOInitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA, &GPIOInitStruct);
+}
+```
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
