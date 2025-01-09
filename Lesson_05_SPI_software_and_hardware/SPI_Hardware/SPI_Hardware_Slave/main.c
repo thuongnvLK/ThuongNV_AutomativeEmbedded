@@ -102,7 +102,7 @@ uint8_t SPI_SlaveTransfer(uint8_t data) {
 uint8_t data;
 uint8_t dataSend[] = {10, 20, 30, 40, 50, 60, 70};
 uint8_t rxBuffer[7];
-uint8_t a = 0;
+uint8_t a = 1;
 int main(){
 	RCC_Config();
 	GPIO_Config();
@@ -112,13 +112,17 @@ int main(){
 		for(int i = 0; i < 7; i++){
 			while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 1){}
 			// if(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0) {
-				
+				// rxBuffer[a - 1] = 0;
 				rxBuffer[i] = SPI_Transfer1Byte(dataSend[i]);
 				a = i;
 			// }
 			while(GPIO_ReadInputDataBit(SPI1_GPIO, SPI1_NSS) == 0){}
 		}
-		
+		delay_ms(500000);
+		for(int i = 0; i < 7; i++){
+				rxBuffer[i] = 0;
+		}
+		delay_ms(500000);
 	}
 }
 

@@ -129,9 +129,11 @@ int main(){
 			delay_us(1000000);
 		}
 		GPIO_SetBits(GPIOA, SPI1_NSS);
+		delay_us(500000);
 		for(int i = 0; i < 7; i++){
-				rxBuffer[i] = 0;
+			rxBuffer[i] = 0;
 		}
+		delay_us(500000);
 	}
 }
 
