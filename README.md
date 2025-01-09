@@ -1268,6 +1268,52 @@ int main(){
 [Watch the video SPI Hardware Master to Slave](https://drive.google.com/file/d/1Cp6ndjatInNhXrsOrnNSq_JIlTGeFhDX/view?usp=drive_link)
 
 [Watch the video SPI Hardware Full-Duplex](https://drive.google.com/file/d/1wbqRD2VAQ85-nRc-oW3CI0bXf6gLCYCc/view?usp=drive_link)
+
+## Lesson 06: I2C Software and Hardware
+## **1. I2C Sortware**
+
+![Alt text](images/setup72.png)
+
+```C
+#define I2C_SCL   GPIO_Pin_6
+#define I2C_SDA   GPIO_Pin_7
+#define I2C_GPIO  GPIOb
+```
+
+```C
+void RCC_Config() {
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+}
+```
+**Master**
+```c
+void GPIO_Config() {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_OD;
+  GPIO_InitStructure.GPIO_Pin  = I2C_SDA | I2C_SCL;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+  GPIO_Init(I2C_GPIO, &GPIO_InitStructure);
+}
+```
+![Alt text](images/setup73.png)
+
+```C
+#define WRITE_SDA_0 GPIO_ResetBits(I2C_GPIO, I2C_SDA)
+#define WRITE_SDA_1 GPIO_SetBits(I2C_GPIO, I2C_SDA)
+#define WRITE_SDL_0 GPIO_ResetBits(I2C_GPIO, I2C_SCL)
+#define WRITE_SDL_1 GPIO_SetBits(I2C_GPIO, I2C_SCL)
+#define READ_SDA_VAL GPIO_ReadInputDataBit(I2C_GPIO, I2C_SDA)
+
+void I2C_Config() {
+  WRITE_SDA_1;
+  delay_us(1);
+  WRITE_SCL_1;
+  delay_us(1);
+}
+```
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
