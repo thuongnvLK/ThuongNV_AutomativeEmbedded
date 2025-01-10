@@ -78,16 +78,16 @@
 4. [UART](#uart)  
 
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
-1. [SPI Software](#spi-software)  
-2. [SPI Hardware](#spi-hardware)  
+1. [SPI software](#spi-software)  
+2. [SPI hardware](#spi-hardware)  
 
 [Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
-1. [I2C Software](#i2c-software)  
-2. [I2C Hardware](#i2c-hardware)  
+1. [I2C software](#i2c-software)  
+2. [I2C hardware](#i2c-hardware)  
 
 [Lesson 07: UART Software and Hardware](#lesson-07-uart-software-and-hardware)
-1. [UART Software](#uart-software)  
-2. [UART Hardware](#uart-hardware)  
+1. [UART software](#uart-software)  
+2. [UART hardware](#uart-hardware)  
 
 [Lesson 08: Interrupt](#lesson-08-interrupt)
 1. [External Interrupt](#external-interrupt)
