@@ -1601,15 +1601,15 @@ GPIO_InitTypeDef GPIOInitStruct;
 ```
 ![Alt text](images/setup79.png)
 
-Hàm GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource) liên kết 1 chân với một EXTI line để cấu hình chân ở chế độ sử dụng ngắt ngoài:
+Hàm **GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource)** liên kết 1 chân với một EXTI line để cấu hình chân ở chế độ sử dụng ngắt ngoài:
 - GPIO_PortSource: Chọn Port để sử dụng làm nguồn cho ngắt ngoài.
 - GPIO_PinSource: Chọn Pin để cấu hình.
 
 Các tham số ngắt ngoài được cấu hình trong struct EXTI_InitTypeDef, gồm:
-- EXTI_Line: Xác định EXTI line cụ thể sẽ được cấu hình.
-- EXTI_Mode: Xác định chế độ hoạt động của EXTI, có hai chế độ là Interrupt hoặc Event.
-- EXTI_Trigger: Xác định loại cạnh xung sẽ kích hoạt ngắt.
-- EXTI_LineCmd: Kích hoạt (ENABLE) hoặc vô hiệu hóa (DISABLE) EXTI line.
+- **EXTI_Line**: Xác định EXTI line cụ thể sẽ được cấu hình.
+- **EXTI_Mode**: Xác định chế độ hoạt động của EXTI, có hai chế độ là Interrupt hoặc Event.
+- **EXTI_Trigger**: Xác định loại cạnh xung sẽ kích hoạt ngắt.
+- **EXTI_LineCmd**: Kích hoạt (ENABLE) hoặc vô hiệu hóa (DISABLE) EXTI line.
 
 ```C
 void EXTI_Config(){
