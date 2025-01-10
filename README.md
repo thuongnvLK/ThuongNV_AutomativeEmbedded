@@ -78,7 +78,7 @@
 4. [UART](#uart)  
 
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
-1. [SPI software](#spi-software)  
+1. [SPI software](#1-spi-software)  
 2. [SPI hardware](#spi-hardware)  
 
 [Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
