@@ -73,9 +73,9 @@
 
 [Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
 1. [Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)  
-2. [SPI](#1-spi)  
-3. [I2C](#2-i2c)  
-4. [UART](#3-uart)  
+2. [SPI](#2-spi)  
+3. [I2C](#3-i2c)  
+4. [UART](#4-uart)  
 
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
 1. [SPI software](#1-spi-software)  
