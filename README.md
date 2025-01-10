@@ -79,18 +79,18 @@
 
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
 1. [SPI software](#1-spi-software)  
-2. [SPI hardware](#spi-hardware)  
+2. [SPI hardware](#2-spi-hardware)  
 
 [Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
-1. [I2C software](#i2c-software)  
-2. [I2C hardware](#i2c-hardware)  
+1. [I2C software](#1-i2c-software)  
+2. [I2C hardware](#2-i2c-hardware)  
 
 [Lesson 07: UART Software and Hardware](#lesson-07-uart-software-and-hardware)
-1. [UART software](#uart-software)  
-2. [UART hardware](#uart-hardware)  
+1. [UART software](#1-uart-software)  
+2. [UART hardware](#2-uart-hardware)  
 
 [Lesson 08: Interrupt](#lesson-08-interrupt)
-1. [External Interrupt](#external-interrupt)
+1. [External Interrupt](#1-external-interrupt)
 
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
