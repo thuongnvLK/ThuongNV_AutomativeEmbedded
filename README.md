@@ -71,11 +71,11 @@
 4. [Code Example](#24-code-example)  
 5. [Timer Operation](#25-timer-operation) 
 
-- [Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
-  - [1. Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)
-  - [2. SPI](#2-spi)
-  - [3. I2C](#3-i2c)
-  - [4. UART](#4-uart)
+[Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
+- [1. Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)
+- [2. SPI](#2-spi)
+- [3. I2C](#3-i2c)
+- [4. UART](#4-uart)
 - [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
   - [1. SPI Software](#1-spi-software)
   - [2. SPI Hardware](#2-spi-hardware)
@@ -861,6 +861,8 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 -   Stack Pointer là thanh ghi trỏ tới đỉnh vùng stack chứa các địa chỉ trả về của các hàm.
 
 ### **2. Timer**
+
+### **2.1 What is a Timer**
 
 **Timer** là một mạch digital lgic có svai trò đếm mỗi chu kỳ clock (đếm lên hoặc xuống).
 
