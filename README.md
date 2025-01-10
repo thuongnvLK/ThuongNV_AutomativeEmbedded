@@ -71,22 +71,27 @@
 4. [Code Example](#24-code-example)  
 5. [Timer Operation](#25-timer-operation) 
 
-[Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
-- [1. Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)
-- [2. SPI](#2-spi)
-- [3. I2C](#3-i2c)
-- [4. UART](#4-uart)
-- [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
-  - [1. SPI Software](#1-spi-software)
-  - [2. SPI Hardware](#2-spi-hardware)
-- [Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
-  - [1. I2C Software](#1-i2c-software)
-  - [2. I2C Hardware](#2-i2c-hardware)
-- [Lesson 07: UART Software and Hardware](#lesson-07-uart-software-and-hardware)
-  - [1. UART Software](#1-uart-software)
-  - [2. UART Hardware](#2-uart-hardware)
-- [Lesson 08: Interrupt](#lesson-08-interrupt)
-  - [1. External Interrupt](#1-external-interrupt)
+### **Lesson 04: Communication Protocols**
+1. [Truyền nhận dữ liệu](#truyền-nhận-dữ-liệu)  
+2. [SPI](#spi)  
+3. [I2C](#i2c)  
+4. [UART](#uart)  
+
+### **Lesson 05: SPI Software and Hardware**
+1. [SPI Software](#spi-software)  
+2. [SPI Hardware](#spi-hardware)  
+
+### **Lesson 06: I2C Software and Hardware**
+1. [I2C Software](#i2c-software)  
+2. [I2C Hardware](#i2c-hardware)  
+
+### **Lesson 07: UART Software and Hardware**
+1. [UART Software](#uart-software)  
+2. [UART Hardware](#uart-hardware)  
+
+### **Lesson 08: Interrupt**
+1. [External Interrupt](#external-interrupt)
+
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
