@@ -36,9 +36,9 @@
 	4.1. [Địa chỉ các thanh ghi](#41-địa-chỉ-các-thanh-ghi)  
 	4.2. [Enable the peripheral's clock](#42-enable-the-peripherals-clock)  
 5. [STM32F10x Standard Peripherals Firmware Library](#5-stm32f10x-standard-peripherals-firmware-library)    
-   [5.1. Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
-     [5.1.1. Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
-     [5.1.2. Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
+	[5.1. Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
+		[5.1.1. Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
+     	[5.1.2. Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
 
 [Lesson 03: Interrupt and Timer](#lesson-03-interrupt-and-timer)
 
