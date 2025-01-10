@@ -17,7 +17,7 @@
 7. [Debug (Optional)](#7-debug-optional)  
 8. [Download (Optional)](#8-download-optional)  
 
-### **Lesson 02: General-purpose I/Os (GPIO)**  
+[Lesson 02: General-purpose I/Os (GPIO)](#lesson-02-general-purpose-ios-gpio)
 1. [What is GPIO ?](#1-what-is-gpio)  
 2. [What is the GPIO Port ?](#2-what-is-the-gpio-port)   
 3. [GPIO Modes](#3-gpio-modes)  
