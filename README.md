@@ -45,7 +45,7 @@
 
 [Lesson 03: Interrupt and Timer](#lesson-03-interrupt-and-timer)
 
-#### **1. Interrupt**
+[1. Interrupt](#interrupt)
 1. [What is an Interrupt?](#11-what-is-an-interrupt)  
 2. [How Interrupt Works](#12-how-interrupt-works)  
 3. [Types of Interrupts](#13-types-of-interrupts)  
@@ -60,7 +60,7 @@
    - [1.3.9 Communication Interrupt](#139-communication-interrupt)  
 4. [Priority](#14-priority)  
 
-#### **2. Timer**
+[2. Timer](#timer)
 1. [What is a Timer?](#21-what-is-a-timer)  
 2. [Timer Structure and Components](#22-timer-structure-and-components)  
 3. [Timer Configuration Example](#23-timer-configuration-example)  
