@@ -43,7 +43,7 @@
       - 5.1.1. [Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
       - 5.1.2. [Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
 
-### **Lesson 03: Interrupt and Timer**
+[Lesson 03: Interrupt and Timer](#lesson-03-interrupt-and-timer)
 
 #### **1. Interrupt**
 1. [What is an Interrupt?](#11-what-is-an-interrupt)  
@@ -71,25 +71,25 @@
 4. [Code Example](#24-code-example)  
 5. [Timer Operation](#25-timer-operation) 
 
-### **Lesson 04: Communication Protocols**
+[Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
 1. [Truyền nhận dữ liệu](#truyền-nhận-dữ-liệu)  
 2. [SPI](#spi)  
 3. [I2C](#i2c)  
 4. [UART](#uart)  
 
-### **Lesson 05: SPI Software and Hardware**
+[Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
 1. [SPI Software](#spi-software)  
 2. [SPI Hardware](#spi-hardware)  
 
-### **Lesson 06: I2C Software and Hardware**
+[Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
 1. [I2C Software](#i2c-software)  
 2. [I2C Hardware](#i2c-hardware)  
 
-### **Lesson 07: UART Software and Hardware**
+[Lesson 07: UART Software and Hardware](#lesson-07-uart-software-and-hardware)
 1. [UART Software](#uart-software)  
 2. [UART Hardware](#uart-hardware)  
 
-### **Lesson 08: Interrupt**
+[Lesson 08: Interrupt](#lesson-08-interrupt)
 1. [External Interrupt](#external-interrupt)
 
 
