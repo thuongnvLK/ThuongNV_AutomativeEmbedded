@@ -45,7 +45,7 @@
 
 [Lesson 03: Interrupt and Timer](#lesson-03-interrupt-and-timer)
 
-[1. Interrupt](#interrupt)
+[1. Interrupt](#1-interrupt)
 1. [What is an Interrupt?](#11-what-is-an-interrupt)  
 2. [How Interrupt Works](#12-how-interrupt-works)  
 3. [Types of Interrupts](#13-types-of-interrupts)  
@@ -60,7 +60,7 @@
    - [1.3.9 Communication Interrupt](#139-communication-interrupt)  
 4. [Priority](#14-priority)  
 
-[2. Timer](#timer)
+[2. Timer](#2-timer)
 1. [What is a Timer?](#21-what-is-a-timer)  
 2. [Timer Structure and Components](#22-timer-structure-and-components)  
 3. [Timer Configuration Example](#23-timer-configuration-example)  
@@ -72,10 +72,10 @@
 5. [Timer Operation](#25-timer-operation) 
 
 [Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
-1. [Truyền nhận dữ liệu](#truyền-nhận-dữ-liệu)  
-2. [SPI](#spi)  
-3. [I2C](#i2c)  
-4. [UART](#uart)  
+1. [Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)  
+2. [SPI](#1-spi)  
+3. [I2C](#2-i2c)  
+4. [UART](#3-uart)  
 
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
 1. [SPI software](#1-spi-software)  
