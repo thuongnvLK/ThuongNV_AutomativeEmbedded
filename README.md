@@ -862,12 +862,13 @@ Xảy ra khi có thay đổi điện áp trên các chân GPIO được cấu h�
 
 ### **2. Timer**
 
-### **2.1 What is a Timer**
+#### **2.1 What is a Timer**
 
 **Timer** là một mạch digital lgic có svai trò đếm mỗi chu kỳ clock (đếm lên hoặc xuống).
 
 Time còn có thể hoạt động ở chế độ xung clock từ các tín hiệu ngoài. Ngoài ra còn các chế độ khác như PWM, định thời ...
 
+#### **2.2 Timer Structure and Components**
 Điểm chung của Timer:
 
 - Giới hạn của bộ đếm được xác định dựa trên giới hạn của thanh ghi counter như 8/16/24/32 bit.
@@ -885,6 +886,7 @@ Time còn có thể hoạt động ở chế độ xung clock từ các tín hi�
 
 ![Alt text](images/setup44.png)
 
+#### **2.3 Timer Configuration Example**
 ```c
 /** 
   * @brief  TIM Time Base Init structure definition
