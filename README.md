@@ -1681,9 +1681,68 @@ void NVIC_Config() {
 	
 	NVIC_Init(&NVICInitStruct);
 }
-
 ```
-### **2. UART Interrupt**
+- Ngắt trên từng line có hàm phục vụ riêng của từng line. Có tên cố định: **EXTIx_IRQHandler()** (x là line ngắt tương ứng). 
+- Hàm **EXTI_GetITStatus(EXTI_Linex)**: Kiểm tra cờ ngắt của line x tương ứng. 
+- Hàm **EXTI_ClearITPendingBit(EXTI_Linex)**: Xóa cờ ngắt ở line x.
+
+Trong hàm phục vụ ngắt ngoài, chúng ta sẽ thực hiện:
+- Kiểm tra ngắt đến từ line nà, có đúng là line cần thực thi hay không ?
+- Thực hiện các lệnh, các hàm.
+- Xóa cờ ngắt ở line.
+
+```c
+void EXTI0_IRQHandler()
+{	
+if(EXTI_GetITStatus(EXTI_Line0) != RESET)
+	{
+		// do some things
+	}
+	EXTI_ClearITPendingBit(EXTI_Line0);
+}
+```
+### **2. Timer Interrupt**
+
+![Alt text](images/setup82.png)
+
+- Sử dụng ngắt timer, ta vẫn cấu hình các tham số trong **TIM_TimeBaseInitTypeDef** bình thường, riêng **TIM_Period**, đây là số lần đếm mà sau đó timer sẽ ngắt. 
+
+![Alt text](images/setup83.png)
+
+- Cài đặt Period = 10 - 1 ứng với ngắt mỗi 1ms.
+Hàm **TIM_ITConfig(TIMx, TIM_IT_Update, ENABLE)** kích hoạt ngắt cho TIMERx tương ứng.
+
+```c
+
+void TIM_Config(){
+   TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
+
+	TIM_TimeBaseInitStruct.TIM_Prescaler = 7200-1;
+	TIM_TimeBaseInitStruct.TIM_Period = 10-1;
+	TIM_TimeBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
+	TIM_TimeBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStruct);
+
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+	TIM_Cmd(TIM2, ENABLE);
+}
+```
+- Ở NVIC, ta cấu hình tương tự như ngắt ngoài EXTI, tuy nhiên **NVIC_IRQChannel** được đổi thành **TIM_IRQn** để khớp với line ngắt timer.
+
+```c
+void NVIC_Config() {
+
+	NVIC_InitTypeDef NVIC_InitStruct;
+	
+	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
+	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStruct);
+}
+```
+### **3. UART Interrupt**
+
 
 
 ## Contact
