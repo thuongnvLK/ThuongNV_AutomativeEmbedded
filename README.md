@@ -1638,7 +1638,7 @@ Các tham số ngắt ngoài được cấu hình trong struct EXTI_InitTypeDef,
 void EXTI_Config(){
 	EXTI_InitTypeDef EXTIInitStruct;
 
-EXTIInitStruct.EXTI_Line = EXTI_Line0;
+	EXTIInitStruct.EXTI_Line = EXTI_Line0;
 	EXTIInitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
 	EXTIInitStruct.EXTI_Trigger = EXTI_Trigger_Falling;
 	EXTIInitStruct.EXTI_LineCmd = ENABLE;
@@ -1646,6 +1646,8 @@ EXTIInitStruct.EXTI_Line = EXTI_Line0;
 	EXTI_Init(&EXTIInitStruct);
 }
 ```
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
