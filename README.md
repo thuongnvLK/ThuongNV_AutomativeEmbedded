@@ -1647,6 +1647,14 @@ void EXTI_Config(){
 }
 ```
 
+- NVIC (Nest Vectored Interrupt Controller) chịu trách nhiệm quản lý và xử lý các ngắt. NVIC cho phép MCU xử lý nhiều ngắt từ các nguồn khác nhau, có thể **ưu tiên ngắt** và hỗ trợ **ngắt lồng nhau**.
+
+	- Priority Group xác định cách phân chia bit giữa Preemption Priority và Subpriority. Sử dụng hàm NVIC_PriorityGroupConfig(uint32_t PriorityGroup) để chọn priority group cho NVIC.
+	- Preemption Priority xác định mức độ ưu tiên chính của 
+
+![Alt text](images/setup80.png)
+### **2. UART Interrupt**
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
