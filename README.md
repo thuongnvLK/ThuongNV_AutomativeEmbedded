@@ -1649,13 +1649,40 @@ void EXTI_Config(){
 
 - NVIC (Nest Vectored Interrupt Controller) chịu trách nhiệm quản lý và xử lý các ngắt. NVIC cho phép MCU xử lý nhiều ngắt từ các nguồn khác nhau, có thể **ưu tiên ngắt** và hỗ trợ **ngắt lồng nhau**.
 
-	- Priority Group xác định cách phân chia bit giữa Preemption Priority và Subpriority. Sử dụng hàm NVIC_PriorityGroupConfig(uint32_t PriorityGroup) để chọn priority group cho NVIC.
-	- Preemption Priority xác định mức độ ưu tiên chính của 
+	- **Priority Group** xác định cách phân chia bit giữa **Preemption Priority** và **Subpriority**. Sử dụng hàm ***NVIC_PriorityGroupConfig(uint32_t PriorityGroup)*** để chọn priority group cho NVIC.
+	- **Preemption Priority** xác định mức độ ưu tiên chính của Interrupt và quy định Interrupt nào có thể lồng vào Interrupt nào.
+	- **Subpriority** chỉ có ý nghĩa khi các Interrupt có cùng mức Preemption Priority.
+
 
 ![Alt text](images/setup80.png)
 
 ![Alt text](images/setup81.png)
 
+Các tham số được cấu hình trong struct NVIC_InitTypeDef, bao gồm:
+- **NVIC_IRQChannel**: Xác định mã của kênh ngắt cần được cấu hình.
+- **NVIC_IRQChannelPreemptionPriority**: Xác định mức độ ưu tiên Preemption Priority cho kênh ngắt.
+- **NVIC_IRQChannelSubPriority**: Xác định mức độ ưu tiên phụ Subpriority cho kênh ngắt.
+- **NVIC_IRQChannelCmd**: Cho phép ngắt.
+
+Lưu ý:
+- Các Line0 đến Line4 sẽ được phân vào các vector ngắt riêng tương ứng EXTI0 -> EXTI4.
+- Line5->Line9 được phân vào vector ngắt EXTI9_5.
+- Line10->Line15 được phân vào vector EXTI15_10.
+
+```c
+void NVIC_Config() {
+	NVIC_InitTypeDef NVICInitStruct;
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	
+	NVICInitStruct.NVIC_IRQChannel = EXTI0_IRQn;
+	NVICInitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
+	NVICInitStruct.NVIC_IRQChannelCmd = ENABLE;
+	
+	NVIC_Init(&NVICInitStruct);
+}
+
+```
 ### **2. UART Interrupt**
 
 
