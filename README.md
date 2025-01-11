@@ -1701,7 +1701,7 @@ if(EXTI_GetITStatus(EXTI_Line0) != RESET)
 	EXTI_ClearITPendingBit(EXTI_Line0);
 }
 ```
-[Watch the video Exxternal Interrupt GPIO A0 Rising](https://drive.google.com/file/d/1x4hE1-66MaV5dM2zNivWxHWMqery-1rD/view?usp=drive_link)
+[Watch the video External Interrupt GPIO A0 Rising](https://drive.google.com/file/d/1x4hE1-66MaV5dM2zNivWxHWMqery-1rD/view?usp=drive_link)
 
 ### **2. Timer Interrupt**
 
