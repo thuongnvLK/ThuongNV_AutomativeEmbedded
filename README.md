@@ -1652,7 +1652,10 @@ void EXTI_Config(){
 	- Priority Group xác định cách phân chia bit giữa Preemption Priority và Subpriority. Sử dụng hàm NVIC_PriorityGroupConfig(uint32_t PriorityGroup) để chọn priority group cho NVIC.
 	- Preemption Priority xác định mức độ ưu tiên chính của 
 
-    ![Alt text](images/setup80.png)
+![Alt text](images/setup80.png)
+
+![Alt text](images/setup81.png)
+
 ### **2. UART Interrupt**
 
 
