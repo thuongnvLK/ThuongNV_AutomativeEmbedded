@@ -1701,6 +1701,8 @@ if(EXTI_GetITStatus(EXTI_Line0) != RESET)
 	EXTI_ClearITPendingBit(EXTI_Line0);
 }
 ```
+[Watch the video Exxternal Interrupt GPIO A0 Rising](https://drive.google.com/file/d/1x4hE1-66MaV5dM2zNivWxHWMqery-1rD/view?usp=drive_link)
+
 ### **2. Timer Interrupt**
 
 ![Alt text](images/setup82.png)
@@ -1733,7 +1735,7 @@ void TIM_Config(){
 void NVIC_Config() {
 
 	NVIC_InitTypeDef NVIC_InitStruct;
-	
+
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
@@ -1741,9 +1743,82 @@ void NVIC_Config() {
 	NVIC_Init(&NVIC_InitStruct);
 }
 ```
-### **3. UART Interrupt**
+- Hàm phục vụ ngắt Timer được đặt tên : **TIMx_IRQHandler()** với x là timer tương ứng.
 
+```c
+uint16_t count;
+void delay(int time){
+	count = 0; 
+	while(count < time){
+	//Wait
+	}
+}
+void TIM2_IRQHandler() {
+	if(TIM_GetITStatus(TIM2, TIM_IT_Update)){
+		count++;
 
+		// Clears the TIM2 interrupt pending bit
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+	}
+}
+```
+
+### **3. Communication Interrupt**
+
+- Trước khi cho phép UART hoạt động, cần kích hoạt **ngắt UART** bằng cách gọi hàm **USART_ITConfig()**.
+
+```c
+void UART_Config(){
+	USART_InitTypeDef UART_InitStruct;
+	UART_InitStruct.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	UART_InitStruct.USART_BaudRate = 9600;
+	UART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	UART_InitStruct.USART_WordLength = USART_WordLength_8b;
+	UART_InitStruct.USART_StopBits = USART_StopBits_1;
+	UART_InitStruct.USART_Parity = USART_Parity_No;
+
+	USART_Init(USART1, &UART_InitStruct);
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	USART_Cmd(USART1, ENABLE);
+}
+```
+- Ở NVIC, ta cấu hình tương tự như ngắt ngoài EXTI, tuy nhiên NVIC_IRQChannel được đổi thành USART_IRQn để khớp với line ngắt timer.
+
+```c
+void NVIC_Config() {
+
+	NVIC_InitTypeDef NVIC_InitStruct;
+
+	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x01;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
+	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStruct);
+}
+```
+Hàm phục vụ ngắt UART được đặt tên : **USARTx_IRQHandler()**
+- Kiểm tra ngắt
+- Nhận và lưu data từ USART1.
+- Kiểm tra cờ ngắt truyền, đảm bảo USART đang rỗi.
+- Truyền lại data vừa nhận được sang máy tính.
+- Xóa cờ ngắt, thoát khỏi hàm.
+
+```c
+void USART1_IRQHandler()
+{
+	uint8_t data = 0x00;
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
+		while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE));
+		data = USART_ReceiveData(USART1);
+		if(USART_GetITStatus(USART1, USART_IT_TXE) == RESET){
+			USART_SendData(USART1, data);
+			while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+		}
+	}
+	USART_ClearITPendingBit (USART1, USART_IT_RXNE);
+}
+```
+[Watch the video UART Interrupt](https://drive.google.com/file/d/1nmTICswz50dvhPc-_yTs8E9ntrqDa9pd/view?usp=drive_link)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
