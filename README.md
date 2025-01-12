@@ -1900,7 +1900,7 @@ Các tham số cấu hình cho bộ ADC được tổ chức trong struct ***ADC
 - **ADC_DataAlign**: Cấu hình căn lề cho data. Vì bộ ADC xuất ra giá trị 12bit, được lưu vào biến 16 hoặc 32 bit nên phải căn lề các bit về trái hoặc phải.
 
 
-Ngoài các tham số trên, cần cấu hình thêm thời gian lấy mẫu, thứ tự kênh ADC khi quét, ***ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime)***:
+Ngoài các tham số trên, cần cấu hình thêm thời gian lấy mẫu, thứ tự kênh ADC khi quét, **ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime)**:
 - **Rank**: Ưu tiên của kênh ADC.
 - **SampleTime**: Thời gian lấy mẫu tín hiệu.
 
