@@ -1826,6 +1826,38 @@ void USART1_IRQHandler()
 
 - Tín hiệu tương tự (analog signal) là mọt loại tín hiệu mà giá trị của nó biến đổi liên tục theo thời gian và có thể có vô số hạn mức giá trị khác nhau trong một khoảng thời gian cụ thể.
 
+![Alt text](images/setup84.png)
+
+- ADC (Analog - to Digital Converter) giúp chuyển đổi các tín hiệu tương tự (analog) thành tín hiệu số (digital) để điều khiển có thể xử lý được.
+
+![Alt text](images/setup85.png)
+
+**Độ phân giải**
+
+- Số bit mà ADC dùng để xác định số lượng mức sẽ chia từng phạm vi điện áp tương tự.
+- Độ phân phải càng cao => càng nhiều mức => Kết quả càng chính xác.
+
+![Alt text](images/setup86.png)
+
+**Tần số lấy mẫu**
+
+- Quy định tần suất lấy mẫu mà tín hiệu tương tự được lấy mẫu.
+- Tần số lấy mẫu càng cao => Lấy được nhiều mẫu hơn => Kết quả càng chính xác.
+
+![Alt text](images/setup87.png)
+
+### **2. Sử dụng ADC trong STM32**
+
+STM32F103C8 có 2 bộ ADC. Kết quả chuyển đổi được lưu trữ trong thanh ghi 16 bit.
+
+- Độ phân giải 12 bit.
+- Có các ngắt hỗ trợ.
+- Có thể điều khiển hoạt động ADC bằng xung Trigger.
+- Thời gian chuyển đổi nhanh : 1us tại tần số 65Mhz.
+- Có bộ DMA giúp tăng tốc độ xử lí.
+
+![Alt text](images/setup88.png)
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
