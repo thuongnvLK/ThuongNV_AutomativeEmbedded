@@ -1901,8 +1901,9 @@ Các tham số cấu hình cho bộ ADC được tổ chức trong struct ***ADC
 
 
 Ngoài các tham số trên, cần cấu hình thêm thời gian lấy mẫu, thứ tự kênh ADC khi quét, ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime):
-	- **Rank**: Ưu tiên của kênh ADC.
-	- **SampleTime**: Thời gian lấy mẫu tín hiệu.
+- **Rank**: Ưu tiên của kênh ADC.
+- **SampleTime**: Thời gian lấy mẫu tín hiệu.
+
 - ADC_SoftwareStartConvCmd(ADC_TypeDef* ADCx, FunctionalState NewState): Bắt đầu quá trình chuyển đổi.
 - ADC_GetConversionValue(ADC_TypeDef* ADCx): Đọc giá trị chuyển đổi được ở các kênh ADC tuần tự.
 - ADC_GetDualModeConversionValue(void): Trả về giá trị chuyển đổi cuối cùng của ADC1, ADC2 ở chế độ kép.
