@@ -1820,6 +1820,12 @@ void USART1_IRQHandler()
 ```
 [Watch the video UART Interrupt](https://drive.google.com/file/d/1nmTICswz50dvhPc-_yTs8E9ntrqDa9pd/view?usp=drive_link)
 
+## Lesson 09: ADC
+
+### **1. Định nghĩa**
+
+- Tín hiệu tương tự (analog signal) là mọt loại tín hiệu mà giá trị của nó biến đổi liên tục theo thời gian và có thể có vô số hạn mức giá trị khác nhau trong một khoảng thời gian cụ thể.
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
