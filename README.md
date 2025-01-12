@@ -1908,6 +1908,202 @@ Ngoài các tham số trên, cần cấu hình thêm thời gian lấy mẫu, th
 - ADC_GetConversionValue(ADC_TypeDef* ADCx): Đọc giá trị chuyển đổi được ở các kênh ADC tuần tự.
 - ADC_GetDualModeConversionValue(void): Trả về giá trị chuyển đổi cuối cùng của ADC1, ADC2 ở chế độ kép.
 
+```C
+#include "stm32f10x.h"                  // Device header
+#include "stm32f10x_rcc.h"              // Keil::Device:StdPeriph Drivers:RCC
+#include "stm32f10x_gpio.h"             // Keil::Device:StdPeriph Drivers:GPIO
+#include "stm32f10x_tim.h"              // Keil::Device:StdPeriph Drivers:TIM
+#include "stm32f10x_adc.h"              // Keil::Device:StdPeriph Drivers:ADC
+#include "kalman.h"
+
+void RCC_Config(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_ADC1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+}
+
+void GPIO_Config(){
+	GPIO_InitTypeDef GPIO_InitStruct;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
+
+void TIM_Config(){
+	TIM_TimeBaseInitTypeDef TIM_InitStruct;
+	
+	TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;	//72MHz
+	TIM_InitStruct.TIM_Prescaler = 7200 - 1;					
+	TIM_InitStruct.TIM_Period = 0xFFFF;
+	TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+	
+	TIM_TimeBaseInit(TIM2, &TIM_InitStruct);
+	TIM_Cmd(TIM2, ENABLE);
+}
+
+void delay_ms(uint32_t timedelay)
+{
+	TIM_SetCounter(TIM2,0);
+	while(TIM_GetCounter(TIM2) < timedelay * 10){}
+}
+
+void ADC_Config(){
+	ADC_InitTypeDef ADC_InitStruct;
+	
+	ADC_InitStruct.ADC_Mode = ADC_Mode_Independent;
+	ADC_InitStruct.ADC_NbrOfChannel = 1;
+	ADC_InitStruct.ADC_ScanConvMode = DISABLE;
+	ADC_InitStruct.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+	ADC_InitStruct.ADC_ContinuousConvMode = ENABLE;
+	ADC_InitStruct.ADC_DataAlign = ADC_DataAlign_Right;
+	
+	ADC_Init(ADC1, &ADC_InitStruct);
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_28Cycles5);
+	ADC_Cmd(ADC1, ENABLE);
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+}
+uint16_t val;
+uint16_t sum = 0;
+uint16_t final = 0;
+int main(){
+	RCC_Config();
+	GPIO_Config();
+	TIM_Config();
+	ADC_Config();
+	SimpleKalmanFilter(0.05, 0.01, 0.1); 
+	while(1){
+		val = ADC_GetConversionValue(ADC1);
+		final = updateEstimate(val);
+	}
+}
+```
+## Lesson 10: DMA
+
+### **1. Định nghĩa**
+
+![Alt text](images/setup92.png)
+
+- (1) CPU lấy lệnh chương trình từ FLASH để xử lý
+
+- (2) CPU đọc/ghi những dữ liệu từ/vào các ngoại vi thông qua đường bus ngoại vi
+
+- (3) Lưu các dữ liệu vừa đọc được vào RAM
+
+- (4) Giao tiếp với RAM (đọc/ghi các dữ liệu) thông qua đường bus bộ nhớ (Memory bus)
+
+`Hạn chế: CPU bị chiếm dụng quá nhiều, giảm hiệu suất chương trình`
+
+```C
+void UART_ReceiveAndStore(void)
+{
+    uint8_t buffer[100];  // Bộ nhớ RAM để lưu trữ dữ liệu
+    uint8_t index = 0;
+    
+    // Chờ dữ liệu từ UART
+    while (index < 100)
+    {
+        // Kiểm tra xem UART đã nhận được dữ liệu chưa
+        while (!(USART1->SR & USART_SR_RXNE));  // Cờ RXNE
+    
+        // Đọc dữ liệu từ UART
+        buffer[index] = USART1->DR;  // Đọc dữ liệu nhận được từ UART
+    
+        index++;
+    }
+}
+```
+
+**DMA** (Direct Memory Access)**: là một cơ chế cho phép các thiết bị ngoại vi truyền dữ liệu trực tiếp đến bộ nhớ (hoặc ngược lại) mà không cần CPU phải thực hiện từng bước truyền dữ liệu.
+
+![Alt text](images/setup93.png)
+
+![Alt text](images/setup94.png)
+
+- CPU (1) cấu hình và kích hoạt DMA (4) hoạt động.
+- Ngoại vi (5) sẽ sử dụng DMA Request (6) để yêu cầu DMA (4) gửi/nhận dữ liệu ngoại vi.
+- DMA (4) tiến hành thực hiện yêu cầu từ DMA Request (6).
+
+- Lấy dữ liệu từ SRAM (2) thông qua Bus Matrix (3) <-> Đi qua các đường bus ngoại vi <-> Truy cập các thanh vi của ngoại vi (5).
+
+- Khi kết thúc, DMA (4) kích hoạt ngắt báo cho CPU (1) biết là quá trình hoan tất.
+
+### **2. DMA trong STM32**
+
+![Alt text](images/setup95.png)
+
+STM32F103C8T6 có 2 bộ DMA. DMA1 bao gồm 7 kênh, DMA2 bao gồm 5 kênh:
+- Có 2 chế độ hoạt động.
+- Mỗi kênh có thể được cấu hình riêng.
+- Mỗi kênh có thể phục vụ cho nhiều ngoại vi khác nhau, nhưng không đồng thời.
+- Có mức ưu tiên để lập trình cho các kênh
+- Có thể sử dụng ngắt DMA với 5 cờ báo ngắt ***(DMA Half Transfer, DMA Transfer complete, DMA Transfer Error, DMA FIFO Error, Direct Mode Error)***.
+
+DMA có 2 chế độ hoạt động là normal và circular:
+- **Normal mode**: Với chế độ này, DMA truyền dữ liệu cho tới khi truyền đủ 1 lượng dữ liệu giới hạn đã khai báo DMA sẽ dừng hoạt động. Muốn nó tiếp tục hoạt động thì phải khởi động lại.
+
+![Alt text](images/setup96.png)
+
+- **Circular mode**: Với chế độ này, Khi DMA truyền đủ 1 lượng dữ liệu giới hạn đã khai báo thì nó sẽ truyền tiếp về vị trí ban đầu, không dừng lại (Cơ chế như Ring buffer).
+
+![Alt text](images/setup97.png)
+
+```C
+void RCC_Config(){
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_SPI1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+}
+```
+
+Các tham số cho bộ DMA được cấu hình trong struct DMA_InitTypeDef. Gồm:
+
+- **DMA_PeripheralBaseAddr**: Cấu hình địa chỉ của ngoại vi cho DMA. Đây là địa chỉ mà DMA sẽ lấy data hoặc truyền data tới cho ngoại vi.
+- **DMA MemoryBaseAddr**: Cấu hình địa chỉ vùng nhớ cần ghi/ đọc data .
+- **DMA_DIR**: Cấu hình hướng truyền DMA, từ ngoại vi tới vùng nhớ hay từ vùng nhớ tới ngoại vi.
+- **DMA_BufferSize**: Cấu hình kích cỡ buffer. Số lượng dữ liệu muốn gửi/nhận qua DMA.
+- **DMA_PeripheralInc**: Cấu hình địa chỉ ngoại vi có tăng sau khi truyền DMA hay không.
+- **DMA_MemoryInc**: Cấu hình địa chỉ bộ nhớ có tăng lên sau khi truyền DMA hay không.
+- **DMA_PeripheralDataSize**: Cấu hình độ lớn data của ngoại vi.
+- **DMA_MemoryDataSize**: Cấu hình độ lớn data của bộ nhớ.
+- **DMA_Mode**: Cấu hình mode hoạt động.
+- **DMA_Priority**: Cấu hình độ ưu tiên cho kênh DMA.
+- **DMA_M2M**: Cấu hình sử dụng truyền từ bộ nhớ đếm bộ nhớ cho kênh DMA.
+
+```C
+	DMA_InitStruct.DMA_Mode = DMA_Mode_Normal;
+	DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
+	DMA_InitStruct.DMA_M2M = DMA_M2M_Disable;
+	DMA_InitStruct.DMA_BufferSize = 35;
+	DMA_InitStruct.DMA_MemoryBaseAddr = (uint32_t)buffer;
+	DMA_InitStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	DMA_InitStruct.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t)&SPI1->DR;
+	DMA_InitStruct.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	DMA_InitStruct.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	DMA_InitStruct.DMA_Priority = DMA_Priority_Medium;
+```
+
+Sau khi lưu những cấu hình DMA_Init() và cho phép bộ DMA hoạt động DMA_Cmd(), ta tiến hành cho phép DMA làm việc với ngoại vi bằng hàm <Periph>_DMACmd() .
+
+- void SPI_I2S_DMACmd(SPI_TypeDef* SPIx, uint16_t SPI_I2S_DMAReq, FunctionalState NewState)
+- void I2C_DMACmd(I2C_TypeDef* I2Cx, FunctionalState NewState)
+- void USART_DMACmd(USART_TypeDef* USARTx, uint16_t USART_DMAReq, FunctionalState NewState)
+- void ADC_DMACmd(ADC_TypeDef* ADCx, FunctionalState NewState)
+
+```C
+DMA_Init(DMA1_Channel2, &DMA_InitStruct);
+DMA_Cmd(DMA1_Channel2, ENABLE);
+SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Rx, ENABLE);
+```
+
+### **3. PWM**
+
+Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation) được sử dụng để chỉ định góc mà động cơ servo sẽ xoay đến. Tín hiệu PWM có hai yếu tố quan trọng:
+- Tần số: Là số lần tín hiệu lặp lại trong một giây. Đối với servo, tần số thông thường là 50Hz (tức là, chu kỳ lặp lại sau mỗi 20ms).
+- Độ rộng xung (Pulse Width): Là thời gian tín hiệu ở mức cao trong mỗi chu kỳ. Độ rộng xung thường được đo bằng microsecond (µs) và quyết định góc mà servo sẽ xoay đến. Tỉ lệ độ rộng xung với chu kì xung gọi là chu kì nhiệm vụ (Duty Cycle).
+
+![Alt text](images/setup98.png)
+
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
