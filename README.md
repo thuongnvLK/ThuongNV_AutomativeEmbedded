@@ -2105,6 +2105,13 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 ![Alt text](images/setup98.png)
 
 
+## Lesson 11: Flash - Bootloader
+
+### **1. Flash**
+
+![Alt text](images/setup99.png)
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
