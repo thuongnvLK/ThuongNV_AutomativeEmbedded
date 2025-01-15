@@ -1506,6 +1506,8 @@ uint8_t Parity_Check(uint8_t data, Parity_Mode Mode){
 	}
 }
 ```
+
+[Watch the video UART Software STM32F1 to PC](https://drive.google.com/file/d/1QM1PUJgFy72NluyL0s93K1ZcX4hZIuzq/view?usp=drive_link)
 ### **2. UART Hardware**
 
 ![Alt text](images/setup76.png)
@@ -1593,6 +1595,8 @@ void USART1_TransmitByte(uint8_t byte) {
     while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
 }
 ```
+[Watch the video UART Hardware STM32F1 to PC](https://drive.google.com/file/d/1RRPxmbjE2VBhATOWUcY-6K0xQpaPFpZ9/view?usp=drive_link)
+
 ## Lesson 08: Interrupt
 
 ### **1. External Interrupt**
