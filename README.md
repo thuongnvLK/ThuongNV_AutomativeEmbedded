@@ -1290,7 +1290,9 @@ int main(){
 ```
 [Watch the video SPI Hardware Master to Slave](https://drive.google.com/file/d/1Cp6ndjatInNhXrsOrnNSq_JIlTGeFhDX/view?usp=drive_link)
 
-[Watch the video SPI Hardware Full-Duplex](https://drive.google.com/file/d/1wbqRD2VAQ85-nRc-oW3CI0bXf6gLCYCc/view?usp=drive_link)
+[Watch the video SPI Hardware Full-Duplex](https://drive.google.com/file/d/1wGIIpc63rz0ruxItDX4w1pyur1aklsXZ/view?usp=drive_link)
+
+[Watch the video SPI Software Full-Duplex](https://drive.google.com/file/d/1wbqRD2VAQ85-nRc-oW3CI0bXf6gLCYCc/view?usp=drive_link)
 
 ## Lesson 06: I2C Software and Hardware
 
