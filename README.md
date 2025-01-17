@@ -2131,7 +2131,7 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 
 ![Alt text](images/setup101.png)
 
-- Kiểm tra cờ **FLASH_CR_LOCK**, nếu **SET** thì **JnLock Flash**
+- Kiểm tra cờ **FLASH_CR_LOCK**, nếu **SET** thì **UnLock Flash**
 
 - **SET** cờ **FLASH_CR_PER** để ch phép tính năng xóa 1 Page Flash.
 
@@ -2146,6 +2146,33 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 - **Lock Flash**.
 
 ![Alt text](images/setup102.png)
+
+### **2. Bootloader**
+
+![Alt text](images/setup103.png)
+
+![Alt text](images/setup104.png)
+
+Bootloader là chương trình đầu tiên khi khởi động, thường gồm 2 loại:
+- Bootloader do nhà sản xuất cung cấp.
+- Bootloader do người dùng viết.
+
+![Alt text](images/setup105.png)
+
+![Alt text](images/setup106.png)
+
+Quá trình từ việc cấp nguồn hoặc nhấn reset cho đến hàm main():
+
+- MCU đọc giá trị BOOT0 và BOOT1 để giải quyết bắt đầu đọc dữ liệu tại nơi nào của bộ nhớ.
+- Địa chỉ bắt đầu của vùng nhớ đó sẽ được lưu vào thanh ghi PC (Program Counter) để tiến hành đọc lệnh từ đó.
+- Lấy giá trị của ô nhwos đầu tiên để khởi tạo MSP (Main Stack Pointer).
+- Thanh ghi PC chạy đến ô nhớ tiếp theo, ô nhớ này chứa địa chỉ của Reset_Handler.
+- Chương trình sẽ nhảy đến Reset_Handler để thực thi và làm các nhiệm vụ sau:
+	- Khởi tạo hệ thống.
+	- Sao chép các dữu liệu (biến) từ Flash qua Ram.
+	- Gọi hàm main().
+
+![Alt text](images/setup107.png)
 
 
 [Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
