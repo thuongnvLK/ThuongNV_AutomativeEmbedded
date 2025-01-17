@@ -1,6 +1,7 @@
 #include "stm32f10x.h"                  // Device header
 #include "stm32f10x_gpio.h"             // GPIO driver
 #include "stm32f10x_i2c.h"              // I2C driver
+#include "stm32f10x_tim.h"              // Device:StdPeriph Drivers:TIM
 
 #define SLAVE_ADDR 0x50 // Ð?a ch? 7-bit c?a Slave (0x50)
 
@@ -68,10 +69,26 @@ void I2C_Slave_SendData(uint8_t data) {
     I2C_AcknowledgeConfig(I2C1, ENABLE);
 }
 
+void TIM_Config() {
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+    TIM_TimeBaseInitTypeDef TIM_InitStruct;
+    TIM_InitStruct.TIM_ClockDivision = TIM_CKD_DIV1;  // 72MHz
+    TIM_InitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+    TIM_InitStruct.TIM_Period = 0xFFFF;
+    TIM_InitStruct.TIM_Prescaler = 7200 - 1;  // 0.1ms/count
+    TIM_TimeBaseInit(TIM2, &TIM_InitStruct);
+    TIM_Cmd(TIM2, ENABLE);
+}
+
+void I2C_DELAY(uint32_t time) {
+    TIM_SetCounter(TIM2, 0);
+    while (TIM_GetCounter(TIM2) < time / 100) {}
+}
+
 int main(void) {
     // C?u hình I2C cho slave
     I2C_Config();
-
+		TIM_Config();
     while(1) {
         // Ki?m tra xem có yêu c?u t? master
         I2C_Slave_ReceiveData();
@@ -82,6 +99,6 @@ int main(void) {
         // T?m d?ng m?t chút tru?c khi ti?p t?c
         // for(int i = 0; i < 100000; i++);
 				
-			// receivedData = 0;
+			I2C_DELAY(3000000);
     }
 }
