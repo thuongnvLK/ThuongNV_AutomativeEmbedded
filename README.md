@@ -2131,7 +2131,7 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 
 ![Alt text](images/setup101.png)
 
-[Watch the video Homework ESP32 and STM32F1](https://drive.google.com/drive/folders/1a-F_ENJ01nv03H7AKfX2MMMFbgddiiKk?usp=drive_link)
+[Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
