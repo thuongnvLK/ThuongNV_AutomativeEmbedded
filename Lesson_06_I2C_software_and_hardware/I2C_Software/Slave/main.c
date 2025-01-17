@@ -121,7 +121,8 @@ int main(void) {
 
         // Send ACK back to master
         I2C_Slave_SendAck(1);
-
+				
+				I2C_DELAY(1000);
         // (Optional) Process received data
         // For example, toggle an LED or store data in a buffer
     }

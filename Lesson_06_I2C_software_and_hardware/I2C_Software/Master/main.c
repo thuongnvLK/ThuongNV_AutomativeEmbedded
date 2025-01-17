@@ -35,6 +35,7 @@ void I2C_Init(void) {
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(I2C_GPIO_PORT, &GPIO_InitStruct);
+	
     I2C_SCL_HIGH();
     I2C_SDA_HIGH();
     I2C_DELAY(50);
@@ -42,6 +43,7 @@ void I2C_Init(void) {
 
 void I2C_Start(void) {
     I2C_SDA_HIGH();
+		I2C_DELAY(30);
     I2C_SCL_HIGH();
     I2C_DELAY(30);
     I2C_SDA_LOW();
@@ -52,6 +54,7 @@ void I2C_Start(void) {
 
 void I2C_Stop(void) {
     I2C_SDA_LOW();
+		I2C_DELAY(30);
     I2C_SCL_HIGH();
     I2C_DELAY(30);
     I2C_SDA_HIGH();
@@ -64,22 +67,24 @@ void I2C_WriteBit(uint8_t bit) {
     } else {
         I2C_SDA_LOW();
     }
-    I2C_DELAY(10);
-    I2C_SCL_HIGH();
     I2C_DELAY(30);
+    I2C_SCL_HIGH();
+    I2C_DELAY(50);
     I2C_SCL_LOW();
-    I2C_DELAY(10);
+    I2C_DELAY(50);
 }
 
 uint8_t I2C_ReadBit(void) {
     uint8_t bit;
     I2C_SDA_HIGH();
-    I2C_DELAY(10);
+    I2C_DELAY(30);
     I2C_SCL_HIGH();
-    I2C_DELAY(20);
+    I2C_DELAY(30);
     bit = I2C_SDA_READ();
+	
+		I2C_DELAY(20);
     I2C_SCL_LOW();
-    I2C_DELAY(20);
+    I2C_DELAY(50);
     return bit;
 }
 

@@ -83,19 +83,28 @@ uint8_t SPI_Transfer1Byte(uint8_t data){
 	return receivedData;
 }
 
-uint8_t txBuffer[] = {1, 2, 3, 4, 5, 6, 7};
+uint8_t txBuffer[] = {1, 2, 3, 4, 5, 6, 7}; 
+
+uint8_t dataToSend[] = "Hello from STM32";
 
 int main(){
 	RCC_Config();
 	GPIO_Config();
 	TIM_Config();
 	SPI_Config();
-	while(1){
-		for(int i = 0; i < 7; i++){
-			SPI_Send1Byte(txBuffer[i]);
-			delay_us(1000000);
-		}
-	}
+//	while(1){
+//		for(int i = 0; i < 7; i++){
+//			SPI_Send1Byte(txBuffer[i]);
+//			delay_us(1000000);
+//		}
+//	}
+	
+	while (1) {
+			for (int i = 0; i < sizeof(dataToSend) - 1; i++) {
+        SPI_Send1Byte(dataToSend[i]);
+				delay_us(1000000);
+			}
+    }
 }
 
 

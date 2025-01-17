@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\I2C_Software_Master.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\I2C_Software_Master.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Jan 17 10:15:24 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Jan 17 10:40:35 2025
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -533,7 +533,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[50]"></a>I2C_ReadBit</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, main.o(.text.I2C_ReadBit))
+<P><STRONG><a name="[50]"></a>I2C_ReadBit</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, main.o(.text.I2C_ReadBit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = I2C_ReadBit &rArr; I2C_DELAY &rArr; TIM_SetCounter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -562,7 +562,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[56]"></a>I2C_Start</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, main.o(.text.I2C_Start))
+<P><STRONG><a name="[56]"></a>I2C_Start</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, main.o(.text.I2C_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = I2C_Start &rArr; I2C_DELAY &rArr; TIM_SetCounter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
@@ -572,7 +572,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_SendData
 </UL>
 
-<P><STRONG><a name="[57]"></a>I2C_Stop</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, main.o(.text.I2C_Stop))
+<P><STRONG><a name="[57]"></a>I2C_Stop</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, main.o(.text.I2C_Stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = I2C_Stop &rArr; I2C_DELAY &rArr; TIM_SetCounter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
