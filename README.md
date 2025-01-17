@@ -2131,6 +2131,23 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 
 ![Alt text](images/setup101.png)
 
+- Kiểm tra cờ **FLASH_CR_LOCK**, nếu **SET** thì **JnLock Flash**
+
+- **SET** cờ **FLASH_CR_PER** để ch phép tính năng xóa 1 Page Flash.
+
+- Gán địa chỉ của Page cần xóa vào thanh ghi **AR**.
+
+- **SET** cờ **FLASH_CR_STRT** để tiến hành xóa Page Flash.
+
+- Chờ tới khi hoàn thành, tức là chờ cờ **FLASH_SR_BSY** là **RESET**.
+
+- **RESET** cờ **FLASH_CR_PER** để vô hiệu hóa tính năng xóa Page.
+
+- **Lock Flash**.
+
+![Alt text](images/setup102.png)
+
+
 [Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
 
 ## Contact
