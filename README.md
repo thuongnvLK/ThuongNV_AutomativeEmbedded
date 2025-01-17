@@ -89,6 +89,8 @@
 [Lesson 08: Interrupt](#lesson-08-interrupt)
 1. [External Interrupt](#1-external-interrupt)
 
+[Lesson 09: ADC](#lesson-09-adc)
+1. [Định nghĩa](#1-dinh-nghia)  
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
