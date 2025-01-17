@@ -91,7 +91,11 @@
 
 [Lesson 09: ADC](#lesson-09-adc)
 1. [Định nghĩa](#1-định-nghĩa)  
+2. [Sử dụng ADC trong STM32](#2-sử-dụng-adc-trong-stm32) 
 
+[Lesson 10: DMA](#lesson-10-dma)
+1. [Định nghĩa](#1-định-nghĩa)  
+2. [Sử dụng ADC trong STM32](#2-dma-trong-stm32) 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
