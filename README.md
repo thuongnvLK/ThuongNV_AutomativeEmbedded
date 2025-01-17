@@ -90,7 +90,7 @@
 1. [External Interrupt](#1-external-interrupt)
 
 [Lesson 09: ADC](#lesson-09-adc)
-1. [Định nghĩa](#1-dinh-nghia)  
+1. [Định nghĩa](#1-định-nghĩa)  
 
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
