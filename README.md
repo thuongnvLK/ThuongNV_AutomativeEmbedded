@@ -2174,6 +2174,15 @@ Quá trình từ việc cấp nguồn hoặc nhấn reset cho đến hàm main()
 
 ![Alt text](images/setup107.png)
 
+Thuật toán Bootloader
+
+- Sau khi Reset thì vi điều khiển nhảy đến Reset_Handler() mặc định nhảy đến hàm main() của chương trình Boot.
+- Chương trình Boot sẽ khởi tạo lại MSP bằng cách lấy dữ liệu từ ô nhớ đầu tiên của nơi lưu chương trình Application.
+- Gọi **hàm Bootloader()**, hàm này sẽ set thanh ghi SCB_VTOR theo địa chỉ App muốn nhảy đến.
+- Nhảy đến ô nhớ tiếp theo, chính là Reset_Handler của chương trình Application.
+- Bây giờ Firmware mới bắt đầu chạy và xử lý đã nhận diện Reset_Handler() ở địa chỉ mới nên dù có nhấn nút Reset thì nó vẫn chạy trong Application.
+
+![Alt text](images/setup108.png)
 
 [Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
 
