@@ -1,0 +1,656 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Thuong LENOVO, HCMUT, LIC=QF82M-XXX4U-LQR0Q-NEMJW-BZKPY-22WVU
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\Khóa RTOS\Rrobin\rr2.uvprojx
+Project File Date:  09/23/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+Note: source file '.\osKernel.c' - object file renamed from '.\Objects\osKernel.o' to '.\Objects\oskernel_1.o'.
+RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(75): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(96): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |             ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |     ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(408): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  408 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+      |         ^~~~~~~~~~~~~
+11 warnings generated.
+compiling system_stm32f10x.c...
+assembling osKernel.s...
+assembling startup_stm32f10x_md.s...
+main.c(16): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   16 | //// Stack cho c<E1>c task
+      |                 ^
+main.c(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 | //// Nh?y d?n chuong tr<EC>nh b<EA>n ngo<E0>i
+      |                        ^
+main.c(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 | //// Nh?y d?n chuong tr<EC>nh b<EA>n ngo<E0>i
+      |                                ^
+main.c(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 | //// Nh?y d?n chuong tr<EC>nh b<EA>n ngo<E0>i
+      |                                         ^
+main.c(24): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   24 | //    // L?y d?a ch? h<E0>m kh?i t?o c?a ?ng d?ng
+      |                       ^
+main.c(27): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   27 | //    // C?u h<EC>nh stack pointer cho ?ng d?ng
+      |               ^
+main.c(30): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   30 | //    // Nh?y v<E0>o ?ng d?ng
+      |                ^
+main.c(68): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   68 | //            "STR R0, [%0]\n" // Luu MSP v<E0>o TCB c?a task hi?n t?i
+      |                                            ^
+main.c(81): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   81 | //            "MSR MSP, R0\n" // <D0>?t MSP cho task ti?p theo
+      |                                  ^
+main.c(93): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   93 | //    // Kh?i t?o c<E1>c task v?i chuong tr<EC>nh t?i hai d?a ch? c? th?
+      |                    ^
+main.c(93): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   93 | //    // Kh?i t?o c<E1>c task v?i chuong tr<EC>nh t?i hai d?a ch? c? th?
+      |                                            ^
+main.c(97): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   97 | //    // Ch?y scheduler d? qu?n l<FD> c<E1>c task
+      |                                  ^
+main.c(97): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   97 | //    // Ch?y scheduler d? qu?n l<FD> c<E1>c task
+      |                                        ^
+main.c(100): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  100 | //    // Trong tru?ng h?p b?n c?n nh?y d?n chuong tr<EC>nh kh<E1>c
+      |                                                     ^
+main.c(100): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  100 | //    // Trong tru?ng h?p b?n c?n nh?y d?n chuong tr<EC>nh kh<E1>c
+      |                                                              ^
+main.c(101): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  101 | //    // uint32_t address = 0x08010000; // <D0>?a ch? c?a chuong tr<EC>nh mu?n nh?y d?n
+      |                                            ^
+main.c(101): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  101 | //    // uint32_t address = 0x08010000; // <D0>?a ch? c?a chuong tr<EC>nh mu?n nh?y d?n
+      |                                                                    ^
+main.c(108): warning: In file included from...
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                   ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                          ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                 ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                        ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                              ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                                      ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                                              ^
+main.c(109): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+main.c(109): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(75): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+main.c(109): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(96): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+main.c(126): warning: no previous extern declaration for non-static variable 'program1' [-Wmissing-variable-declarations]
+  126 | void (*program1)(void) = (void (*)(void))0x08010000  ; //  0x08000800; // sTOP
+      |        ^
+main.c(126): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  126 | void (*program1)(void) = (void (*)(void))0x08010000  ; //  0x08000800; // sTOP
+      | ^
+main.c(127): warning: no previous extern declaration for non-static variable 'program2' [-Wmissing-variable-declarations]
+  127 | void (*program2)(void) = (void (*)(void))0x08018000   ;//  0x08002C00;  // rUNG
+      |        ^
+main.c(127): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  127 | void (*program2)(void) = (void (*)(void))0x08018000   ;//  0x08002C00;  // rUNG
+      | ^
+main.c(128): warning: no previous extern declaration for non-static variable 'program3' [-Wmissing-variable-declarations]
+  128 | void (*program3)(void) = (void (*)(void))0x08008000  ;// 0x08005000; // SLOW
+      |        ^
+main.c(128): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  128 | void (*program3)(void) = (void (*)(void))0x08008000  ;// 0x08005000; // SLOW
+      | ^
+36 warnings generated.
+compiling main.c...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(23): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(23): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(75): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(131): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+  131 |     NVIC->IP[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
+      |                                                ~ ^~~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(131): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  131 |     NVIC->IP[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
+      |     ^~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\core_cm3.h(1392): note: expanded from macro 'NVIC'
+ 1392 | #define NVIC                ((NVIC_Type      *)     NVIC_BASE     )   /*!< NVIC configuration struct */
+      |                             ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(134): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  134 |     NVIC->ISER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
+      |     ^~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\core_cm3.h(1392): note: expanded from macro 'NVIC'
+ 1392 | #define NVIC                ((NVIC_Type      *)     NVIC_BASE     )   /*!< NVIC configuration struct */
+      |                             ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c(140): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  140 |     NVIC->ICER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
+      |     ^~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\core_cm3.h(1392): note: expanded from macro 'NVIC'
+ 1392 | #define NVIC                ((NVIC_Type      *)     NVIC_BASE     )   /*!< NVIC configuration struct */
+      |                             ^
+10 warnings generated.
+compiling misc.c...
+osKernel.c(1): warning: In file included from...
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                   ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                          ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                 ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                        ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                              ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                                      ^
+./osKernel.h(3): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+    3 |  * @brief   Khai b<E1>o c<E1>c h<E0>m v<E0> c<E2>u tr<FA>c li<EA>n quan Kernel
+      |                                                              ^
+osKernel.c(2): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+osKernel.c(2): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(75): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+osKernel.c(2): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(96): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+osKernel.c(14): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   14 |           // <D0><E1>nh d?u stack v?i gi<E1> tr? d?c bi?t (v<ED> d?: 0xDEADBEEF)
+      |              ^
+osKernel.c(14): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   14 |           // <D0><E1>nh d?u stack v?i gi<E1> tr? d?c bi?t (v<ED> d?: 0xDEADBEEF)
+      |                                         ^
+osKernel.c(14): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   14 |           // <D0><E1>nh d?u stack v?i gi<E1> tr? d?c bi?t (v<ED> d?: 0xDEADBEEF)
+      |                                                             ^
+osKernel.c(112): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  112 |     uint32_t JumAddress = *(__IO uint32_t*)(baseAddress + 4);
+      |              ^
+osKernel.c(16): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   16 |         TCB_STACK[i][j] = 0xDEADBEEF;
+      |         ^~~~~~~~~~~~
+osKernel.c(16): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   16 |         TCB_STACK[i][j] = 0xDEADBEEF;
+      |         ^~~~~~~~~
+osKernel.c(19): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   19 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE-16]; // StackPointer
+      |     ^~~~
+osKernel.c(19): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   19 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE-16]; // StackPointer
+      |                        ^~~~~~~~~~~~
+osKernel.c(19): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   19 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE-16]; // StackPointer
+      |                        ^~~~~~~~~
+osKernel.c(21): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   21 |     TCB_STACK[i][STACK_SIZE-1] = 1 << 24; /* PSR 0x01000000*/
+      |     ^~~~~~~~~~~~
+osKernel.c(21): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   21 |     TCB_STACK[i][STACK_SIZE-1] = 1 << 24; /* PSR 0x01000000*/
+      |     ^~~~~~~~~
+osKernel.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   23 |     TCB_STACK[i][STACK_SIZE-3] = 0x14141414; /* R14 (LR) */
+      |     ^~~~~~~~~~~~
+osKernel.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   23 |     TCB_STACK[i][STACK_SIZE-3] = 0x14141414; /* R14 (LR) */
+      |     ^~~~~~~~~
+osKernel.c(24): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   24 |     TCB_STACK[i][STACK_SIZE-4] = 0x12121212; /* R12 */
+      |     ^~~~~~~~~~~~
+osKernel.c(24): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   24 |     TCB_STACK[i][STACK_SIZE-4] = 0x12121212; /* R12 */
+      |     ^~~~~~~~~
+osKernel.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   25 |     TCB_STACK[i][STACK_SIZE-5] = 0x03030303; /* R3 */
+      |     ^~~~~~~~~~~~
+osKernel.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   25 |     TCB_STACK[i][STACK_SIZE-5] = 0x03030303; /* R3 */
+      |     ^~~~~~~~~
+osKernel.c(26): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   26 |     TCB_STACK[i][STACK_SIZE-6] = 0x02020202; /* R2 */
+      |     ^~~~~~~~~~~~
+osKernel.c(26): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   26 |     TCB_STACK[i][STACK_SIZE-6] = 0x02020202; /* R2 */
+      |     ^~~~~~~~~
+osKernel.c(27): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   27 |     TCB_STACK[i][STACK_SIZE-7] = 0x01010101; /* R1 */
+      |     ^~~~~~~~~~~~
+osKernel.c(27): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   27 |     TCB_STACK[i][STACK_SIZE-7] = 0x01010101; /* R1 */
+      |     ^~~~~~~~~
+osKernel.c(28): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   28 |     TCB_STACK[i][STACK_SIZE-8] = 0x00000000; /* R0 */
+      |     ^~~~~~~~~~~~
+osKernel.c(28): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   28 |     TCB_STACK[i][STACK_SIZE-8] = 0x00000000; /* R0 */
+      |     ^~~~~~~~~
+osKernel.c(30): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   30 |     TCB_STACK[i][STACK_SIZE-9] = 0x11111111; /* R11 */
+      |     ^~~~~~~~~~~~
+osKernel.c(30): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   30 |     TCB_STACK[i][STACK_SIZE-9] = 0x11111111; /* R11 */
+      |     ^~~~~~~~~
+osKernel.c(31): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   31 |     TCB_STACK[i][STACK_SIZE-10] = 0x10101010; /* R10 */
+      |     ^~~~~~~~~~~~
+osKernel.c(31): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   31 |     TCB_STACK[i][STACK_SIZE-10] = 0x10101010; /* R10 */
+      |     ^~~~~~~~~
+osKernel.c(32): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   32 |     TCB_STACK[i][STACK_SIZE-11] = 0x09090909; /* R9 */
+      |     ^~~~~~~~~~~~
+osKernel.c(32): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   32 |     TCB_STACK[i][STACK_SIZE-11] = 0x09090909; /* R9 */
+      |     ^~~~~~~~~
+osKernel.c(33): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   33 |     TCB_STACK[i][STACK_SIZE-12] = 0x08080808; /* R8 */
+      |     ^~~~~~~~~~~~
+osKernel.c(33): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   33 |     TCB_STACK[i][STACK_SIZE-12] = 0x08080808; /* R8 */
+      |     ^~~~~~~~~
+osKernel.c(34): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   34 |     TCB_STACK[i][STACK_SIZE-13] = 0x07070707; /* R7 */
+      |     ^~~~~~~~~~~~
+osKernel.c(34): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   34 |     TCB_STACK[i][STACK_SIZE-13] = 0x07070707; /* R7 */
+      |     ^~~~~~~~~
+osKernel.c(35): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   35 |     TCB_STACK[i][STACK_SIZE-14] = 0x06060606; /* R6 */
+      |     ^~~~~~~~~~~~
+osKernel.c(35): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   35 |     TCB_STACK[i][STACK_SIZE-14] = 0x06060606; /* R6 */
+      |     ^~~~~~~~~
+osKernel.c(36): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   36 |     TCB_STACK[i][STACK_SIZE-15] = 0x05050505; /* R5 */
+      |     ^~~~~~~~~~~~
+osKernel.c(36): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   36 |     TCB_STACK[i][STACK_SIZE-15] = 0x05050505; /* R5 */
+      |     ^~~~~~~~~
+osKernel.c(37): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   37 |     TCB_STACK[i][STACK_SIZE-16] = 0x04040404; /* R4 */
+      |     ^~~~~~~~~~~~
+osKernel.c(37): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   37 |     TCB_STACK[i][STACK_SIZE-16] = 0x04040404; /* R4 */
+      |     ^~~~~~~~~
+osKernel.c(43): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   43 |         TCB_STACK[i][j] = 0xDEADBEEF;
+      |         ^~~~~~~~~~~~
+osKernel.c(43): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   43 |         TCB_STACK[i][j] = 0xDEADBEEF;
+      |         ^~~~~~~~~
+osKernel.c(46): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   46 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE - 16]; // Set Stack Pointer
+      |     ^~~~
+osKernel.c(46): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   46 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE - 16]; // Set Stack Pointer
+      |                        ^~~~~~~~~~~~
+osKernel.c(46): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   46 |     tcbs[i].stackPt = &TCB_STACK[i][STACK_SIZE - 16]; // Set Stack Pointer
+      |                        ^~~~~~~~~
+osKernel.c(47): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   47 |     TCB_STACK[i][STACK_SIZE - 1] = 1 << 24;           // PSR Thumb bit
+      |     ^~~~~~~~~~~~
+osKernel.c(47): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   47 |     TCB_STACK[i][STACK_SIZE - 1] = 1 << 24;           // PSR Thumb bit
+      |     ^~~~~~~~~
+osKernel.c(48): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   48 |     TCB_STACK[i][STACK_SIZE - 2] = *(volatile uint32_t *)(tcbs[i].baseAddress + 4); // PC (address of program to run)
+      |     ^~~~~~~~~~~~
+osKernel.c(48): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   48 |     TCB_STACK[i][STACK_SIZE - 2] = *(volatile uint32_t *)(tcbs[i].baseAddress + 4); // PC (address of program to run)
+      |     ^~~~~~~~~
+osKernel.c(48): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   48 |     TCB_STACK[i][STACK_SIZE - 2] = *(volatile uint32_t *)(tcbs[i].baseAddress + 4); // PC (address of program to run)
+      |                                                           ^~~~
+osKernel.c(51): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   51 |     TCB_STACK[i][STACK_SIZE - 3] = 0x14141414; // LR
+      |     ^~~~~~~~~~~~
+osKernel.c(51): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   51 |     TCB_STACK[i][STACK_SIZE - 3] = 0x14141414; // LR
+      |     ^~~~~~~~~
+osKernel.c(52): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   52 |     TCB_STACK[i][STACK_SIZE - 4] = 0x12121212; // R12
+      |     ^~~~~~~~~~~~
+osKernel.c(52): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   52 |     TCB_STACK[i][STACK_SIZE - 4] = 0x12121212; // R12
+      |     ^~~~~~~~~
+osKernel.c(53): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   53 |     TCB_STACK[i][STACK_SIZE - 5] = 0x03030303; // R3
+      |     ^~~~~~~~~~~~
+osKernel.c(53): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   53 |     TCB_STACK[i][STACK_SIZE - 5] = 0x03030303; // R3
+      |     ^~~~~~~~~
+osKernel.c(54): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   54 |     TCB_STACK[i][STACK_SIZE - 6] = 0x02020202; // R2
+      |     ^~~~~~~~~~~~
+osKernel.c(54): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   54 |     TCB_STACK[i][STACK_SIZE - 6] = 0x02020202; // R2
+      |     ^~~~~~~~~
+osKernel.c(55): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   55 |     TCB_STACK[i][STACK_SIZE - 7] = 0x01010101; // R1
+      |     ^~~~~~~~~~~~
+osKernel.c(55): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   55 |     TCB_STACK[i][STACK_SIZE - 7] = 0x01010101; // R1
+      |     ^~~~~~~~~
+osKernel.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |     TCB_STACK[i][STACK_SIZE - 8] = 0x00000000; // R0
+      |     ^~~~~~~~~~~~
+osKernel.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |     TCB_STACK[i][STACK_SIZE - 8] = 0x00000000; // R0
+      |     ^~~~~~~~~
+osKernel.c(59): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   59 |     TCB_STACK[i][STACK_SIZE - 9]  = 0x11111111; // R11
+      |     ^~~~~~~~~~~~
+osKernel.c(59): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   59 |     TCB_STACK[i][STACK_SIZE - 9]  = 0x11111111; // R11
+      |     ^~~~~~~~~
+osKernel.c(60): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   60 |     TCB_STACK[i][STACK_SIZE - 10] = 0x10101010; // R10
+      |     ^~~~~~~~~~~~
+osKernel.c(60): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   60 |     TCB_STACK[i][STACK_SIZE - 10] = 0x10101010; // R10
+      |     ^~~~~~~~~
+osKernel.c(61): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   61 |     TCB_STACK[i][STACK_SIZE - 11] = 0x09090909; // R9
+      |     ^~~~~~~~~~~~
+osKernel.c(61): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   61 |     TCB_STACK[i][STACK_SIZE - 11] = 0x09090909; // R9
+      |     ^~~~~~~~~
+osKernel.c(62): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   62 |     TCB_STACK[i][STACK_SIZE - 12] = 0x08080808; // R8
+      |     ^~~~~~~~~~~~
+osKernel.c(62): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   62 |     TCB_STACK[i][STACK_SIZE - 12] = 0x08080808; // R8
+      |     ^~~~~~~~~
+osKernel.c(63): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   63 |     TCB_STACK[i][STACK_SIZE - 13] = 0x07070707; // R7
+      |     ^~~~~~~~~~~~
+osKernel.c(63): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   63 |     TCB_STACK[i][STACK_SIZE - 13] = 0x07070707; // R7
+      |     ^~~~~~~~~
+osKernel.c(64): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   64 |     TCB_STACK[i][STACK_SIZE - 14] = 0x06060606; // R6
+      |     ^~~~~~~~~~~~
+osKernel.c(64): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   64 |     TCB_STACK[i][STACK_SIZE - 14] = 0x06060606; // R6
+      |     ^~~~~~~~~
+osKernel.c(65): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   65 |     TCB_STACK[i][STACK_SIZE - 15] = 0x05050505; // R5
+      |     ^~~~~~~~~~~~
+osKernel.c(65): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   65 |     TCB_STACK[i][STACK_SIZE - 15] = 0x05050505; // R5
+      |     ^~~~~~~~~
+osKernel.c(66): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   66 |     TCB_STACK[i][STACK_SIZE - 16] = 0x04040404; // R4
+      |     ^~~~~~~~~~~~
+osKernel.c(66): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   66 |     TCB_STACK[i][STACK_SIZE - 16] = 0x04040404; // R4
+      |     ^~~~~~~~~
+osKernel.c(128): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  128 |         tcbs[current_num_of_thread].baseAddress = (uint32_t)(task);
+      |         ^~~~
+osKernel.c(132): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  132 |                 tcbs[current_num_of_thread].nextPt = &tcbs[current_num_of_thread];
+      |                 ^~~~
+osKernel.c(132): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  132 |                 tcbs[current_num_of_thread].nextPt = &tcbs[current_num_of_thread];
+      |                                                       ^~~~
+osKernel.c(134): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  134 |                 tcbs[current_num_of_thread - 1].nextPt = &tcbs[current_num_of_thread];
+      |                 ^~~~
+osKernel.c(134): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  134 |                 tcbs[current_num_of_thread - 1].nextPt = &tcbs[current_num_of_thread];
+      |                                                           ^~~~
+osKernel.c(135): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  135 |                 tcbs[current_num_of_thread].nextPt = &tcbs[0];
+      |                 ^~~~
+99 warnings generated.
+compiling osKernel.c...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(22): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(22): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\stm32f10x_rcc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(8347): warning: In file included from...
+./RTE/Device/STM32F103C8\stm32f10x_conf.h(96): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc\misc.h(31): warning: In file included from...
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(1010): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+ 1010 |   presc = APBAHBPrescTable[tmp];
+      |           ^~~~~~~~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(1016): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+ 1016 |   presc = APBAHBPrescTable[tmp];
+      |           ^~~~~~~~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(1022): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+ 1022 |   presc = APBAHBPrescTable[tmp];
+      |           ^~~~~~~~~~~~~~~~
+C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c(1028): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+ 1028 |   presc = ADCPrescTable[tmp];
+      |           ^~~~~~~~~~~~~
+10 warnings generated.
+compiling stm32f10x_rcc.c...
+linking...
+Program Size: Code=1128 RO-data=268 RW-data=12 ZI-data=7196  
+FromELF: creating hex file...
+".\Objects\rr2.axf" - 0 Error(s), 166 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM::CMSIS@5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
+                Keil::STM32F1xx_DFP@2.4.1
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+   * Component: Framework Version: 3.6.0
+   * Component: RCC Version: 3.6.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103C8
+  ./RTE/_Target_1
+  C:/Users/LENOVO/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+  C:/Users/LENOVO/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@5.6.0
+
+   * Component: Keil::Device:Startup@1.0.0
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
+
+   * Component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
+      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
+      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
+      Source file:   Device/StdPeriph_Driver/src/misc.c
+      Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
+      Include file:  Device/StdPeriph_Driver/inc/misc.h
+
+   * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
+      Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
+      Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>
