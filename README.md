@@ -2117,6 +2117,19 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 
 ![Alt text](images/setup99.png)
 
+- Flash sẽ được chia thành các Page dễ dàng quản lý.
+
+- Mỗi **Page** có kích thước là **1KB**.
+
+- Trước khi ghi phải **xóa**. Mỗi lần xóa, cả Page sẽ bị xóa trắng (0xFF).
+
+- Khi ghi dữ liệu, chỉ có thể ghi từ Halfword (16-bit) đến 1 word (32-bit) tại một thời điểm.
+
+- Flash có giới hạn về số lần xóa/ ghi.
+
+![Alt text](images/setup100.png)
+
+![Alt text](images/setup101.png)
 
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
