@@ -88,6 +88,8 @@
 
 [Lesson 08: Interrupt](#lesson-08-interrupt)
 1. [External Interrupt](#1-external-interrupt)
+2. [Timer Interrupt](#2-timer-interrupt) 
+3. [Communication Interrupt](#3-communication-interrupt)
 
 [Lesson 09: ADC](#lesson-09-adc)
 1. [Định nghĩa](#1-định-nghĩa)  
