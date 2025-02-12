@@ -2200,6 +2200,39 @@ Thuật toán Bootloader
 
 [Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
 
+## Lesson 12: CAN
+
+### 1. Theory
+
+#### 1.1. CAN
+
+- Controller Area Netwwork (CAN) là giao thức nối tiếp hỗ trợ mạng cho những hệ thống điều khiển thời gian thực phân bố (distributed realtime control system).
+- CAN đặc biệt được ứng dụng nhiều trong ngành công nghiệp oto.
+- CAN cho phép các vi điều khiển và các thiệt bị khác nhau giao tiếp với nhau mà không cần có máy tính chủ.
+- Trước khi có CAN, các hệ thống điều khiển trong xe (như hệ thống động cơ, phanh, và các hệ thống điều khiển khác) thường sử dụng các giao tiếp song song hoặc nối tiếp đơn giản. Điều này gây ra sự phức tạp khi phải kết nối nhiều hệ thống với nhau, do cần nhiều dây dẫn, chi phí cao, và nguy cơ xảy ra lỗi trong hệ thống lớn
+
+![Alt text](images/setup109.png)
+
+- **CAN được phát triển để giải quyết các vấn đề này bằng cách**:
+	- Cho phép nhiều hệ thống điều khiển (ECU)  giao tiếp với nhau trên một bus truyền thông chung.
+	- Giảm số lượng dây dẫn, giúp tiết kiểm chi phí và tăng độ tin cậy của hệ thống.
+	- Không yêu cầu máy tính chủ (master) để điều phối các thiết bị. Các thiết bị trên bus CAN có thể truyền dữ liệu bất cứ khi nào, với cơ chế arbitrage tự động để tránh xung đột.
+	- Độ tin cậy cao, đẩm bảo việc phát hiện lỗi tự động thông qua cơ chế kiểm tra và sửa lỗi. Điều này cực kỳ quan trọng trong các hệ thống oto yêu cầu an toàn cao.
+
+#### 1.2. Kiến trúc
+
+##### 1.2.1. Bus topology 
+
+- Giao thức CAN sử dụng tô-pô bus để kết nối các thiết bị với nhau, nghĩa là tất cả các thiết bị (node) đều được kết nối song song vào một cặp dây truyền thông chung được gọi là CAN bus.
+
+- CAN bus này gồm hai dây tín hiều chính, là:
+	- CAN (CAN High): Dây tín hiệu cao.
+	- CAN (CAN Low): Dây tín hiệu thấp.
+
+
+### 2. Practice
+
+
 ## Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)

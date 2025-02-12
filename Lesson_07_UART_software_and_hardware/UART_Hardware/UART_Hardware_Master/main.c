@@ -84,13 +84,13 @@ int main(){
 	TIM_Config();
 	UART_Config();
 	while(1){
-		for(int i = 0; i < 7; i++){
-			USART1_TransmitByte(data[i]);
-			delay_ms(1000);
-		}
-		USART1_TransmitByte('\n');
-//		for(int i = 0; i < 100; i++){
-//			buffer[i] = USART1_ReceiveByte();
+//		for(int i = 0; i < 7; i++){
+//			USART1_TransmitByte(data[i]);
+//			delay_ms(1000);
 //		}
+		USART1_TransmitByte('\n');
+		for(int i = 0; i < 100; i++){
+			buffer[i] = USART1_ReceiveByte();
+		}
 	}
 }
