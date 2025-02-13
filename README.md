@@ -2367,9 +2367,13 @@ Thuật toán Bootloader
 
 - Đây là loại khung phổ biến nhất và được sử dụng để truyền dữ liệu thực sự trên mạng CAN. Data Frame chứa thông tin về ID của node gửi và dữ liệu được truyền. Mỗi khung có thể chứa tối đa 8 byte dữ liệu.
 
+![Alt text](images/setup127.png)
+
 - Cấu trúc của Data Frame:
 	- ID (Identifier): Mỗi thông điệp trong mạng CAN đều có một ID, thể hiện mức độ ưu tiên của thông điệp. ID càng thấp thì thông điệp càng được ưu tiên cao hơn trong quá trình tranah chấp quyền gửi (arbitraction).
 	- Payload: Đây là phần dữ liệu chính của thông điệp, có thể chứa từ 0 đến 8 byte dữ liệu.
+
+![Alt text](images/setup126.png)
 
 ###### 1.3.1.2. Remote Frame
 
