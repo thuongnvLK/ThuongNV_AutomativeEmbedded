@@ -2603,11 +2603,12 @@ Thuật toán Bootloader
 	- Đơn vị của phân đoạn thời gian: Time Quanta (TQ)
 		- Time Quanta (TQ) là đơn vị thời gian nhỏ nhất mà một bit trong giao thức CAN được chia thành. Mỗi phân đoạn thời gian trong 1 bit được tính bằng số lượng TQ.
 		- Mỗi node trên bus CAN sử dụng cùng một đơn vị TQ, và tổng số TQ trong một bit sẽ quyết định tốc độ baud của hệ thống.
+
 - Vậy, tổng thời gian của một bit trong giao thức CAN là tổng của các phân đoạn thời gian (Sync Segment, Propagation Segment, PS1, và PS2), tính bằng TQ:
 	$Bit Time=Sync Segment+Propagation Segment+PS1+PS2$
 
-Và tốc độ baud (bit rate) được tính như sau:
-Tốc độ baud =1Bit Time (bps)
+- Và tốc độ baud (bit rate) được tính như sau:
+	$Tốc độ baud =1 / Bit Time (bps)$
 8.2 Bộ lọc CAN
 Trong CAN, các node có thể nhận rất nhiều thông điệp, nhưng không phải tất cả thông điệp đều liên quan đến tất cả các node. Bộ lọc CAN cho phép các node lựa chọn và chỉ nhận những thông điệp cần thiết, dựa trên ID của thông điệp hoặc các tiêu chí khác.
 Vai trò của bộ lọc CAN:
