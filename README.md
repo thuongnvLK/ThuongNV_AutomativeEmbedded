@@ -2273,6 +2273,169 @@ Thuật toán Bootloader
 - Mạng CAN có những đặc điểm giao tiếp nổi bật giúp nó trở thành một giao thức truyền thông đáng tin cậy và hiệu quả trogn quá các hệ thống nhúng:
 	- Không cần máy tính chủ (No Master-Slave Arrchitecture)
 	Mạng CAN không tuân theo kiến trúc master-slave. Tất cả các thiết bị trên bus đều có quyền bình đẳng trong việc truyền dữ liệu mà không cần phải có thiết bị chủ điều khiển. Điều này cho phép mạng hoạt động linh hoạt hơn, khi bất kỳ node nào cũng có thể truyền hoặc nhận thông tin bất cứ lúc nào.
+	- Truyền thông quảng bá (Broadcast Communication)
+	Khi một node gửi thông điệp, thông điệp đó sẽ được phát sóng đến tất cả các node trên trên bus. Tuy nhiên, không phải tất cả các node đều xử lý thông điệp này. Mỗi node sẽ sử dụng bộ lọc để kiển tra xem thông điệp có phù hợp với mình hay không.
+	- Tranh chấp quyển gửi (Arbitration)
+	Một đặc điển quan trọng của mạng CAN là khả năng giải quyết tranh chấp quyền gửi dữ liệu giữa các node. Nếu có nhiều node cùng muốn gửi dữ liệu lên bus cùng một lúc, cơ chế arbitration sẽ được thực hiện:
+		- Mỗi thông điệp CAN có một ID ưu tiên. Node nào có thông điệp với ID ưu tiên thấp hơn (tức có độ ưu tiên cao hơn) sẽ chiếm quyền truy cập bus và gửi thông điệp trước.
+		- Những node khác có ID ưu tiên cao hơn sẽ tự động dừng lại và chờ lượt tiếp theo để gửi thông điệp.
+		- Quá trình arbitration diễn ra mà không gây mất dữ liệu hay lầm gián đoạn các thiết bị khác, vì thế mạng CAN là một hệ thống non-destructive (không gây mất dữ liệu).
+	- Giao tiếp song song (Full-duplex Communication)
+	Mặc dù chỉ sử dụng một bus với hai dây tín hiệu, mạng CAN vẫn cho phép các node vừa gửi vửa nhận dữ liệu đồng thời. Điều này giúp mạng CAN hoạt động hiệu quả và không bị nghẽn khi có nhiều thiết bị cùng giao tiếp.
+	- Phát hiện và xử lý lỗi tự động
+	Một tính năng quan trọng khác của mạng CAN là khả năng tự động phát hiện và xử lý lỗi. Nếu một node phát hiện ra lỗi trong quá trình truyền hoặc nhận dữ liệu (do nhiễu, mất gói, hoặc lỗi tín hiệu), node đó sẽ gửi một Error Frame để thông báo cho các node khác rằng dữu liệu bị lỗi. Sau đó, thông điệp sẽ được truyền lại.
+
+#### 1.3. Khung dữ liệu trong CAN
+- Trong mạng CAN, dữ liệu được truyền thông qua các khung dữ liệu (CAN Frame). Mỗi khung dữ liệu bao gồm nhiều trường khác nhau, từ việc chỉ định ID của thiết bị gửi cho đến việc chứa dữ liệu và thông tin kiểm tra lỗi. Mạng CAN hỗ trợ nhiều loại khung dữ liệu, mỗi loại có chức năng cụ thể. Dưới đây là chi tiết về các loại khung và cấu trúc của một khung dữ liệu trong mạng CAN.
+
+##### 1.3.1. Các loại khung dữ liệu trong CAN
+
+###### 1.3.1.1. Data Frame
+
+- Đây là loại khung phổ biến nhất và được sử dụng để truyền dữ liệu thực sự trên mạng CAN. Data Frame chứa thông tin về ID của node gửi và dữ liệu được truyền. Mỗi khung có thể chứa tối đa 8 byte dữ liệu.
+
+- Cấu trúc của Data Frame:
+	- ID (Identifier): Mỗi thông điệp trong mạng CAN đều có một ID, thể hiện mức độ ưu tiên của thông điệp. ID càng thấp thì thông điệp càng được ưu tiên cao hơn trong quá trình tranah chấp quyền gửi (arbitraction).
+	- Payload: Đây là phần dữ liệu chính của thông điệp, có thể chứa từ 0 đến 8 byte dữ liệu.
+
+###### 1.3.1.2. Remote Frame
+
+- Remore Frame được sử dụng khi một node trên mạng CAN yêu cầu dữ liệu từ một node khác. Thay vì chứa dữ liệu thực, Remote Frame chứa ID của node cần yêu cầu, cùng với bit điều khiển RTR (Remote Transmission Request).
+- Remote Frame thường được sử dụng trong các hệ thống ầ một node có thể yêu cầu thông tin từ một node khác mầ không có dữ liệu nào được truyền ngay lập tức. Node nhận yêu cầu sẽ trả lời bằng một Data Frame chứa dữ liệu cần thiết.
+
+![Alt text](images/setup112.png)
+
+###### 1.3.1.3. Error Frame
+
+- Error Frame được sử dụng khi một node phát hiện ra lỗi trong quá trình truyền dữ liệu. Nó được gửi để thông báo cho các node khác rằng có lỗi đã xảy ra trên bus. Bất kì node nào phát hiện ra lỗi đều có thể gửi Error Frame.
+- Error Frame có vai trò rất quan trọng trong việc duy trì độ tin cậy của mạng CAN. Khi một lỗi xảy ra, Error Frame sẽ báo tín hiệu để các node khác biết rằng thông điệp vừa được truyền không hợp lệ và cần được truyền lại.
+- Error Frame gồm hai phần: Error Flag và Error Delimiter. Error Flag là chuỗi từ 6 đến 12 bit dominant, báo hiệu lỗi. Error Delimiter là chuỗi 8 bit recessive, kết thức Error Frame.
+
+![Alt text](images/setup113.png)
+
+###### 1.3.1.4. Overload
+
+- Overload Frame được sử dụng để báo hiệu rằng một node đang trong trạng thái bận và không thể xử lý thêm thông điệp nào ngay lập tức. Điều này có thể xảy ra khi một node chưa xử lý xong thông điệp trước đó hoặc hệ thống quá tải.
+- Khi một node gửi Overload Frame, nó báo hiệu cho các node khác trên mạng rằng chúng cần dừng truyền thông trong một thời gian ngắn để giảm tải cho node đó.
+
+![Alt text](images/setup114.png)
+
+##### 1.3.2. Cấu trúc của một khung dữ liệu trong CAN
+
+![Alt text](images/setup115.png)
+
+##### 1.3.2.1. Start of Frame (SOF)
+
+- SOF là bit bắt đầu của khung dữ liệu, chỉ có giá trị dominant (0). Nó báo hiệu rằng một khung dữ liệu mới đang bắt đầu. Trong cả các node trên mạng sẽ nhận biết rằng đây là thời gian để bắt đầu đọc dữ liệu.
+
+##### 1.3.2.2. Arrbitration Field (Trường tranh chấp)
+
+- Trường này chứa ID của thông điệp vầ bit RTR (Remote Transmission Request).
+	- ID: Chứa định danh của thông điệp, ID này được sử dụng để xấc định mức độ ưu tiên trong quá trình arbitration (tranh chấp quyền gửi).
+	- RTR: Đối với Data Frame, bit này sẽ có giá trị dominant (0). Đối với Remote Frame, bit này sẽ có giá trị recessive (1), báo hiệu rằng đây là một yyeeu cầu dữ liệu từ một node khác.
+
+##### 1.3.2.3. Controll Field (Trường điều khiển)
+
+- Controll Field chứa thông tin về kích thước của phần dữ liệu.
+- DLC (Data Length Code): Đây là trường quan trọng trong Control Field, xác định độ dài của dữ liệu (từ 0 đến 8 byte).
+
+##### 1.3.2.4. Data Field (Trường dữ liệu)
+
+- Data Field là phần chứa dữ liệu chính của khung, có thể có từ 0 đến 8 byte dữ liệu. Trong Data Frame, đây là nơi chứa thông tin mầ node gửi muốn truyền tải.
+
+##### 1.3.2.5. CRC Field (Trường kiểm tra lỗi)
+
+- CRC (Cyclic Redundancy Check): Đây là trường kiểm tra lỗi, giúp phát hiện các lỗi xảy ra trong quá trình truyền dữ liệu. Node nhận sẽ sử dụng CRC Field để kiểm tra xem dữ liệu đã được truyền chính xác hay chưa. Nếu phát hiện lỗi, một Error Frame sẽ được gửi đi.
+
+##### 1.3.2.6. ACK Field (Trường xác nhận)
+
+- ACK Field được sử dụng để xác nhận rằng một thông điệp đã được nhận thành công. Khi một node nhận được dữ liệu mà không phát hiện lỗi, nó sẽ gửi bit ACK dominant (0) vào trường ACK để thông báo cho node gửi rằng dữ liệu đã được nhận chính xác.
+- Nếu không có node nào gửi ACK, điều này báo hiệu ranwgf có lỗi xảy ra hoặc thông điệp không được nhận đúng cách, và node gửi sẽ phải truyền lại thông điệp.
+
+##### 1.3.2.7. End of Frame (EOF)
+
+- EOF là trường kết thúc của khung dữ liệu, chứa một chuỗi các bit recessive (1). Trường này báo hiệu rằng toàn bộ khung dữ liệu đã được truyền và quá trình truyền thông cho khung này đã kết thúc.
+
+#### 1.4. Arbitration trong CAN
+
+- Arbitration (tranh chấp quyền gửi) là một cơ chế quan trọng của giao thức CAN, cho phép nhiều node trên bus có thể cố gắng truyền thông điệp đồng thời mà không gây xung đột hoặc mất dữ liệu. Cơ chế này đảm bảo rằng node có mức độ ưu tiên cao nhất sẽ chiếm quyền truy cập bus, trong khi các node có ưu tiên thấp hơn sẽ đợi lượt tiếp theo. Điều đặc biệt là quá trình này diễn ra một cách không phá hủy (non-destructive), tức là không có bất kỳ dữ liệu nào bị mất khi có xung đột về quyền gửi.
+##### 1.4.1. Cơ chế ưu tiên
+
+- Trong mạng CAN, ID của thông điệp đóng vai trò quan trọng trong việc xác định mức độ ưu tiên. Mỗi thông điệp CAN đều có một ID định danh (identifier), và giá trị của ID này quyết định mức độ ưu tiên khi có nhiều node cố gắng gửi dữ liệu cùng một lúc.
+	- ID thấp hơn tương ứng với mức độ ưu tiên cao hơn. Nghĩa là, khi nhiều node cùng muốn truyền dữ liệu, node có ID nhỏ hơn (giá trị nhị phân thấp hơn) sẽ được ưu tiên và thắng quá trình arbitration.
+	- Mỗi bit trong ID của thông điệp có thể ở trạng thái dominant (trạng thái ưu tiên - giá trị 0) hoặc recessive (trạng thái không ưu tiên - giá trị 1). Khi hai node hoặc nhiều node cùng gửi dữ liệu, CAN sử dụng quy tắc wire-AND logic để quyết định node nào được ưu tiên.
+
+![Alt text](images/setup116.png)
+
+- Nguyên lý hoạt động:
+	- Khi nhiều node muốn truyền dữ liệu, chúng đều bắt đầu gửi thông điệp của mình lên bus. Tín hiệu được gửi đồng thời và mỗi node sẽ kiểm tra từng bit của dữ liệu trên bus.
+	- Mỗi bit trong ID sẽ được truyền từng cái một (từ bit MSB - Most Significant Bit). Nếu một node gửi bit recessive (1) nhưng nhận thấy trên bus có bit dominant (0), nghĩa là có một node khác có ưu tiên cao hơn đang chiếm quyền truyền dữ liệu. Lúc này, node này sẽ ngừng truyền và chuyển sang chế độ nghe (listen).
+	- Node có ID thấp hơn (tức là có nhiều bit dominant hơn ở đầu) sẽ tiếp tục quá trình truyền cho đến khi toàn bộ ID được gửi đi, trong khi các node khác ngừng gửi và chuyển sang chế độ chờ.
+	- Các node không thắng quá trình arbitrage sẽ không bị mất dữ liệu mà chỉ đơn giản là đợi lượt tiếp theo để cố gắng truyền lại thông điệp của mình.
+
+##### 1.4.2. Non-destructive Arrbitration (Tranh chấp không phá hủy)
+
+- Cơ chế non-destructive arbitration có nghĩa là quá trình arbitrage diễn ra mà không làm mất dữ liệu của các node thua. Điều này có được nhờ vào tính năng multi-master và cơ chế wire-AND logic của CAN.
+	- Khi một node thua trong quá trình arbitration, nó sẽ tạm dừng việc truyền nhưng không xóa dữ liệu của mình.
+	- Node thua sẽ chuyển sang trạng thái chờ và lắng nghe bus. Khi bus không còn bận (tức là node thắng đã gửi xong thông điệp), node thua sẽ thử lại và tham gia tranh chấp quyền gửi ở lần tiếp theo.
+	- Quá trình này đảm bảo rằng không có dữ liệu bị mất trong quá trình tranh chấp, vì các node thua sẽ tiếp tục gửi thông điệp của mình vào thời điểm thích hợp.
+
+#### 1.5. Lỗi trong giao thức CAN
+
+- Trong CAN, cơ chế phát hiện và sửa lỗi là một tính năng quan trọng để đảm bảo độ tin cậy và tính ổn định của quá trình truyền dữ liệu. Hệ thống CAN có thể tự động phát hiện nhiều loại lỗi khác nhau trong quá trình truyền thông qua các công cụ như kiểm tra bit, CRC và ACK. Khi lỗi được phát hiện, CAN có khả năng xử lý và sửa lỗi một cách tự động mà không làm gián đoạn toàn bộ quá trình giao tiếp.
+
+##### 1.5.1. Các loại lỗi trong CAN
+
+###### 1.5.1.1. Bit Error
+
+- Bit Error xảy ra khi một node gửi một bit (dominant hoặc recessive) lên bus và nhận lại một bit khác với giá trị mong đợi. Trong mạng CAN, mỗi node không chỉ gửi dữ liệu mà còn tự lắng nghe các tín hiệu trên bus để kiểm tra sự đồng bộ.
+	- Bit dominant (0): Tín hiệu ưu tiên trên bus.
+	- Bit recessive (1): Tín hiệu không ưu tiên trên bus.
+
+- Nguyên nhân:
+	- Nếu một node gửi một bit recessive (1) nhưng nhận lại bit dominant (0) từ bus, node này sẽ phát hiện ra lỗi.
+	- Điều này có thể xảy ra khi một node khác có ưu tiên cao hơn trên bus đang truyền dữ liệu, hoặc do tín hiệu bị nhiễu.
+
+###### 1.5.1.2. Stuff Error
+
+- Stuff Error xảy ra khi có hơn 5 bit liên tiếp cùng giá trị (tất cả đều là 0 hoặc tất cả đều là 1) trên bus CAN. Điều này vi phạm quy tắc bit stuffing của giao thức CAN.
+	- Quy tắc bit stuffing: Trong mạng CAN, sau mỗi chuỗi 5 bit giống nhau liên tiếp, một bit ngược giá trị (ngược với giá trị của các bit trước đó) phải được thêm vào để đảm bảo tính đồng bộ và tránh nhiễu tín hiệu. Nếu quy tắc này bị vi phạm, lỗi sẽ xảy ra.
+	- Nguyên nhân: Vi phạm quy tắc bit stuffing có thể do lỗi trong quá trình truyền tín hiệu hoặc do thiết bị không tuân theo quy chuẩn CAN.
+
+###### 1.5.1.3. CRC Error
+
+- CRC Error xảy ra khi có sai lệch trong quá trình kiểm tra CRC (Cyclic Redundancy Check), được sử dụng để phát hiện lỗi trong dữ liệu truyền qua bus.
+- Cơ chế CRC:
+	- Trong mỗi khung dữ liệu CAN, có một CRC Field được sử dụng để kiểm tra tính toàn vẹn của dữ liệu. Trường này chứa giá trị CRC, được tính toán dựa trên nội dung của thông điệp.
+	- Node nhận sẽ tính toán lại giá trị CRC của dữ liệu nhận được và so sánh với CRC trong trường CRC Field. Nếu hai giá trị này không khớp, một CRC error sẽ được phát hiện.
+- Nguyên nhân: Lỗi CRC có thể xảy ra do nhiễu tín hiệu trong quá trình truyền dữ liệu hoặc do lỗi phần cứng trong node gửi hoặc nhận.
+
+- Nguyên nhân: Lỗi CRC có thể xảy ra do nhiễu tín hiệu trong quá trình truyền dữ liệu hoặc do lỗi phần cứng trong node gửi hoặc nhận.
+
+###### 1.5.1.4. Form Error
+
+- From Error xảy ra khi cấu trúc khung dữ liệu không tuân theo quy chuẩn của giao thức CAN. Mỗi khung dữ liệu trong CAN phải tuân theo một cấu trúc định sẵn, bao gồm Start of Frame (SOF), Arbitration Field, Control Field, Data Field, CRC Field, ACK Field, và End of Frame (EOF).
+
+- Nguyên nhân: Nếu một node nhận thấy có lỗi trong định dạng của bất kỳ trường nào trong khung dữ liệu, đặc biệt là các bit trong EOF hoặc ACK Field, nó sẽ phát hiện From Error.
+
+###### 1.5.1.5. Acknowledgment Error
+
+- Acknowledgment Error (ACK Error) xảy ra khi node gửi thông điệp lên bus mà không nhận được bit ACK từ bất kỳ node nào trên mạng.
+- Cơ chế ACK trong CAN:
+	- Khi một node gửi thành công một khung dữ liệu, các node nhận phải gửi một bit ACK dominant (0) để xác nhận rằng dữ liệu đã được nhận chính xác.
+	- Nếu không có node nào gửi bit ACK, node gửi sẽ phát hiện ACK Error và phải truyền lại thông điệp.
+- Nguyên nhân:
+	- Thết bị nhận có thể không hoạt động đúng cách hoặc không kết nối đúng vào bus CAN.
+	- Tín hiệu ACK có thể bị nhiễu hoặc lỗi phần cứng.
+
+##### 1.5.2. Cơ chế phát hiện lỗi trong mạng CAN
+
+- Mạng CAN sử dụng nhiều cơ chế để phát hiện lỗi, giúp duy trì tính ổn định và tin cậy của dữ liệu truyền tải trên bus. Các cơ chế này bao gồm:
+	- Kiểm tra bit: Mỗi node gửi sẽ tự lắng nghe dữ liệu mà nó vừa gửi để đảm bảo rằng dữ liệu đó đã được truyền đúng cách. Nếu có sự khác biệt giữa bit gửi đi và bit nhận lại, node sẽ phát hiện bit error.
+	- Kiểm tra CRC: Mỗi thông điệp CAN chứa một giá trị CRC được tính toán dựa trên dữ liệu. Node nhận sẽ tính toán lại giá trị CRC và so sánh với CRC của thông điệp để phát hiện lỗi.
+	- Kiểm tra định dạng (Form Check): Các bit trong EOF và ACK Field phải tuân theo một định dạng chuẩn. Nếu không, node nhận sẽ phát hiện form error.
+	- Xác nhận (Acknowledgment): Node gửi sẽ kiểm tra xem có bất kỳ node nào trên bus gửi bit ACK để xác nhận rằng dữ liệu đã được nhận thành công. Nếu không, ACK error sẽ được phát hiện.
+
 
 
 ### 2. Practice
