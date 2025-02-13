@@ -2609,33 +2609,42 @@ Thuật toán Bootloader
 
 - Và tốc độ baud (bit rate) được tính như sau:
 	$Tốc độ baud =1 / Bit Time (bps)$
-8.2 Bộ lọc CAN
-Trong CAN, các node có thể nhận rất nhiều thông điệp, nhưng không phải tất cả thông điệp đều liên quan đến tất cả các node. Bộ lọc CAN cho phép các node lựa chọn và chỉ nhận những thông điệp cần thiết, dựa trên ID của thông điệp hoặc các tiêu chí khác.
-Vai trò của bộ lọc CAN:
-Lựa chọn thông điệp: Bộ lọc CAN giúp các node lọc ra những thông điệp cần thiết và bỏ qua những thông điệp không liên quan. Điều này giúp giảm tải cho vi điều khiển, vì nó chỉ xử lý những dữ liệu mà nó cần.
-Giảm băng thông: Bằng cách chỉ nhận những thông điệp có ID cụ thể, node có thể giảm khối lượng dữ liệu cần xử lý, giúp mạng hoạt động hiệu quả hơn.
-Bộ lọc CAN hoạt động dựa trên hai thành phần chính:
-Mask (Mặt nạ): Quy định những bit nào trong ID của thông điệp cần được kiểm tra.
-Filter (Bộ lọc): Được dùng để so sánh các bit của ID thông điệp với giá trị quy định trong bộ lọc. Nếu các bit này khớp với mask, thông điệp sẽ được chấp nhận và xử lý.
-8.2.1 Mask
-Mask là một dãy bit mà các bit có giá trị 1 sẽ được kiểm tra, còn các bit có giá trị 0 sẽ bị bỏ qua. Điều này cho phép chỉ định cụ thể những phần của ID thông điệp mà node sẽ quan tâm, trong khi bỏ qua các phần không quan trọng. Mask giúp xác định phạm vi ID mà node quan tâm.
-8.2.2 Filter
-Filter là giá trị mà các bit trong ID của thông điệp phải khớp với, dựa trên mask. Các bit được phép kiểm tra thông qua mask sẽ được so sánh với filter. Nếu ID thông điệp trùng khớp với giá trị của bộ lọc (sau khi áp dụng mask), thông điệp sẽ được chấp nhận. Nếu không trùng khớp, thông điệp sẽ bị bỏ qua, node sẽ không xử lý nó.
-Ví dụ: Giả sử trong một hệ thống CAN, chúng ta có một node cần nhận thông điệp có ID trong khoảng từ 0x100 đến 0x1FF. Điều này có nghĩa là node chỉ quan tâm đến các thông điệp có giá trị từ 0x100 đến 0x1FF, và không quan tâm đến các thông điệp có ID nằm ngoài phạm vi này.
-Để đạt được điều này, chúng ta có thể cấu hình bộ lọc CAN như sau:
-Cấu hình bộ lọc:
-Mask (Mặt nạ): 0x700 – chỉ kiểm tra 3 bit đầu tiên của ID.
-Filter (Bộ lọc): 0x100 – chỉ nhận thông điệp có ID bắt đầu bằng 0x001.
-Phân tích cấu hình:
-Mask 0x700 (111 0000 0000) có nghĩa là chỉ có 3 bit đầu tiên của ID thông điệp sẽ được so sánh với filter. Các bit khác (bit từ 8 trở xuống) sẽ không được kiểm tra.
-Filter 0x100 (001 0000 0000) có nghĩa là node sẽ chấp nhận những thông điệp có 3 bit đầu tiên là 001, tức là thông điệp có ID nằm trong khoảng từ 0x100 đến 0x1FF.
-Với cấu hình này, node sẽ chỉ nhận những thông điệp có ID từ 0x100 đến 0x1FF, giúp lọc bỏ các thông điệp không liên quan và giảm tải cho vi điều khiển.
-Minh họa với ví dụ cụ thể:
-Giả sử có các thông điệp trên bus CAN với các ID sau: 0x0F0, 0x100, 0x180, 0x200. Khi sử dụng cấu hình bộ lọc như trên:
-ID 0x0F0: Bị bỏ qua vì 3 bit đầu tiên là 000, không trùng khớp với 001 trong filter.
-ID 0x100: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
-ID 0x180: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
-ID 0x200: Bị bỏ qua vì 3 bit đầu tiên là 010, không trùng khớp với filter.
+
+##### 1.8.2. Bộ lọc CAN
+
+- Trong CAN, các node có thể nhận rất nhiều thông điệp, nhưng không phải tất cả thông điệp đều liên quan đến tất cả các node. Bộ lọc CAN cho phép các node lựa chọn và chỉ nhận những thông điệp cần thiết, dựa trên ID của thông điệp hoặc các tiêu chí khác.
+- Vai trò của bộ lọc CAN:
+	- Lựa chọn thông điệp: Bộ lọc CAN giúp các node lọc ra những thông điệp cần thiết và bỏ qua những thông điệp không liên quan. Điều này giúp giảm tải cho vi điều khiển, vì nó chỉ xử lý những dữ liệu mà nó cần.
+	- Giảm băng thông: Bằng cách chỉ nhận những thông điệp có ID cụ thể, node có thể giảm khối lượng dữ liệu cần xử lý, giúp mạng hoạt động hiệu quả hơn.
+- Bộ lọc CAN hoạt động dựa trên hai thành phần chính:
+	- Mask (Mặt nạ): Quy định những bit nào trong ID của thông điệp cần được kiểm tra.
+	- Filter (Bộ lọc): Được dùng để so sánh các bit của ID thông điệp với giá trị quy định trong bộ lọc. Nếu các bit này khớp với mask, thông điệp sẽ được chấp nhận và xử lý.
+
+###### 1.8.2.1. Mask
+
+- Mask là một dãy bit mà các bit có giá trị 1 sẽ được kiểm tra, còn các bit có giá trị 0 sẽ bị bỏ qua. Điều này cho phép chỉ định cụ thể những phần của ID thông điệp mà node sẽ quan tâm, trong khi bỏ qua các phần không quan trọng. Mask giúp xác định phạm vi ID mà node quan tâm.
+
+###### 1.8.2.2. Filter
+
+- Filter là giá trị mà các bit trong ID của thông điệp phải khớp với, dựa trên mask. Các bit được phép kiểm tra thông qua mask sẽ được so sánh với filter. Nếu ID thông điệp trùng khớp với giá trị của bộ lọc (sau khi áp dụng mask), thông điệp sẽ được chấp nhận. Nếu không trùng khớp, thông điệp sẽ bị bỏ qua, node sẽ không xử lý nó.
+
+- Ví dụ: Giả sử trong một hệ thống CAN, chúng ta có một node cần nhận thông điệp có ID trong khoảng từ 0x100 đến 0x1FF. Điều này có nghĩa là node chỉ quan tâm đến các thông điệp có giá trị từ 0x100 đến 0x1FF, và không quan tâm đến các thông điệp có ID nằm ngoài phạm vi này.
+- Để đạt được điều này, chúng ta có thể cấu hình bộ lọc CAN như sau:
+- Cấu hình bộ lọc:
+	- Mask (Mặt nạ): 0x700 - chỉ kiểm tra 3 bit đầu tiên của ID.
+	- Filter (Bộ lọc): 0x100 - chỉ nhận thông điệp có ID bắt đầu bằng 0x001.
+
+- Phân tích cấu hình:
+	- Mask 0x700 (111 0000 0000) có nghĩa là chỉ có 3 bit đầu tiên của ID thông điệp sẽ được so sánh với filter. Các bit khác (bit từ 8 trở xuống) sẽ không được kiểm tra.
+	- Filter 0x100 (001 0000 0000) có nghĩa là node sẽ chấp nhận những thông điệp có 3 bit đầu tiên là 001, tức là thông điệp có ID nằm trong khoảng từ 0x100 đến 0x1FF.
+
+- Với cấu hình này, node sẽ chỉ nhận những thông điệp có ID từ 0x100 đến 0x1FF, giúp lọc bỏ các thông điệp không liên quan và giảm tải cho vi điều khiển.
+- Minh họa với ví dụ cụ thể:
+	- Giả sử có các thông điệp trên bus CAN với các ID sau: 0x0F0, 0x100, 0x180, 0x200. Khi sử dụng cấu hình bộ lọc như trên:
+		- ID 0x0F0: Bị bỏ qua vì 3 bit đầu tiên là 000, không trùng khớp với 001 trong filter.
+		- ID 0x100: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
+		- ID 0x180: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
+		- ID 0x200: Bị bỏ qua vì 3 bit đầu tiên là 010, không trùng khớp với filter.
 
 ### 2. Practice
 
