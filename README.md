@@ -2331,6 +2331,7 @@ Thuật toán Bootloader
 	- Transceiver CAN (CAN Transceiver):
 		- Chuyển đổi tín hiệu số từ bộ điều khiển CAN thành tín hiệu điện áp dang differential (CANH và CANL) để gửi lên bus CAN và ngược lại.
 		- Đảm bảo tín hiệu truyền và nhận trên bus CAN có độ chính xác và tốc độ cao.
+		![Alt text](images/setup118.png)
 	- Vi điều khiển (Microcontroller): là thành phần trung tâm điều khiển hoạt động của node CAN.
 		- Đọc và xử lý thông điệp CAN.
 		- Tạo ra thông điệp CAN.
