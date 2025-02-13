@@ -2207,7 +2207,7 @@ Thuật toán Bootloader
 
 ### 1. Theory
 
-#### 1.1. CAN
+#### 1.1 CAN
 
 - Controller Area Netwwork (CAN) là giao thức nối tiếp hỗ trợ mạng cho những hệ thống điều khiển thời gian thực phân bố (distributed realtime control system).
 - CAN đặc biệt được ứng dụng nhiều trong ngành công nghiệp oto.
