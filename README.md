@@ -2349,6 +2349,9 @@ Thuật toán Bootloader
 		- Mỗi thông điệp CAN có một ID ưu tiên. Node nào có thông điệp với ID ưu tiên thấp hơn (tức có độ ưu tiên cao hơn) sẽ chiếm quyền truy cập bus và gửi thông điệp trước.
 		- Những node khác có ID ưu tiên cao hơn sẽ tự động dừng lại và chờ lượt tiếp theo để gửi thông điệp.
 		- Quá trình arbitration diễn ra mà không gây mất dữ liệu hay lầm gián đoạn các thiết bị khác, vì thế mạng CAN là một hệ thống non-destructive (không gây mất dữ liệu).
+	![Alt text](images/setup119.png)
+	![Alt text](images/setup120.png)
+	![Alt text](images/setup121.png)
 	- Giao tiếp song song (Full-duplex Communication)
 	Mặc dù chỉ sử dụng một bus với hai dây tín hiệu, mạng CAN vẫn cho phép các node vừa gửi vửa nhận dữ liệu đồng thời. Điều này giúp mạng CAN hoạt động hiệu quả và không bị nghẽn khi có nhiều thiết bị cùng giao tiếp.
 	- Phát hiện và xử lý lỗi tự động
