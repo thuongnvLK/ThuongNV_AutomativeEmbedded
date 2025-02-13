@@ -105,7 +105,7 @@
 2. [Bootloader](#2-bootloader) 
 
 [Lesson 12: CAN](#lesson-12-can)
-1. [CAN](#1.1-can) 
+1. [CAN](#11-can) 
 -----------------------------------------------------
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
