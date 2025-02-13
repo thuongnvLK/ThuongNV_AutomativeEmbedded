@@ -2298,7 +2298,8 @@ Thuật toán Bootloader
 	- CAN (CAN Low): Dây tín hiệu thấp.
 
 - Các tín hiệu truyền qua bus CAN là tín hiệu vi sai (diferential signaling), nghĩa là thông tin được mã hóa dựa trên sự chênh lệch điện áp giữa hai dây CANH và CANL. Điều này giúp giúp mạng CAN chống lại nhiễu từ môi trường và duy trì tín hiệu ổn định trên đường truyền.
-
+	![Alt text](images/setup122.png)
+	![Alt text](images/setup123.png)
 - Hai dây tín hiệu này được xoắn lại tạo thành đường dây xoắn đôi giúp:
 	- Giảm thiểu nhiễu từ môi trường bên ngoài: Khi các dây được xoắn lại, mỗi đoạn của cặp dây sẽ nhận nhiễu với cường độ khác nhau và theo các hướng ngước lại nhau, làm triệt tiêu phần lớn nhiễu điện tử.
 	- Giảm thiểu nhiễu xuyên tâm: Việc xoắn đôi các dây giúp giảm hiện tượng này bằng cách phân tán nhiễu xuyên tâm ra khắp chiều dài của cáp.
