@@ -2436,9 +2436,208 @@ Thuật toán Bootloader
 	- Kiểm tra định dạng (Form Check): Các bit trong EOF và ACK Field phải tuân theo một định dạng chuẩn. Nếu không, node nhận sẽ phát hiện form error.
 	- Xác nhận (Acknowledgment): Node gửi sẽ kiểm tra xem có bất kỳ node nào trên bus gửi bit ACK để xác nhận rằng dữ liệu đã được nhận thành công. Nếu không, ACK error sẽ được phát hiện.
 
+##### 1.5.3. Cơ chế sửa lỗi tự động trong mạng CAN
 
+- Khi lỗi được phát hiện, mạng CAN có khả năng sửa lỗi một cách tự động thông qua quá trình phát Error Frame và truyền lại thông điệp.
+
+- Cơ chế sửa lỗi trong CAN:
+	- Error Frame: Khi một node phát hiện lỗi (bit error, CRC error, form error, stuff error, hoặc ACK error), nó sẽ gửi một Error Frame để thông báo cho tất cả các node khác trên bus rằng có lỗi đã xảy ra.
+	- Truyền lại thông điệp: Sau khi Error Frame được phát, các node sẽ dừng giao tiếp và node gửi ban đầu sẽ cố gắng truyền lại thông điệp bị lỗi. Việc này sẽ tiếp tục cho đến khi thông điệp được truyền đi thành công hoặc node gửi bị đưa vào trạng thái bus off nếu lỗi quá nhiều.
+
+##### 1.5.4. Các trạng thái lỗi của node
+
+- Khi phát hiện lỗi, các node trong mạng CAN sẽ tự động chuyển đổi giữa ba trạng thái lỗi để đảm bảo hệ thống hoạt động ổn định và không gây gián đoạn cho bus.
+
+###### 1.5.4.1. Error Active
+
+- Trong trạng thái Error Active, node vẫn có khả năng tham gia đầy đủ vào quá trình truyền thông và có thể phát hiện lỗi. Nếu node phát hiện lỗi, nó sẽ gửi một Error Frame để thông báo cho các node khác trên bus rằng đã xảy ra lỗi.
+
+###### 1.5.4.2. Error Passive
+
+- Nếu một node phát hiện quá nhiều lỗi, nó sẽ chuyển sang trạng thái Error Passive. Trong trạng thái này, node vẫn có thể tham gia truyền thông, nhưng nếu phát hiện lỗi, nó sẽ không gửi Error Frame mạnh mẽ như trong trạng thái Error Active. Điều này giúp tránh gây gián đoạn lớn cho bus khi node gặp sự cố thường xuyên.
+
+- Trong trạng thái Error Passive, node vẫn có thể nhận và gửi thông điệp nhưng sẽ hạn chế việc can thiệp vào quá trình truyền thông của các node khác. Node chỉ gửi Error Frame yếu hơn để thông báo lỗi, và không ảnh hưởng đến quá trình truyền thông của các node khác.
+
+###### 1.5.4.3 Bus Off
+
+- Khi một node gặp quá nhiều lỗi nghiêm trọng, nó sẽ chuyển sang trạng thái Bus Off. Trong trạng thái này, node sẽ hoàn toàn ngắt kết nối khỏi bus CAN và không thể tham gia vào quá trình truyền hay nhận dữ liệu. Node chỉ có thể được kết nối lại vào bus sau khi được khởi động lại (restart) hoặc reset bởi phần mềm.
+
+- Bus Off là trạng thái an toàn, ngăn chặn một node bị lỗi nặng gây ra sự cố nghiêm trọng cho toàn bộ hệ thống CAN.
+
+#### 1.6. Tốc độ truyền và giới hạn vật lý của CAN
+
+- Giao thức CAN được thiết kế để hoạt động hiệu quả trong các hệ thống nhúng với khả năng truyền thông dữ liệu tin cậy và độ trễ thấp. Một số yếu tố quan trọng ảnh hưởng đến hiệu suất của mạng CAN bao gồm tốc độ truyền (baud rate), chiều dài của bus, và điện trở kết cuối (termination resistor). Các yếu tố này liên quan chặt chẽ với nhau, ảnh hưởng đến khả năng truyền tín hiệu trên bus CAN.
+
+##### 1.6.1. Tốc độ baud của CAN
+
+- Tốc độ baud là tốc độ truyền dữ liệu trên bus CAN, thường được đo bằng kbps (kilobits per second) hoặc Mbps (megabits per second). Tốc độ baud quyết định tốc độ truyền thông giữa các thiết bị trên mạng và phụ thuộc vào khả năng xử lý của hệ thống cũng như chiều dài của bus.
+
+- Dải tốc độ baud của CAN:
+	- 10 kbps: Tốc độ thấp nhất, thường được sử dụng cho các hệ thống có yêu cầu truyền thông chậm, nhưng cần truyền xa.
+	- 1 Mbps: Tốc độ cao nhất, thường được sử dụng trong các ứng dụng yêu cầu truyền thông nhanh, chẳng hạn như trong hệ thống ô tô hoặc robot.
+
+- Ảnh hưởng của tốc độ baud:
+	- Chiều dài tối đa của bus: Tốc độ truyền càng cao, chiều dài tối đa của bus càng ngắn do ảnh hưởng của thời gian lan truyền tín hiệu trên bus. Điều này có nghĩa là khi cần truyền dữ liệu với tốc độ cao, hệ thống phải chấp nhận giảm chiều dài của bus để đảm bảo tín hiệu truyền chính xác và đồng bộ.
+	- Độ trễ: Tốc độ baud càng cao, độ trễ của việc truyền thông tin trên mạng càng giảm, giúp cải thiện khả năng đáp ứng của hệ thống.
+
+##### 1.6.2. Chiều dài tối đa của bus trong CAN
+
+- Chiều dài của bus trong mạng CAN bị giới hạn bởi tốc độ baud và chất lượng của dây dẫn (bus). Sự kết hợp giữa tốc độ truyền và chiều dài của bus quyết định khả năng truyền tín hiệu đúng cách và độ tin cậy của mạng.
+	- Tốc độ truyền càng cao, chiều dài bus càng ngắn: Điều này do thời gian lan truyền tín hiệu trên dây dẫn cần phải nhỏ hơn một khoảng thời gian nhất định để đảm bảo tất cả các node trên bus có thể nhận được tín hiệu đồng bộ.
+	- Khi tốc độ baud tăng lên, thời gian bit ngắn lại, nghĩa là tín hiệu phải đến các node nhận nhanh hơn. Do đó, chiều dài tối đa của bus phải giảm để đảm bảo thời gian lan truyền tín hiệu phù hợp với tốc độ baud.
+
+#### 1.7. CAN và các phiên bản mở rộng
+
+- Giao thức CAN đã phát triển qua nhiều phiên bản để đáp ứng nhu cầu ngày càng cao trong các ứng dụng nhúng, đặc biệt là trong ngành công nghiệp ô tô và tự động hóa. Các phiên bản mở rộng của CAN bao gồm CAN 2.0A, CAN 2.0B, và CAN FD (Flexible Data-rate). Mỗi phiên bản có những cải tiến để hỗ trợ các yêu cầu khác nhau về độ ưu tiên, dung lượng dữ liệu và tốc độ truyền tải.
+
+##### 1.7.1. CAN 2.0A
+
+- Đặc điểm chính của CAN 2.0A:
+	- 11-bit identifier (ID): Phiên bản CAN 2.0A sử dụng định dạng ID dài 11 bit. Đây là một trong những yếu tố quan trọng để xác định mức độ ưu tiên của thông điệp trong quá trình truyền dữ liệu. Với 11 bit, có thể biểu diễn 2^11 = 2048 ID khác nhau.
+	- Khả năng ưu tiên: Mỗi thông điệp trong mạng CAN đều có một ID xác định mức độ ưu tiên của nó. ID càng thấp, mức độ ưu tiên càng cao.
+	- Truyền dữ liệu: Dữ liệu có thể truyền đi qua bus CAN với kích thước tối đa là 8 byte mỗi khung. Điều này là đặc trưng của CAN 2.0A, giúp quản lý hiệu quả băng thông và độ trễ.
+
+##### 1.7.2. CAN 2.0B (Extended CAN)
+
+- Đặc điểm chính của CAN 2.0B:
+	- 29-bit identifier (ID): Phiên bản CAN 2.0B mở rộng định dạng ID từ 11 bit trong CAN 2.0A lên 29 bit. Với 29 bit, có thể biểu diễn 2^29 ID khác nhau, cho phép phân bổ số lượng ID lớn hơn và hỗ trợ các hệ thống phức tạp với nhiều node hơn.
+	- Tương thích ngược: CAN 2.0B vẫn tương thích ngược với CAN 2.0A, có nghĩa là các node sử dụng CAN 2.0B có thể hiểu được và giao tiếp với các node sử dụng CAN 2.0A. Các node CAN 2.0B có thể nhận diện giữa các khung dữ liệu tiêu chuẩn và khung dữ liệu mở rộng thông qua bit điều khiển IDE (Identifier Extension).
+	- Khả năng truyền dữ liệu: Giống như CAN 2.0A, CAN 2.0B cũng giới hạn khung dữ liệu tối đa là 8 byte, nhưng sự khác biệt chính nằm ở số lượng ID có thể được sử dụng để định danh các thiết bị trên mạng.
+
+- Khung dữ liệu CAN 2.0B bao gồm các trường sau:
+	- Start of Frame (SOF): Đây là một bit duy nhất đánh dấu bắt đầu của một frame.
+	- Identifier (ID):
+		- Standard Frame (11-bit ID): Đây là phần chứa 11-bit để nhận diện thông điệp.
+		- Extended Frame (29-bit ID): 29-bit được chia thành hai phần:
+			- Base ID: 11-bit giống như trong Standard Frame.
+			- Extended ID: 18-bit mở rộng để cung cấp tổng cộng 29-bit nhận dạng.
+	- Remote Transmission Request (RTR):
+		- Bit này chỉ định liệu frame là một Data Frame hay Remote Frame.
+		- RTR = 0: Đây là Data Frame.
+		- RTR = 1: Đây là Remote Frame (yêu cầu dữ liệu từ một node khác).
+	- Identifier Extension (IDE):
+		- Bit này phân biệt giữa Standard Frame (IDE = 0) và Extended Frame (IDE = 1).
+	- Reserved Bit (r0, r1):
+		- Những bit dự phòng để phục vụ cho các phiên bản tương lai của chuẩn CAN.
+	- Data Length Code (DLC):
+		- 4-bit chỉ định số lượng byte dữ liệu trong Data Field (từ 0 đến 8 byte).
+	- Data Field:
+		- Chứa dữ liệu thực tế mà bạn muốn truyền. Độ dài từ 0 đến 8 byte (mỗi byte 8-bit).
+	- Cyclic Redundancy Check (CRC):
+		- Trường này chứa 15-bit CRC và 1-bit CRC Delimiter. CRC được dùng để kiểm tra lỗi trong frame.
+	- ACK Slot:
+		- 1-bit dành cho node nhận phát tín hiệu xác nhận (ACK) nếu frame được nhận mà không có lỗi.
+	- End of Frame (EOF):
+		- Kết thúc frame, gồm 7 bit liên tiếp có giá trị "1".
+	- Intermission Frame Space (IFS):
+		- 3-bit dành cho thời gian nghỉ giữa hai frame truyền liên tiếp.
+
+##### 1.7.3. CAN FD (Flexible Data-rate)
+
+- CAN FD là một phiên bản cải tiến của giao thức CAN tiêu chuẩn, được phát triển để giải quyết các hạn chế về tốc độ truyền dữ liệu và kích thước khung dữ liệu trong các phiên bản trước đó. CAN FD là viết tắt của Flexible Data-rate, tức là tốc độ dữ liệu linh hoạt, và có những cải tiến lớn so với CAN 2.0A và 2.0B.
+
+- Đặc điểm chính của CAN FD:
+	- Truyền dữ liệu với tốc độ cao hơn: CAN FD cho phép tốc độ truyền dữ liệu nhanh hơn nhiều so với CAN tiêu chuẩn, với tốc độ có thể lên tới 8 Mbps trong giai đoạn truyền dữ liệu (Data Phase). Trong CAN tiêu chuẩn, tốc độ truyền tối đa bị giới hạn ở 1 Mbps. Điều này giúp tăng đáng kể tốc độ truyền thông cho các hệ thống đòi hỏi xử lý nhanh.
+	- Kích thước khung dữ liệu lớn hơn: Trong khi CAN tiêu chuẩn chỉ hỗ trợ tối đa 8 byte dữ liệu trong mỗi khung, CAN FD có thể truyền tới 64 byte dữ liệu trong một khung. Điều này giúp giảm số lượng khung cần thiết để truyền một lượng lớn dữ liệu, từ đó giảm độ trễ và tăng hiệu suất.
+	- Tốc độ truyền linh hoạt: CAN FD sử dụng hai tốc độ truyền khác nhau trong cùng một khung: một tốc độ chậm hơn cho Arbitration Phase (giai đoạn tranh chấp quyền gửi), và một tốc độ nhanh hơn cho Data Phase (giai đoạn truyền dữ liệu). Điều này giúp đảm bảo tính tương thích và hiệu quả của hệ thống.
+	- Tương thích ngược: CAN FD vẫn giữ được khả năng tương thích ngược với các phiên bản CAN cũ như CAN 2.0A và CAN 2.0B, giúp các hệ thống sử dụng cả CAN tiêu chuẩn và CAN FD có thể hoạt động song song.
+
+- Cấu trúc khung dữ liệu CAN FD:
+
+	- Start of Frame (SOF): Một bit đơn, luôn có giá trị 0, đánh dấu bắt đầu của một khung dữ liệu.
+	- Identifier (ID):
+		- Standard Frame (11-bit ID): Khung chuẩn với 11-bit định danh.
+		- Extended Frame (29-bit ID): Khung mở rộng với 29-bit định danh, tương tự như trong CAN 2.0B.
+	- Extended Identifier (IDE):
+		- Bit này cho biết khung dữ liệu là chuẩn (Standard Frame) hay mở rộng (Extended Frame).
+		- IDE = 0: Khung chuẩn (11-bit).
+		- IDE = 1: Khung mở rộng (29-bit).
+	- Remote Transmission Request (RTR):
+		- Bit này chỉ có trong CAN 2.0B để yêu cầu dữ liệu từ node khác. Trong CAN FD, RTR đã bị loại bỏ.
+	- FD Format (FDF):
+		- Đây là bit mới được thêm vào trong CAN FD, cho biết khung dữ liệu là CAN 2.0 hay CAN FD.
+		- FDF = 0: Khung CAN 2.0.
+		- FDF = 1: Khung CAN FD.
+	- Bit Rate Switch (BRS):
+		- Bit này cho phép điều chỉnh tốc độ truyền dữ liệu.
+		- Nếu BRS = 1, tốc độ truyền trong phần Data Phase (phần chứa dữ liệu) sẽ cao hơn tốc độ truyền trong phần Arbitration Phase (phần xác định ưu tiên).
+	- Error State Indicator (ESI):
+		- Bit này cho biết trạng thái lỗi của node.
+		- ESI = 0: Node đang trong trạng thái active (hoạt động bình thường).
+		- ESI = 1: Node đang trong trạng thái passive (chờ phục hồi sau lỗi).
+	- Data Length Code (DLC):
+		- CAN FD vẫn sử dụng trường DLC để chỉ định số byte trong Data Field (trường dữ liệu). Tuy nhiên, CAN FD cho phép số byte dữ liệu lớn hơn nhiều so với CAN 2.0:
+			- CAN 2.0: Tối đa 8 byte.
+			- CAN FD: Tối đa 64 byte.
+	- Data Field:
+		- Đây là trường chứa dữ liệu thực tế.
+		- CAN FD cho phép truyền tối đa 64 byte dữ liệu (trong khi CAN 2.0 chỉ cho phép 8 byte).
+	- Cyclic Redundancy Check (CRC):
+		- Trường CRC trong CAN FD dài hơn so với CAN 2.0 để đảm bảo độ tin cậy khi truyền dữ liệu lớn hơn.
+		- CAN 2.0: CRC là 15-bit.
+		- CAN FD: CRC có thể là 17-bit hoặc 21-bit, tùy thuộc vào độ dài của dữ liệu.
+	- ACK Slot:
+		- Khung ACK để các node trên bus xác nhận rằng frame đã được nhận thành công.
+		- Giống với CAN 2.0, node nhận sẽ ghi bit ACK nếu nhận được khung mà không gặp lỗi.
+	- End of Frame (EOF):
+		- Khung kết thúc giống với CAN 2.0, bao gồm 7 bit liên tiếp có giá trị "1".
+#### 1.8. Quá trình cấu hình và thiết lập CAN
+
+- Để mạng CAN hoạt động hiệu quả và ổn định, việc cấu hình và thiết lập hệ thống đúng cách là rất quan trọng. Các bước cấu hình liên quan đến việc thiết lập tốc độ baud, bộ lọc CAN, và kiểm soát lỗi. Dưới đây là chi tiết về quá trình thiết lập từng phần trong giao thức CAN, kèm theo các khái niệm quan trọng và cách thức hoạt động.
+
+##### 1.8.1. Thiết lập tốc độ baud trong CAN
+
+- Tốc độ baud (baud rate) là tốc độ truyền dữ liệu trên bus CAN, được tính bằng số bit truyền trên giây (bps - bit per second). Việc thiết lập tốc độ baud chính xác là một bước quan trọng vì nó ảnh hưởng trực tiếp đến khả năng truyền dữ liệu và chiều dài của bus.
+
+- Các yếu tố ảnh hưởng đến tốc độ baud:
+	- Thời gian mẫu (Sample Point):
+		- Thời gian mẫu là thời điểm mà tín hiệu trên bus CAN được đọc để xác định giá trị của một bit (dominant hoặc recessive). Mẫu thường được lấy ở vị trí cuối mỗi bit để đảm bảo tín hiệu đã ổn định.
+		- Vị trí của điểm mẫu (sample point) được tính toán dựa trên tỷ lệ phần trăm trong một khoảng thời gian bit. Điểm mẫu lý tưởng thường nằm ở khoảng 75% đến 90% thời gian của một bit.
+	- Bộ chia thời gian (Time Segment): là một thành phần quan trọng để đồng bộ hóa và điều chỉnh thời gian truyền thông giữa các node trên bus CAN. Một bit trong mạng CAN được chia thành các phân đoạn thời gian (time segment), bao gồm:
+		- Sync Segment: là đoạn đầu tiên của mỗi bit và có độ dài cố định là 1 time quanta (TQ). Đoạn này giúp đồng bộ hóa tất cả các node trên bus. Nó đảm bảo rằng tất cả các node đều nhận biết sự bắt đầu của một bit tại cùng một thời điểm. Node nhận sẽ phát hiện ra cạnh thay đổi (rising edge hoặc falling edge) của tín hiệu CAN tại đoạn này để điều chỉnh thời gian của chính nó, đảm bảo đồng bộ với các node khác trên bus.
+		- Propagation Segment: Đoạn này bù đắp thời gian cần thiết để tín hiệu lan truyền qua bus CAN từ node gửi đến node nhận. Tín hiệu cần thời gian để di chuyển từ một node đến một node khác, và thời gian này phụ thuộc vào chiều dài của bus và tốc độ truyền. Propagation Segment được cấu hình sao cho nó bao gồm độ trễ lan truyền và thời gian trễ xử lý của cả phần cứng CAN.
+		- Phase Segment 1 (PS1) và Phase Segment 2 (PS2): Hai phân đoạn này được sử dụng để đồng bộ hóa tín hiệu và bù đắp cho các sai lệch về thời gian hoặc độ trễ nhỏ trong quá trình truyền. 
+			- PS1 là đoạn thời gian trước điểm lấy mẫu. Đoạn này cho phép node điều chỉnh thời gian đọc tín hiệu để đồng bộ với tín hiệu thực tế trên bus.
+			- PS2 là đoạn thời gian sau điểm lấy mẫu. Nó có thể được kéo dài hoặc thu ngắn để bù trừ sự sai lệch nhỏ giữa các node, giữ cho tất cả node đồng bộ với nhau. Đây là đoạn để kết thúc 1 bit.
+			- Cả PS1 và PS2 đều có thể được điều chỉnh linh hoạt tùy thuộc vào sự thay đổi thời gian cần thiết để đảm bảo việc lấy mẫu tín hiệu một cách chính xác.
+	- Đơn vị của phân đoạn thời gian: Time Quanta (TQ)
+		- Time Quanta (TQ) là đơn vị thời gian nhỏ nhất mà một bit trong giao thức CAN được chia thành. Mỗi phân đoạn thời gian trong 1 bit được tính bằng số lượng TQ.
+		- Mỗi node trên bus CAN sử dụng cùng một đơn vị TQ, và tổng số TQ trong một bit sẽ quyết định tốc độ baud của hệ thống.
+- Vậy, tổng thời gian của một bit trong giao thức CAN là tổng của các phân đoạn thời gian (Sync Segment, Propagation Segment, PS1, và PS2), tính bằng TQ:
+	$Bit Time=Sync Segment+Propagation Segment+PS1+PS2$
+
+Và tốc độ baud (bit rate) được tính như sau:
+Tốc độ baud =1Bit Time (bps)
+8.2 Bộ lọc CAN
+Trong CAN, các node có thể nhận rất nhiều thông điệp, nhưng không phải tất cả thông điệp đều liên quan đến tất cả các node. Bộ lọc CAN cho phép các node lựa chọn và chỉ nhận những thông điệp cần thiết, dựa trên ID của thông điệp hoặc các tiêu chí khác.
+Vai trò của bộ lọc CAN:
+Lựa chọn thông điệp: Bộ lọc CAN giúp các node lọc ra những thông điệp cần thiết và bỏ qua những thông điệp không liên quan. Điều này giúp giảm tải cho vi điều khiển, vì nó chỉ xử lý những dữ liệu mà nó cần.
+Giảm băng thông: Bằng cách chỉ nhận những thông điệp có ID cụ thể, node có thể giảm khối lượng dữ liệu cần xử lý, giúp mạng hoạt động hiệu quả hơn.
+Bộ lọc CAN hoạt động dựa trên hai thành phần chính:
+Mask (Mặt nạ): Quy định những bit nào trong ID của thông điệp cần được kiểm tra.
+Filter (Bộ lọc): Được dùng để so sánh các bit của ID thông điệp với giá trị quy định trong bộ lọc. Nếu các bit này khớp với mask, thông điệp sẽ được chấp nhận và xử lý.
+8.2.1 Mask
+Mask là một dãy bit mà các bit có giá trị 1 sẽ được kiểm tra, còn các bit có giá trị 0 sẽ bị bỏ qua. Điều này cho phép chỉ định cụ thể những phần của ID thông điệp mà node sẽ quan tâm, trong khi bỏ qua các phần không quan trọng. Mask giúp xác định phạm vi ID mà node quan tâm.
+8.2.2 Filter
+Filter là giá trị mà các bit trong ID của thông điệp phải khớp với, dựa trên mask. Các bit được phép kiểm tra thông qua mask sẽ được so sánh với filter. Nếu ID thông điệp trùng khớp với giá trị của bộ lọc (sau khi áp dụng mask), thông điệp sẽ được chấp nhận. Nếu không trùng khớp, thông điệp sẽ bị bỏ qua, node sẽ không xử lý nó.
+Ví dụ: Giả sử trong một hệ thống CAN, chúng ta có một node cần nhận thông điệp có ID trong khoảng từ 0x100 đến 0x1FF. Điều này có nghĩa là node chỉ quan tâm đến các thông điệp có giá trị từ 0x100 đến 0x1FF, và không quan tâm đến các thông điệp có ID nằm ngoài phạm vi này.
+Để đạt được điều này, chúng ta có thể cấu hình bộ lọc CAN như sau:
+Cấu hình bộ lọc:
+Mask (Mặt nạ): 0x700 – chỉ kiểm tra 3 bit đầu tiên của ID.
+Filter (Bộ lọc): 0x100 – chỉ nhận thông điệp có ID bắt đầu bằng 0x001.
+Phân tích cấu hình:
+Mask 0x700 (111 0000 0000) có nghĩa là chỉ có 3 bit đầu tiên của ID thông điệp sẽ được so sánh với filter. Các bit khác (bit từ 8 trở xuống) sẽ không được kiểm tra.
+Filter 0x100 (001 0000 0000) có nghĩa là node sẽ chấp nhận những thông điệp có 3 bit đầu tiên là 001, tức là thông điệp có ID nằm trong khoảng từ 0x100 đến 0x1FF.
+Với cấu hình này, node sẽ chỉ nhận những thông điệp có ID từ 0x100 đến 0x1FF, giúp lọc bỏ các thông điệp không liên quan và giảm tải cho vi điều khiển.
+Minh họa với ví dụ cụ thể:
+Giả sử có các thông điệp trên bus CAN với các ID sau: 0x0F0, 0x100, 0x180, 0x200. Khi sử dụng cấu hình bộ lọc như trên:
+ID 0x0F0: Bị bỏ qua vì 3 bit đầu tiên là 000, không trùng khớp với 001 trong filter.
+ID 0x100: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
+ID 0x180: Được chấp nhận vì 3 bit đầu tiên là 001, trùng khớp với filter.
+ID 0x200: Bị bỏ qua vì 3 bit đầu tiên là 010, không trùng khớp với filter.
 
 ### 2. Practice
+
 
 
 ## Contact
