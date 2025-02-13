@@ -1365,6 +1365,8 @@ int main(){
 
 [Watch the video SPI Software Full-Duplex](https://drive.google.com/file/d/1wbqRD2VAQ85-nRc-oW3CI0bXf6gLCYCc/view?usp=drive_link)
 
+---
+
 ## Lesson 06: I2C Software and Hardware
 
 ### **1. I2C Software**
@@ -1414,7 +1416,7 @@ void I2C_Config() {
 
 ### **2. I2C Hardware**
 
-
+---
 
 ## Lesson 07: UART Software and Hardware
 
@@ -1670,6 +1672,8 @@ void USART1_TransmitByte(uint8_t byte) {
 ```
 [Watch the video UART Hardware STM32F1 to PC](https://drive.google.com/file/d/1RRPxmbjE2VBhATOWUcY-6K0xQpaPFpZ9/view?usp=drive_link)
 
+---
+
 ## Lesson 08: Interrupt
 
 ### **1. External Interrupt**
@@ -1897,6 +1901,8 @@ void USART1_IRQHandler()
 ```
 [Watch the video UART Interrupt](https://drive.google.com/file/d/1nmTICswz50dvhPc-_yTs8E9ntrqDa9pd/view?usp=drive_link)
 
+---
+
 ## Lesson 09: ADC
 
 ### **1. Định nghĩa**
@@ -2054,6 +2060,8 @@ int main(){
 	}
 }
 ```
+---
+
 ## Lesson 10: DMA
 
 ### **1. Định nghĩa**
@@ -2181,6 +2189,7 @@ Trong điều khiển động cơ servo, tín hiệu PWM (Pulse Width Modulation
 
 ![Alt text](images/setup98.png)
 
+---
 
 ## Lesson 11: Flash - Bootloader
 
@@ -2256,6 +2265,8 @@ Thuật toán Bootloader
 ![Alt text](images/setup108.png)
 
 [Watch the video Homework ESP32 and STM32F1](https://drive.google.com/file/d/1rdarf37cqf-26g30l640bio4vFBU0DJI/view?usp=drive_link)
+
+---
 
 ## Lesson 12: CAN
 
