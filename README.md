@@ -105,7 +105,55 @@
 2. [Bootloader](#2-bootloader) 
 
 [Lesson 12: CAN](#lesson-12-can)
-1. [CAN](#11-can) 
+1. [Theory](#1-theory) 
+	- [1.1. CAN](#11-can) 
+	- [1.2. Kiến trúc](#12-kiến-trúc)
+		- [1.2.1. Bus topology](#121-bus-topology)
+		- [1.2.2 Các thiết bị trên bus CAN](#122-Các-thiết-bị-trên-bus-can)
+		- [1.2.3. Đặc điểm giao tiếp CAN](#123-đặc-điểm-giao-tiếp-can)
+	- [1.3. Khung dữ liệu trong CAN](#13-khung-dữ-lieu-trong-can)
+		- [1.3.1. Các loại khung dữ liệu trong CAN](#131-các-loại-khung-dữ-liệu-trong-can)
+			- [1.3.1.1. Data Frame](#1311-data-frame)
+			- [1.3.1.2. Remote Frame](#1312-remote-frame)  
+			- [1.3.1.3. Error Frame](#1313-error-frame)
+			- [1.3.1.4. Overload](#1314-overload)  
+		- [1.3.2. Cấu trúc của một khung dữ liệu trong CAN](#132-cấu-trúc-của-một-khung-dữ-liệu-trong-can)  
+			- [1.3.2.1. Start of Frame (SOF)](#1321-start-of-frame-sof)  
+			- [1.3.2.2. Arbitration Field (Trường tranh chấp)](#1322-arbitration-field-trường-tranh-chấp)  
+			- [1.3.2.3. Control Field (Trường điều khiển)](#1323-control-field-trường-điều-khiển)  
+			- [1.3.2.4. Data Field (Trường dữ liệu)](#1324-data-field-trường-dữ-liệu)  
+			- [1.3.2.5. CRC Field (Trường kiểm tra lỗi)](#1325-crc-field-trường-kiểm-tra-lỗi)
+			- [1.3.2.6. ACK Field (Trường xác nhận)](#1326-ack-field-trường-xác-nhận)  
+			- [1.3.2.7. End of Frame (EOF)](#1327-end-of-frame-eof)  
+	- [1.4. Arbitration trong CAN](#14-arbitration-trong-can)
+		- [1.4.1. Cơ chế ưu tiên](#141-cơ-chế-ưu-tiên)  
+		- [1.4.2. Non-destructive Arbitration (Tranh chấp không phá hủy)](#142-non-destructive-arbitration-tranh-chấp-không-phá-hủy)  
+	- [1.5. Lỗi trong giao thức CAN](#15-lỗi-trong-giao-thức-can)  
+		- [1.5.1. Các loại lỗi trong CAN](#151-các-loại-lỗi-trong-can)  
+			- [1.5.1.1. Bit Error](#1511-bit-error)  
+			- [1.5.1.2. Stuff Error](#1512-stuff-error)  
+			- [1.5.1.3. CRC Error](#1513-crc-error)  
+			- [1.5.1.4. Form Error](#1514-form-error)  
+			- [1.5.1.5. Acknowledgment Error](#1515-acknowledgment-error)  
+		- [1.5.2. Cơ chế phát hiện lỗi trong mạng CAN](#152-cơ-chế-phát-hiện-lỗi-trong-mạng-can)  
+		- [1.5.3. Cơ chế sửa lỗi tự động trong mạng CAN](#153-cơ-chế-sửa-lỗi-tự-động-trong-mạng-can)  
+		- [1.5.4. Các trạng thái lỗi của node](#154-các-trạng-thái-lỗi-của-node)  
+			- [1.5.4.1. Error Active](#1541-error-active)  
+			- [1.5.4.2. Error Passive](#1542-error-passive)  
+			- [1.5.4.3. Bus Off](#1543-bus-off)  
+	- [1.6. Tốc độ truyền và giới hạn vật lý của CAN](#16-tốc-độ-truyền-và-giới-hạn-vật-lý-của-can)
+		- [1.6.1. Tốc độ baud của CAN](#161-tốc-độ-baud-của-can)  
+		- [1.6.2. Chiều dài tối đa của bus trong CAN](#162-chiều-dài-tối-đa-của-bus-trong-can)  
+	- [1.7. CAN và các phiên bản mở rộng](#17-can-và-các-phiên-bản-mở-rộng)  
+		- [1.7.1. CAN 2.0A](#171-can-20a)  
+		- [1.7.2. CAN 2.0B (Extended CAN)](#172-can-20b-extended-can)  
+		- [1.7.3. CAN FD (Flexible Data-rate)](#173-can-fd-flexible-data-rate)  
+	- [1.8. Quá trình cấu hình và thiết lập CAN](#18-quá-trình-cấu-hình-và-thiết-lập-can)  
+		- [1.8.1. Thiết lập tốc độ baud trong CAN](#181-thiết-lập-tốc-độ-baud-trong-can)  
+		- [1.8.2. Bộ lọc CAN](#182-bộ-lọc-can)  
+			- [1.8.2.1. Mask](#1821-mask)  
+			- [1.8.2.2. Filter](#1822-filter)  
+
 -----------------------------------------------------
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
@@ -2222,9 +2270,9 @@ Thuật toán Bootloader
 	- Không yêu cầu máy tính chủ (master) để điều phối các thiết bị. Các thiết bị trên bus CAN có thể truyền dữ liệu bất cứ khi nào, với cơ chế arbitrage tự động để tránh xung đột.
 	- Độ tin cậy cao, đẩm bảo việc phát hiện lỗi tự động thông qua cơ chế kiểm tra và sửa lỗi. Điều này cực kỳ quan trọng trong các hệ thống oto yêu cầu an toàn cao.
 
-#### 1.2. Kiến trúc
+#### 1.2 Kiến trúc
 
-##### 1.2.1. Bus topology 
+##### 1.2.1 Bus topology 
 
 - Giao thức CAN sử dụng tô-pô bus để kết nối các thiết bị với nhau, nghĩa là tất cả các thiết bị (node) đều được kết nối song song vào một cặp dây truyền thông chung được gọi là CAN bus.
 
@@ -2246,7 +2294,7 @@ Thuật toán Bootloader
 	- Giảm số lượng dây dẫn: Với tô-pô bus, tất cả các thiết bị chia sẻ chung một bus truyền dữ liệu, làm giảm đáng kể số lượng dây dẫn só với các mô hình khác. Điều này giúp giảm chi phí, tiết kiệm không gian và đơn giản hóa hệ thống dây dẫn trong các hệ thống nhúng.
 	- Termination resistor (Điện trở kết cuối): Mỗi đầu của bus CAN cần một điện trỏ kết cuối với giá trí 120Ω để ngăn chặn hiện tượng phản xạ tín hiệu. Nếu không có điện trở này, tín hiệu có thể bị phản xạ lại từ các đầu cuối mở, gây ra nhiễu và lầm hổng dữ liệu.
 
-#### 1.2.2. Các thiết bị trên bus CAN
+#### 1.2.2 Các thiết bị trên bus CAN
 
 - Mạng CAN hỗ trợ nhiều loại thiết bị khác nhau trên cùng một bus, mỗi thiết bị được gọi là một node. Các thiết bị này có thể là:
 	- Vi điều khiển (Microcontroller): Đây là các bộ điều khiển chính trong các hệ thống nhúng. Ví dụ, một vi điều khiển STM32 có thể kết nối với bus CAN để điều khiển các thiết bị khác nhau hoặc thu nhập dữ liệu từ các cảm biến.
