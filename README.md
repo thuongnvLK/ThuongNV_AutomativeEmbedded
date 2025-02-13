@@ -1,11 +1,12 @@
 #   **AUTOMATIVE EMBEDDED**
----
+
 ![Build Status](https://img.shields.io/badge/build-in%20progress-yellow)         
 ![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)     
 ![STM32](https://img.shields.io/badge/STM32-Microcontroller-blue?logo=stmicroelectronics&style=flat-square)     
 ![Language: C](https://img.shields.io/badge/Language-C-yellow?logo=c&style=flat-square)     
 ![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)     
 
+---
 ##  **Table of Contents**
 [Lesson 01: Setting Up Your First Keil µVision Project](#lesson-01-setting-up-your-first-keil-µvision-project) 
 1. [Install Keil C ARM Package for STM32](#1-install-keil-c-arm-package-for-stm32)  
@@ -16,7 +17,7 @@
 6. [Build the Project](#6-build-the-project)  
 7. [Debug (Optional)](#7-debug-optional)  
 8. [Download (Optional)](#8-download-optional)  
-
+---
 [Lesson 02: General-purpose I/Os (GPIO)](#lesson-02-general-purpose-ios-gpio)
 1. [What is GPIO ?](#1-what-is-gpio)  
 2. [What is the GPIO Port ?](#2-what-is-the-gpio-port)   
@@ -39,7 +40,7 @@
   5.1. [Cấu hình và sử dụng ngoại vi (GPIO)](#51-cấu-hình-và-sử-dụng-ngoại-vi-gpio)  
 	5.1.1. 	[Cấp clock cho ngoại vi](#511-cấp-clock-cho-ngoại-vi)  
     5.1.2. [Cấu hình ngoại vi](#512-cấu-hình-ngoại-vi) 
-
+---
 [Lesson 03: Interrupt and Timer](#lesson-03-interrupt-and-timer)
 
 [1. Interrupt](#1-interrupt)
@@ -67,43 +68,43 @@
    - [3.4 Delay Function](#234-delay-function)  
 4. [Code Example](#24-code-example)  
 5. [Timer Operation](#25-timer-operation) 
-
+---
 [Lesson 04: Communication Protocols](#lesson-04-communication-protocols)
 1. [Truyền nhận dữ liệu](#1-truyền-nhận-dữ-liệu)  
 2. [SPI](#2-spi)  
 3. [I2C](#3-i2c)  
 4. [UART](#4-uart)  
-
+---
 [Lesson 05: SPI Software and Hardware](#lesson-05-spi-software-and-hardware)
 1. [SPI software](#1-spi-software)  
 2. [SPI hardware](#2-spi-hardware)  
-
+---
 [Lesson 06: I2C Software and Hardware](#lesson-06-i2c-software-and-hardware)
 1. [I2C software](#1-i2c-software)  
 2. [I2C hardware](#2-i2c-hardware)  
-
+---
 [Lesson 07: UART Software and Hardware](#lesson-07-uart-software-and-hardware)
 1. [UART software](#1-uart-software)  
 2. [UART hardware](#2-uart-hardware)  
-
+---
 [Lesson 08: Interrupt](#lesson-08-interrupt)
 1. [External Interrupt](#1-external-interrupt)
 2. [Timer Interrupt](#2-timer-interrupt) 
 3. [Communication Interrupt](#3-communication-interrupt)
-
+---
 [Lesson 09: ADC](#lesson-09-adc)
 1. [Định nghĩa](#1-định-nghĩa)  
 2. [Sử dụng ADC trong STM32](#2-sử-dụng-adc-trong-stm32) 
-
+---
 [Lesson 10: DMA](#lesson-10-dma)
 1. [Định nghĩa](#1-định-nghĩa)  
 2. [Sử dụng ADC trong STM32](#2-dma-trong-stm32) 
 3. [PWM](#3-pwm) 
-
+---
 [Lesson 11: Flash - Bootloader](#lesson-11-flash-bootloader)
 1. [Flash](#1-flash)  
 2. [Bootloader](#2-bootloader) 
-
+---
 [Lesson 12: CAN](#lesson-12-can)
 1. [Theory](#1-theory) 
 	- [1.1. CAN](#11-can) 
@@ -154,7 +155,7 @@
 			- [1.8.2.1. Mask](#1821-mask)  
 			- [1.8.2.2. Filter](#1822-filter)  
 
------------------------------------------------------
+---
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
