@@ -2238,6 +2238,42 @@ Thuật toán Bootloader
 
 ![Alt text](images/setup110.png)
 
+- Đặc điểm của tô-pô bus:
+	- Kết nối song song: Tất cả các thiết bị trên bus CAN đều được kết nối song song với nhau. Mỗi thiết bị (node) có thể truy cập vào bus để truyền hoặc nhận dữ liệu bất cứ lúc nào, mà không cần một máy tính chủ (master) điều khiển.
+	- Giảm số lượng dây dẫn: Với tô-pô bus, tất cả các thiết bị chia sẻ chung một bus truyền dữ liệu, làm giảm đáng kể số lượng dây dẫn só với các mô hình khác. Điều này giúp giảm chi phí, tiết kiệm không gian và đơn giản hóa hệ thống dây dẫn trong các hệ thống nhúng.
+	- Termination resistor (Điện trở kết cuối): Mỗi đầu của bus CAN cần một điện trỏ kết cuối với giá trí 120Ω để ngăn chặn hiện tượng phản xạ tín hiệu. Nếu không có điện trở này, tín hiệu có thể bị phản xạ lại từ các đầu cuối mở, gây ra nhiễu và lầm hổng dữ liệu.
+
+#### 1.2.2. Các thiết bị trên bus CAN
+
+- Mạng CAN hỗ trợ nhiều loại thiết bị khác nhau trên cùng một bus, mỗi thiết bị được gọi là một node. Các thiết bị này có thể là:
+	- Vi điều khiển (Microcontroller): Đây là các bộ điều khiển chính trong các hệ thống nhúng. Ví dụ, một vi điều khiển STM32 có thể kết nối với bus CAN để điều khiển các thiết bị khác nhau hoặc thu nhập dữ liệu từ các cảm biến.
+	- Cảm biến (Sensors): Các cảm biến thu thập dữ liệu từ môi trường (như nhiệt độ, áp suất, tốc độ) và gửi dữ liệu này lên bus CAN để các thiết bị khác xử lý.
+	- Actuator (Thiết bị kích động): Đây là các thiết bị đầu ra, nhận lệnh từ các vi điều khiển qua bus CAN để thực hiện các hành động vật lý, chẳng hạn như mở van, điểu khiển động cơ hoặc bật đèn.
+
+![Alt text](images/setup111.png)
+
+- Các node nếu muốn gửi và nhận dữ liệu CAN thì bên trong các node cần có những thành phần:
+
+	- Bộ điều khiển CAN (CAN Controller): Đây là thành phần chính trong node CAN, có nhiệm vụ xử lý toàn bộ giao tiếp CAN.
+		- Gửi và nhận thông điệp CAN.
+		- Điều khiển truy cập vào bus CAN (arbitration).
+		- Phát hiện và xử lý các lỗi truyền thông CAN.
+		- Kiểm soát việc truyền lại thông điệp khi gặp lỗi.
+		- Cung cấp giao diện giữa các vi điều khiển và bus CAN.
+	- Transceiver CAN (CAN Transceiver):
+		- Chuyển đổi tín hiệu số từ bộ điều khiển CAN thành tín hiệu điện áp dang differential (CANH và CANL) để gửi lên bus CAN và ngược lại.
+		- Đảm bảo tín hiệu truyền và nhận trên bus CAN có độ chính xác và tốc độ cao.
+	- Vi điều khiển (Microcontroller): là thành phần trung tâm điều khiển hoạt động của node CAN.
+		- Đọc và xử lý thông điệp CAN.
+		- Tạo ra thông điệp CAN.
+		- Quản lý các khung dữ liệu, bit arbitration và quá trình xử lý lỗi.
+		- Điều khiển hành vi của node (ví dụ: bật/tắt node, reset node khi gặp lỗi bus-off).
+#### 1.2.3. Đặc điểm giao tiếp CAN
+
+- Mạng CAN có những đặc điểm giao tiếp nổi bật giúp nó trở thành một giao thức truyền thông đáng tin cậy và hiệu quả trogn quá các hệ thống nhúng:
+	- Không cần máy tính chủ (No Master-Slave Arrchitecture)
+		Mạng CAN không tuân theo kiến trúc master-slave. Tất cả các thiết bị trên bus đều có quyền bình đẳng trong việc truyền dữ liệu mà không cần phải có thiết bị chủ điều khiển. Điều này cho phép mạng hoạt động linh hoạt hơn, khi bất kỳ node nào cũng có thể truyền hoặc nhận thông tin bất cứ lúc nào.
+		
 
 ### 2. Practice
 
