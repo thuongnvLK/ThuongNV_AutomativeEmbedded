@@ -100,10 +100,13 @@
 2. [Sử dụng ADC trong STM32](#2-dma-trong-stm32) 
 3. [PWM](#3-pwm) 
 
-[Lesson 11: Flash - Bootloader](#lesson-11-flash---bootloader)
+[Lesson 11: Flash - Bootloader](#lesson-11-flash-bootloader)
 1. [Flash](#1-flash)  
 2. [Bootloader](#2-bootloader) 
 
+[Lesson 12: CAN](#lesson-12-can)
+1. [CAN](#1.1-can) 
+-----------------------------------------------------
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
 This guide outlines the basic steps for creating a new project in Keil µVision, a popular Integrated Development Environment (IDE) for embedded systems development.
