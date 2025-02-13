@@ -247,6 +247,7 @@ int main(void)
     return 0;
 }
 ```
+---
 
 ## Lesson 02: General-purpose I/Os (GPIO)
 
@@ -793,7 +794,7 @@ int main() {
 	}
 }
 ```
-
+---
 ## Lesson 03: Interrupt and Timer
 
 ### **1. Interrupt**
@@ -1054,6 +1055,8 @@ int main() {
 ```
 ![Alt text](images/setup46.png)
 
+---
+
 ## Lesson 04: Communication Protocols
 
 ### **1. Truyền nhận dữ liệu**
@@ -1154,6 +1157,8 @@ int main() {
 ![Alt text](images/setup65.png)
 
 `Nhược điểm Parity khi số bit lỗi là số chẵn thì không phát hiện được`
+
+---
 
 ## Lesson 05: SPI software and hardware
 
