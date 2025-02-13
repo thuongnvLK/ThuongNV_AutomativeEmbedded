@@ -2657,6 +2657,8 @@ Thuật toán Bootloader
 
 - Tốc độ baud (baud rate) là tốc độ truyền dữ liệu trên bus CAN, được tính bằng số bit truyền trên giây (bps - bit per second). Việc thiết lập tốc độ baud chính xác là một bước quan trọng vì nó ảnh hưởng trực tiếp đến khả năng truyền dữ liệu và chiều dài của bus.
 
+![Alt text](images/setup117.png)
+
 - Các yếu tố ảnh hưởng đến tốc độ baud:
 	- Thời gian mẫu (Sample Point):
 		- Thời gian mẫu là thời điểm mà tín hiệu trên bus CAN được đọc để xác định giá trị của một bit (dominant hoặc recessive). Mẫu thường được lấy ở vị trí cuối mỗi bit để đảm bảo tín hiệu đã ổn định.
