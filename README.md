@@ -154,7 +154,7 @@
 		- [1.8.2. Bộ lọc CAN](#182-bộ-lọc-can)  
 			- [1.8.2.1. Mask](#1821-mask)  
 			- [1.8.2.2. Filter](#1822-filter)  
-
+- [📞 Contact](#-contact)
 ---
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
@@ -2322,7 +2322,7 @@ Thuật toán Bootloader
 ![Alt text](images/setup111.png)
 
 - Các node nếu muốn gửi và nhận dữ liệu CAN thì bên trong các node cần có những thành phần:
-
+	![Alt text](images/setup128.png)
 	- Bộ điều khiển CAN (CAN Controller): Đây là thành phần chính trong node CAN, có nhiệm vụ xử lý toàn bộ giao tiếp CAN.
 		- Gửi và nhận thông điệp CAN.
 		- Điều khiển truy cập vào bus CAN (arbitration).
@@ -2729,6 +2729,6 @@ Thuật toán Bootloader
 
 
 
-## Contact
+## 📞 Contact
 Email: individual.thuongnguyen@gmail.com    
 GitHub: [github.com/thuongnvLK](https://github.com/thuongnvLK)
