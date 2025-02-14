@@ -7,7 +7,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0-green?style=flat-square)     
 
 ---
-##  **Table of Contents**
+## 📌 **Table of Contents**
 [Lesson 01: Setting Up Your First Keil µVision Project](#lesson-01-setting-up-your-first-keil-µvision-project) 
 1. [Install Keil C ARM Package for STM32](#1-install-keil-c-arm-package-for-stm32)  
 2. [µVision Software Packs Download and Install](#2-µvision-software-packs-download-and-install)  
