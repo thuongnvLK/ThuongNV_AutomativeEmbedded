@@ -1,4 +1,4 @@
-#  📚 **AUTOMATIVE EMBEDDED**
+#  📚 **AUTOMOTIVE EMBEDDED**
 
 ![Build Status](https://img.shields.io/badge/build-in%20progress-yellow)         
 ![Keil µVision](https://img.shields.io/badge/Keil-IDE-blue?logo=keil&style=flat-square)     
