@@ -2728,6 +2728,30 @@ Thuật toán Bootloader
 ### 2. Practice
 
 
+## Lesson 13: LIN
+
+### 1. Theory
+
+#### 1.1 LIN
+
+- LIN (Local Interconnect Network) sinh ra nhằm giảm thiểu sự phức tạp và chi phí trong việc truyền thông giữa các thiết bị điện tử đơn giản trong xe.
+- LIN thường được được sử dụng trong các ứng dụng điêù khiển các chức năng không an toàn của xe như điều khiển cửa sổ, đèn, gương, và điều hòa không khí.
+
+![Alt text](images/setup129.png)
+
+#### 1.2 Đặc điểm
+
+- Mô hình Master - Slave.
+- Node Slave chỉ phản hồi khi có yêu cầu từ node Master.
+- Master "quét" yêu cầu tới tất cả các Slave để thăm dò thông tin.
+- Master có dữ liệu từ Slave sẽ gửi lên bus CAN để đi tới các LIN khác.
+- LIN sử dụng giao thức UART để truyền/ nhận dữ liệu, với khung truyền dữ liệu sẽ là 1 start, 8 data, 1 hoặc 2 stop.
+
+![Alt text](images/setup130.png)
+
+![Alt text](images/setup131.png)
+
+
 
 ## 📞 Contact
 Email: individual.thuongnguyen@gmail.com    
