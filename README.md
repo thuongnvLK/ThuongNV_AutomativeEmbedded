@@ -163,7 +163,6 @@
    - [1.4 Quá trình truyền thông LIN](#14-quá-trình-truyền-thông-lin)  
    - [1.5 Tổng quát](#15-tổng-quát) 
 
-
 [📞 Contact](#-contact)
 ---
 ## Lesson 01: Setting Up Your First Keil µVision Project
