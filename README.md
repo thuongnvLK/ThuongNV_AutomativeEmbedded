@@ -2751,6 +2751,47 @@ Thuật toán Bootloader
 
 ![Alt text](images/setup131.png)
 
+- Một số thông tin chân (pins) của TJA1028:
+	- TXD (Transmit Data): Đầu vào dữ liệu truyền từ bộ điều khiển.
+	- RXD (Receive Data): Đầu ra dữ liệu nhận được từ bus LIN đến bộ điều khiển.
+	- LIN: Chân kết nối với đường truyền bus LIN.
+	- VBAT: Chân cấp nguồn cho module LIN từ nguồn cung cấp chính (thường là pin xe hơi, 12V).
+	- GND: Chân nối đất (groud).
+	- EN (Enable): Chân cho phép kích hoạt transceiver.
+	- INH (Initbit): Điều khiển bật/tắt nguồn ngoại vi, dùng để bật hoặc tắt một thiết bị hoặc mạch khác.
+	- WAKE: Chân cho phép đánh thức hệ thống từ chế độ ngủ (sleep mode).
+
+![Alt text](images/setup132.png)
+
+#### 1.3 Cấu trúc khung LIN
+
+![Alt text](images/setup133.png)
+
+- Break (>= 13 bit): Báo hiệu bắt đầu khung.
+- Sync (8 bit): Byte đồng bộ hóa (0x55), điều chỉnh tốc độ truyền.
+- ID (6 bit ID + 2 bit partity): Xác định loại dữ liệu chứa nội dung chính của thông điệp.
+- Data (16 - 64 bit): Từ 2 đến 8 byte dữ liệu chứa nội dung chính của thông điệp.
+- Checksum (8 bit): Phát hiện lỗi trong quá trính truyền thông.
+
+#### 1.4 Quá trình truyền thông LIN
+
+- Master sẽ gửi Header cho các Slave trước.
+	- Nếu Master yêu cầu dữ liệu từ Slave thì Slave sẽ gửi lại Response cho Master.
+	- Nếu Master muốn gửi dữ liệu cho Slave thì sẽ gửi kèm Response cho Slave.
+- Slave sẽ xem ID có khớp với mình không, nếu có thì xử lý, không thì bỏ qua.
+
+![Alt text](images/setup134.png)
+
+#### 1.5 Tổng quát
+
+| Tiêu chí          | LIN                      | CAN                   | FlexRay               | Ethernet (Automotive)  |
+|------------------|------------------------|-----------------------|----------------------|------------------------|
+| **Tốc độ truyền** | 1 - 20 kbps             | Lên đến 1 Mbps        | Lên đến 10 Mbps      | Lên đến 100 Mbps       |
+| **Mô hình truyền** | Master-Slave           | Multi-Master          | Multi-Master         | Point-to-Point         |
+| **Ứng dụng**      | Điều khiển thiết bị đơn giản | Hệ thống phức tạp    | Hệ thống an toàn cao | Kết nối mạng tốc độ cao |
+| **Chi phí**       | Thấp                    | Trung bình            | Cao                  | Cao                    |
+| **Thời gian thực** | Không hỗ trợ           | Hỗ trợ                | Hỗ trợ chính xác     | Hỗ trợ chính xác       |
+
 
 
 ## 📞 Contact
