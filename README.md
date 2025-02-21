@@ -154,6 +154,15 @@
 		- [1.8.2. Bộ lọc CAN](#182-bộ-lọc-can)  
 			- [1.8.2.1. Mask](#1821-mask)  
 			- [1.8.2.2. Filter](#1822-filter)  
+[Lesson 13: LIN](#lesson-13-lin)
+1. [Theory](#1-theory)  
+   - [1.1 LIN](#11-lin)  
+   - [1.2 Đặc điểm](#12-đặc-điểm)  
+   - [1.3 Cấu trúc khung LIN](#13-cấu-trúc-khung-lin)  
+   - [1.4 Quá trình truyền thông LIN](#14-quá-trình-truyền-thông-lin)  
+   - [1.5 Tổng quát](#15-tổng-quát) 
+
+ 
 - [📞 Contact](#-contact)
 ---
 ## Lesson 01: Setting Up Your First Keil µVision Project
@@ -2727,6 +2736,7 @@ Thuật toán Bootloader
 
 ### 2. Practice
 
+--- 
 
 ## Lesson 13: LIN
 
