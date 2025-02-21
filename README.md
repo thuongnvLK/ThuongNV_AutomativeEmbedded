@@ -164,7 +164,7 @@
    - [1.5 Tổng quát](#15-tổng-quát) 
 
 
-- [📞 Contact](#-contact)
+[📞 Contact](#-contact)
 ---
 ## Lesson 01: Setting Up Your First Keil µVision Project
 
